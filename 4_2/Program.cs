@@ -53,14 +53,12 @@
         /// </summary>
         /// <param name="array">Одномерный массив.</param>
         /// <returns>Отсортированный одномерный массив.</returns>
-        private static int[] SelectionSort(int[] array)
+        private static int[] SelectionSort(int[] array, int maxNumberIndex)
         {
             Console.WriteLine("Отсортированный массив");
 
             // Объявляем переменные для реализации сортировки
             int i, j, min, max, temp;
-
-            int maxNumberIndex = GetIndexOfMax(array);
 
             // Сортируем по возрастанию до максимального значения
             for (i = 0; i < maxNumberIndex - 1; i++)
@@ -132,8 +130,11 @@
             int[] array = CreateArray();
             ShowArray(array);
 
+            // Находим индекс максимального элемента массива
+            int maxNumberIndex = GetIndexOfMax(array);
+
             // Сортируем массив и выводим отсортированный массив в консоль
-            int[] sortedArray = SelectionSort(array);
+            int[] sortedArray = SelectionSort(array, maxNumberIndex);
             ShowArray(sortedArray);
         }
     }
