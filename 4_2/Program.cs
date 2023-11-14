@@ -29,6 +29,11 @@
             return array;
         }
 
+        /// <summary>
+        /// Метод нахождения индекса максимального элемента массива.
+        /// </summary>
+        /// <param name="array">Одномерный массив.</param>
+        /// <returns>Индекс максимального элемента массива.</returns>
         private static int GetIndexOfMax(int[] array)
         {
             int maxNumber = array.Max();
@@ -99,6 +104,10 @@
             return array;
         }
 
+        /// <summary>
+        /// Метод распечатки массива в консоль.
+        /// </summary>
+        /// <param name="array">Одномерный массив.</param>
         private static void ShowArray(int[] array)
         {
             for (int i = 0; i < array.Length; i++)
