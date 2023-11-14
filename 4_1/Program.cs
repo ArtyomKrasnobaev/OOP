@@ -6,27 +6,33 @@
     public class Program
     {
         /// <summary>
-        /// Функция преобразования строки к верхнему регистру.
+        /// Функция преобразования элементов строки
+        /// к противоположному регистру.
         /// </summary>
         /// <param name="text">Строка.</param>
-        /// <returns>Строка в верхнем регистре.</returns>
-        private static string ToUpperLetters(string text)
+        /// <returns>Строка в противоположном регистре.</returns>
+        private static string ChangeCase(string text)
         {
+            // Пустая строка
             string newWord = "";
 
-            // Функция использует встроенный метод .ToUpper
+            // Итерируемся по элементам строки
             foreach (char letter in text)
             {
+                // Если буква заглавная - преобразуем к нижнему регистру
                 if (Char.IsUpper(letter))
                 {
                     newWord += Char.ToLower(letter);
                 }
+
+                // В остальных случаях преобразуем к верхнему регистру
                 else
                 {
                     newWord += Char.ToUpper(letter);
                 }
             }
 
+            // Возвращаем измененную строку
             return newWord;
         }
 
@@ -35,8 +41,11 @@
         /// </summary>
         static void Main()
         {
+            // Ввод строки с консоли
             string text = Console.ReadLine();
-            Console.WriteLine(ToUpperLetters(text));
+
+            // Вывод измененной строки в консоль
+            Console.WriteLine(ChangeCase(text));
         }
     }
 }
