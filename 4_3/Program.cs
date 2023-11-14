@@ -39,8 +39,7 @@
             Console.Write("Введите n: ");
             int n = Convert.ToInt32(Console.ReadLine());
 
-            // Вывод результата выполнения функции
-            // RecursionSum(int n, int i) в консоль
+            // Вывод результата выполнения функции RecursionSum в консоль
             Console.Write($"Сумма ряда от 2 до {n}: {RecursionSum(n, 2)} \n");
         }
     }
