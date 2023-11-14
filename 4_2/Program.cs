@@ -36,8 +36,14 @@
         /// <returns>Индекс максимального элемента массива.</returns>
         private static int GetIndexOfMax(int[] array)
         {
+            // Находим максимальный элемент массива с помощью метода .Max()
             int maxNumber = array.Max();
+
+            // Находим индекс максимального элемента массива
+            // с помощью метода .IndexOf()
             int maxNumberIndex = Array.IndexOf(array, maxNumber);
+
+            // Возвращаем индекс максимального элемента массива
             return maxNumberIndex;
         }
 
@@ -97,8 +103,6 @@
                 array[i] = array[max];
                 array[max] = temp;
             }
-
-            // Выводим отсортированный массив в консоль
 
             // Возвращаем отсортированный массив
             return array;
