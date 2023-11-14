@@ -1,7 +1,15 @@
 ﻿namespace _4_3_cycle
 {
+    /// <summary>
+    /// Program.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Функция для вычисления суммы ряда n/i при i = [2, n].
+        /// </summary>
+        /// <param name="n">Аргумент функции.</param>
+        /// <returns>Сумма ряда n/i при i = [2, n].</returns>
         private static int SeriesSum(int n)
         {
             // Начальное значение суммы ряда
@@ -21,6 +29,10 @@
             return sum;
         }
 
+        /// <summary>
+        /// Main.
+        /// </summary>
+        /// <param name="args">.</param>
         static void Main(string[] args)
         {
             // Ввод числа n с консоли
