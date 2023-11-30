@@ -35,7 +35,7 @@
         /// <param name="args">.</param>
         static void Main(string[] args)
         {
-            // Ввод числа n с консоли
+            // Ввод аргумента функции с консоли
             Console.Write("Введите n: ");
             int n = Convert.ToInt32(Console.ReadLine());
 
