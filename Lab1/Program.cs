@@ -1,10 +1,45 @@
 ﻿using Persons;
+using System;
+
 namespace Lab1
 {
     internal class Program
     {
+        public static Person CreatePersonFromConsole()
+        {
+            Console.Write("Введите имя: ");
+            string firstName = Console.ReadLine();
+
+            Console.Write("Введите фамилию: ");
+            string lastName = Console.ReadLine();
+
+            Console.Write("Введите возраст: ");
+            int age = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Введите пол: ");
+            string genderFromConsole = Console.ReadLine();
+            Gender gender = default(Gender);
+            if (genderFromConsole == "М")
+            {
+                gender = Gender.Male;
+            }
+            if (genderFromConsole == "Ж")
+            {
+                gender = Gender.Female;
+            }
+            return new Person(firstName, lastName, age, gender);
+        }
+
+        public static void PrintPersonToConsole(Person person)
+        {
+           Console.WriteLine(person.GetPersonInfo());
+        }
+
         static void Main(string[] args)
         {
+            Person testPerson = CreatePersonFromConsole();
+            PrintPersonToConsole(testPerson);
+
             // Объекты класса Person для тестирования
             Person person1 = new Person("Леон", "Кеннеди", 27, Gender.Male);
             Person person2 = new Person("Крис", "Редфилд", 30, Gender.Male);
