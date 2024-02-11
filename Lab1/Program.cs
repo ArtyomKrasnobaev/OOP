@@ -37,6 +37,9 @@ namespace Lab1
 
         static void Main(string[] args)
         {
+            Person person = new Person();
+            PrintPersonToConsole(person.GetRandomPerson());
+
             Person testPerson = CreatePersonFromConsole();
             PrintPersonToConsole(testPerson);
 
