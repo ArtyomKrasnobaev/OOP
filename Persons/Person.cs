@@ -4,19 +4,44 @@ using System.Text.RegularExpressions;
 
 namespace Persons
 {
+    /// <summary>
+    /// класс Person.
+    /// </summary>
     public class Person
     {
+        /// <summary>
+        /// Поле имени.
+        /// </summary>
         private string _firstName;
 
+        /// <summary>
+        /// Поле фамилии.
+        /// </summary>
         private string _lastName;
 
+        /// <summary>
+        /// Поле возраста.
+        /// </summary>
         private int _age;
 
+        /// <summary>
+        /// Поле пола.
+        /// </summary>
         private Gender _gender;
 
+        /// <summary>
+        /// Объект класса Person по умолчанию.
+        /// </summary>
         public Person(): this("Неизвестно", "Неизвестно", 0, Gender.Male)
         { }
 
+        /// <summary>
+        /// Конструктор объекта класса Person.
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="age"></param>
+        /// <param name="gender"></param>
         public Person(string firstName, string lastName, int age, Gender gender)
         {
             _firstName = firstName;
@@ -25,6 +50,10 @@ namespace Persons
             _gender = gender;
         }
 
+        /// <summary>
+        /// Свойство для получения доступа к полю _firstName
+        /// объекта класса Person.
+        /// </summary>
         public string FirstName
         {
             get { return _firstName; }
@@ -44,6 +73,10 @@ namespace Persons
             }
         }
 
+        /// <summary>
+        /// Свойство для получения доступа к полю _lastName
+        /// объекта класса Person.
+        /// </summary>
         public string LastName
         {
             get { return _lastName; }
@@ -63,6 +96,10 @@ namespace Persons
             }
         }
 
+        /// <summary>
+        /// Свойство для получения доступа к полю _age
+        /// объекта класса Person.
+        /// </summary>
         public int Age
         {
             get { return _age; }
@@ -76,18 +113,30 @@ namespace Persons
             }
         }
 
+        /// <summary>
+        /// Свойство для получения доступа к полю _gender
+        /// объекта класса Person.
+        /// </summary>
         public Gender Gender
         {
             get { return _gender; }
             set { _gender = value; }
         }
 
+        /// <summary>
+        /// Метод получения данных объекта.
+        /// </summary>
+        /// <returns>Строка с данными полей объекта класса Person.</returns>
         public string GetPersonInfo()
         {
-            return $"Имя: {_firstName}, Фамилия: {LastName}," +
-                   $" Возраст: {Age}, Пол: {Gender}\n";
+            return $"Имя: {_firstName}, Фамилия: {_lastName}," +
+                   $" Возраст: {_age}, Пол: {_gender}\n";
         }
 
+        /// <summary>
+        /// Метод генерации случайного объекта класса Person.
+        /// </summary>
+        /// <returns>Объект класса Person.</returns>
         public static Person GetRandomPerson()
         {
             List<string> maleFirstNameList = new List<string>()

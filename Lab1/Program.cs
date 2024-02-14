@@ -5,6 +5,10 @@ namespace Lab1
 {
     internal class Program
     {
+        /// <summary>
+        /// Метод создания объекта класса Person с клавиатуры.
+        /// </summary>
+        /// <returns>Объект класса Person.</returns>
         public static Person CreatePersonFromConsole()
         {
             Person person = new Person();
@@ -77,6 +81,10 @@ namespace Lab1
             return person;
         }
 
+        /// <summary>
+        /// Метод вывода данных полей объекта класса Person в консоль.
+        /// </summary>
+        /// <param name="person"></param>
         public static void PrintPersonToConsole(Person person)
         {
            Console.WriteLine(person.GetPersonInfo());
