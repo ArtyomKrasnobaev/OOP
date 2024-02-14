@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace Persons
 {
@@ -26,19 +28,52 @@ namespace Persons
         public string FirstName
         {
             get { return _firstName; }
-            set { _firstName = value; }
+            set
+            {
+                if (Regex.IsMatch(value, @"(^[а-яА-Я]+-?[а-яА-Я]+$)") | 
+                    Regex.IsMatch(value, @"(^[a-zA-Z]+-?[a-zA-Z]+$)"))
+                {
+                    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                    _firstName = ti.ToTitleCase(value);
+                }
+                else
+                {
+                    throw new Exception("Имя должно содержать только" +
+                        " русские или английские символы");
+                }
+            }
         }
 
         public string LastName
         {
             get { return _lastName; }
-            set { _lastName = value; }
+            set
+            {
+                if (Regex.IsMatch(value, @"(^[а-яА-Я]+-?[а-яА-Я]+$)") |
+                    Regex.IsMatch(value, @"(^[a-zA-Z]+-?[a-zA-Z]+$)"))
+                {
+                    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                    _lastName = ti.ToTitleCase(value);
+                }
+                else
+                {
+                    throw new Exception("Фамилия должна содержать только" +
+                        " русские или английские символы");
+                }
+            }
         }
 
         public int Age
         {
             get { return _age; }
-            set { _age = value; }
+            set 
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Возраст должен быть положительным");
+                }
+                _age = value;
+            }
         }
 
         public Gender Gender
@@ -49,10 +84,11 @@ namespace Persons
 
         public string GetPersonInfo()
         {
-            return $"Имя: {FirstName}, Фамилия: {LastName}, Возраст: {Age}, Пол: {Gender}\n";
+            return $"Имя: {_firstName}, Фамилия: {LastName}," +
+                   $" Возраст: {Age}, Пол: {Gender}\n";
         }
 
-        public Person GetRandomPerson()
+        public static Person GetRandomPerson()
         {
             List<string> maleFirstNameList = new List<string>()
             {
@@ -92,7 +128,6 @@ namespace Persons
                 firstName = femaleFirstNameList[index];
                 lastName = lastNameList[index] + "а";
             }
-            
             return new Person(firstName, lastName, age, gender);
         }
     }

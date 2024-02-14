@@ -7,27 +7,74 @@ namespace Lab1
     {
         public static Person CreatePersonFromConsole()
         {
-            Console.Write("Введите имя: ");
-            string firstName = Console.ReadLine();
+            Person person = new Person();
+            bool incorrectData = false;
 
-            Console.Write("Введите фамилию: ");
-            string lastName = Console.ReadLine();
+            do
+            {
+                try
+                {
+                    Console.Write("Введите имя: ");
+                    person.FirstName = Console.ReadLine();
+                    incorrectData = false;
+                }
+                catch (Exception ex)
+                {
+                    incorrectData = true;
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            while (incorrectData);
 
-            Console.Write("Введите возраст: ");
-            int age = Convert.ToInt32(Console.ReadLine());
+            do
+            {
+                try
+                {
+                    Console.Write("Введите фамилию: ");
+                    person.LastName = Console.ReadLine();
+                    incorrectData = false;
+                }
+                catch (Exception ex)
+                {
+                    incorrectData = true;
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            while (incorrectData);
 
-            Console.Write("Введите пол: ");
+            do
+            {
+                try
+                {
+                    Console.Write("Введите возраст: ");
+                    person.Age = Convert.ToInt32(Console.ReadLine());
+                    incorrectData = false;
+                }
+                catch (FormatException)
+                {
+                    incorrectData = true;
+                    Console.WriteLine("Возраст не может содержать символов");
+                }
+                catch (ArgumentException ex)
+                {
+                    incorrectData = true;
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            while (incorrectData);
+
+            Console.Write("Введите пол (М - мужской; Ж - женский): ");
             string genderFromConsole = Console.ReadLine();
-            Gender gender = default(Gender);
-            if (genderFromConsole == "М")
+            
+            if (genderFromConsole == "М" | genderFromConsole == "м")
             {
-                gender = Gender.Male;
+                person.Gender = Gender.Male;
             }
-            if (genderFromConsole == "Ж")
+            if (genderFromConsole == "Ж" | genderFromConsole == "ж")
             {
-                gender = Gender.Female;
+                person.Gender = Gender.Female;
             }
-            return new Person(firstName, lastName, age, gender);
+            return person;
         }
 
         public static void PrintPersonToConsole(Person person)
@@ -37,11 +84,11 @@ namespace Lab1
 
         static void Main(string[] args)
         {
-            Person person = new Person();
-            PrintPersonToConsole(person.GetRandomPerson());
+            Person randomPerson = Person.GetRandomPerson();
+            PrintPersonToConsole(randomPerson);
 
-            Person testPerson = CreatePersonFromConsole();
-            PrintPersonToConsole(testPerson);
+            Person personFromConsole = CreatePersonFromConsole();
+            PrintPersonToConsole(personFromConsole);
 
             // Объекты класса Person для тестирования
             Person person1 = new Person("Леон", "Кеннеди", 27, Gender.Male);
