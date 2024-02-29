@@ -32,16 +32,16 @@ namespace Persons
         /// <summary>
         /// Объект класса Person по умолчанию.
         /// </summary>
-        public Person(): this("Неизвестно", "Неизвестно", 0, Gender.Male)
+        public Person() : this("Неизвестно", "Неизвестно", 0, Gender.Male)
         { }
 
         /// <summary>
         /// Конструктор объекта класса Person.
         /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="age"></param>
-        /// <param name="gender"></param>
+        /// <param name="firstName">Имя.</param>
+        /// <param name="lastName">Фамилия.</param>
+        /// <param name="age">Возраст.</param>
+        /// <param name="gender">Пол.</param>
         public Person(string firstName, string lastName, int age, Gender gender)
         {
             _firstName = firstName;
@@ -59,17 +59,7 @@ namespace Persons
             get { return _firstName; }
             set
             {
-                if (Regex.IsMatch(value, @"(^[а-яА-Я]+-?[а-яА-Я]+$)") | 
-                    Regex.IsMatch(value, @"(^[a-zA-Z]+-?[a-zA-Z]+$)"))
-                {
-                    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-                    _firstName = ti.ToTitleCase(value);
-                }
-                else
-                {
-                    throw new Exception("Имя должно содержать только" +
-                        " русские или английские символы");
-                }
+                _firstName = VerifyName(value);
             }
         }
 
@@ -82,17 +72,7 @@ namespace Persons
             get { return _lastName; }
             set
             {
-                if (Regex.IsMatch(value, @"(^[а-яА-Я]+-?[а-яА-Я]+$)") |
-                    Regex.IsMatch(value, @"(^[a-zA-Z]+-?[a-zA-Z]+$)"))
-                {
-                    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-                    _lastName = ti.ToTitleCase(value);
-                }
-                else
-                {
-                    throw new Exception("Фамилия должна содержать только" +
-                        " русские или английские символы");
-                }
+                _lastName = VerifyName(value);
             }
         }
 
@@ -105,10 +85,12 @@ namespace Persons
             get { return _age; }
             set 
             {
-                if (value < 0)
+                if (value < 1 || value > 122)
                 {
-                    throw new ArgumentException("Возраст должен быть положительным");
+                    throw new ArgumentException("Введите возраст в " +
+                        "диапазоне от 1 до 122");
                 }
+
                 _age = value;
             }
         }
@@ -117,20 +99,40 @@ namespace Persons
         /// Свойство для получения доступа к полю _gender
         /// объекта класса Person.
         /// </summary>
-        public Gender Gender
-        {
-            get { return _gender; }
-            set { _gender = value; }
-        }
+        public Gender Gender { get; set; }
 
         /// <summary>
         /// Метод получения данных объекта.
         /// </summary>
-        /// <returns>Строка с данными полей объекта класса Person.</returns>
+        /// <returns>Строка с данными полей объекта 
+        /// класса Person.</returns>
         public string GetPersonInfo()
         {
-            return $"Имя: {_firstName}, Фамилия: {_lastName}," +
-                   $" Возраст: {_age}, Пол: {_gender}\n";
+            return $"Имя: {FirstName}, Фамилия: {LastName}," +
+                   $" Возраст: {Age}, Пол: {Gender}\n";
+        }
+
+        /// <summary>
+        /// Метод проверки правильности имени и фамилии.
+        /// </summary>
+        /// <param name="name">Строка.</param>
+        /// <returns>Преобразованная строка.</returns>
+        /// <exception cref="Exception"></exception>
+        public string VerifyName(string name)
+        {
+            string verifiedName = "";
+            if (Regex.IsMatch(name, @"(^[а-яА-Я]+-?[а-яА-Я]+$)") ||
+                Regex.IsMatch(name, @"(^[a-zA-Z]+-?[a-zA-Z]+$)"))
+            {
+                TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                return verifiedName = ti.ToTitleCase(name);
+            }
+
+            else
+            {
+                throw new Exception("Имя и фамилия должны содержать " +
+                    "только русские или английские символы");
+            }
         }
 
         /// <summary>
@@ -139,6 +141,8 @@ namespace Persons
         /// <returns>Объект класса Person.</returns>
         public static Person GetRandomPerson()
         {
+            Person person = new Person();
+
             List<string> maleFirstNameList = new List<string>()
             {
                 "Андрей", "Борис", "Владимир", "Дмитрий", "Михаил",
@@ -159,25 +163,29 @@ namespace Persons
 
             Random random = new Random();
 
-            Gender gender = (Gender)random.Next(Enum.GetValues(typeof(Gender)).Length);
-            int age = random.Next(0, 100);
-            string firstName = "";
-            string lastName = "";
-            int index = 0;
-            if (gender == Gender.Male)
+            person.Gender = (Gender)random.Next(Enum.GetValues
+                                     (typeof(Gender)).Length);
+
+            switch (person.Gender)
             {
-                index = random.Next(0, maleFirstNameList.Count);
-                firstName = maleFirstNameList[index];
-                lastName = lastNameList[index];
+                case Gender.Male:
+                    person.FirstName = maleFirstNameList[random.Next
+                                      (0, maleFirstNameList.Count)];
+                    person.LastName = lastNameList[random.Next
+                                     (0, lastNameList.Count)];
+                    break;
+
+                case Gender.Female:
+                    person.FirstName = femaleFirstNameList[random.Next
+                                      (0, femaleFirstNameList.Count)];
+                    person.LastName = lastNameList[random.Next
+                               (0, lastNameList.Count)] + "а";
+                    break;
             }
 
-            if (gender == Gender.Female)
-            {
-                index = random.Next(0, femaleFirstNameList.Count);
-                firstName = femaleFirstNameList[index];
-                lastName = lastNameList[index] + "а";
-            }
-            return new Person(firstName, lastName, age, gender);
+            person.Age = random.Next(1, 122);
+            return person;
         }
+
     }
 }

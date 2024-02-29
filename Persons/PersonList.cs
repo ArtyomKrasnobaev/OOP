@@ -1,5 +1,8 @@
 ﻿namespace Persons
 {
+    /// <summary>
+    /// Класс PersonList.
+    /// </summary>
     public class PersonList
     {
         /// <summary>
@@ -17,7 +20,7 @@
         }
 
         /// <summary>
-        /// Метод удаления объекта из списка
+        /// Метод удаления объекта из списка.
         /// </summary>
         /// <param name="person">Объект класса Person.</param>
         public void RemovePerson(Person person)
@@ -57,8 +60,7 @@
             }
             else
             {
-                Console.WriteLine("Элемент отсутствует в списке");
-                return -1;
+                throw new IndexOutOfRangeException();
             }
         }
 

@@ -12,72 +12,86 @@ namespace Lab1
         public static Person CreatePersonFromConsole()
         {
             Person person = new Person();
-            bool incorrectData = false;
 
-            do
+            while (true)
             {
                 try
                 {
                     Console.Write("Введите имя: ");
                     person.FirstName = Console.ReadLine();
-                    incorrectData = false;
+                    break;
                 }
+
                 catch (Exception ex)
                 {
-                    incorrectData = true;
                     Console.WriteLine(ex.Message);
                 }
             }
-            while (incorrectData);
 
-            do
+            while (true)
             {
                 try
                 {
                     Console.Write("Введите фамилию: ");
                     person.LastName = Console.ReadLine();
-                    incorrectData = false;
+                    break;
                 }
+
                 catch (Exception ex)
                 {
-                    incorrectData = true;
                     Console.WriteLine(ex.Message);
                 }
             }
-            while (incorrectData);
 
-            do
+            while (true)
             {
                 try
                 {
                     Console.Write("Введите возраст: ");
                     person.Age = Convert.ToInt32(Console.ReadLine());
-                    incorrectData = false;
+                    break;
                 }
+
                 catch (FormatException)
                 {
-                    incorrectData = true;
                     Console.WriteLine("Возраст не может содержать символов");
                 }
+
                 catch (ArgumentException ex)
                 {
-                    incorrectData = true;
                     Console.WriteLine(ex.Message);
                 }
             }
-            while (incorrectData);
 
-            Console.Write("Введите пол (М - мужской; Ж - женский): ");
-            string genderFromConsole = Console.ReadLine();
-            
-            if (genderFromConsole == "М" | genderFromConsole == "м")
+            while (true)
             {
-                person.Gender = Gender.Male;
+                try
+                {
+                    Console.Write("Введите пол (М - мужской;" +
+                                            " Ж - женский): ");
+                    string consoleGender = Console.ReadLine();
+                    switch (consoleGender)
+                    {
+                        case "М":
+                        case "м":
+                            break;
+                        case "Ж":
+                        case "ж":
+                            person.Gender = Gender.Female;
+                            break;
+                        default:
+                            throw new Exception();
+                    }
+
+                    break;
+                }
+
+                catch (Exception)
+                {
+                    Console.WriteLine("Внимательнее");
+                }
             }
-            if (genderFromConsole == "Ж" | genderFromConsole == "ж")
-            {
-                person.Gender = Gender.Female;
-            }
+
             return person;
         }
 
@@ -92,22 +106,13 @@ namespace Lab1
 
         static void Main(string[] args)
         {
-            Person randomPerson = Person.GetRandomPerson();
-            PrintPersonToConsole(randomPerson);
+            Person person1 = Person.GetRandomPerson();
+            Person person2 = Person.GetRandomPerson();
+            Person person3 = Person.GetRandomPerson();
+            Person person4 = Person.GetRandomPerson();
+            Person person5 = Person.GetRandomPerson();
+            Person person6 = Person.GetRandomPerson();
 
-            Person personFromConsole = CreatePersonFromConsole();
-            PrintPersonToConsole(personFromConsole);
-
-            // Объекты класса Person для тестирования
-            Person person1 = new Person("Леон", "Кеннеди", 27, Gender.Male);
-            Person person2 = new Person("Крис", "Редфилд", 30, Gender.Male);
-            Person person3 = new Person("Ада", "Вонг", 26, Gender.Female);
-            Person person4 = new Person("Джилл", "Валентайн", 25, Gender.Female);
-            Person person5 = new Person("Эшли", "Грэм", 19, Gender.Female);
-            Person person6 = new Person("Альберт", "Вескер", 40, Gender.Male);
-            Person person7 = new Person("Итан", "Винтерс", 34, Gender.Male);
-
-            // Объекты класса PersonList для тестирования
             PersonList personList1 = new PersonList();
             PersonList personList2 = new PersonList();
 
@@ -124,9 +129,10 @@ namespace Lab1
             Console.WriteLine($"Список 1:\n{personList1.GetPersonListInfo()}");
             Console.WriteLine($"Список 2:\n{personList2.GetPersonListInfo()}");
 
+            Person person7 = CreatePersonFromConsole();
             Console.ReadKey();
             personList1.AddPerson(person7);
-            Console.WriteLine("В список 1 добавлен новый человек\n");
+            Console.WriteLine("В список 1 добавлен введенный человек\n");
             Console.WriteLine($"Список 1:\n{personList1.GetPersonListInfo()}");
 
             Console.ReadKey();
