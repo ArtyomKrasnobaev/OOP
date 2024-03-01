@@ -28,7 +28,7 @@ namespace Persons_new
         /// <summary>
         /// Поле пола.
         /// </summary>
-        private Gender _gender;
+        private readonly Gender _gender;
 
         /// <summary>
         /// Объект класса Person по умолчанию.
@@ -86,9 +86,11 @@ namespace Persons_new
             get { return _age; }
             set
             {
+                //TODO: duplication
                 if (value < 1 || value > 122)
                 {
                     throw new ArgumentException("Введите возраст в " +
+                        //TODO: duplication
                         "диапазоне от 1 до 122");
                 }
 
@@ -183,7 +185,7 @@ namespace Persons_new
                                (0, lastNameList.Count)] + "а";
                     break;
             }
-
+            //TODO: duplication
             person.Age = random.Next(1, 122);
             return person;
         }

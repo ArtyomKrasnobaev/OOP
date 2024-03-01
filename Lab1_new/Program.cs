@@ -14,6 +14,7 @@ namespace Lab1_new
         {
             Person person = new Person();
 
+            //TODO: duplication
             while (true)
             {
                 try
@@ -29,6 +30,7 @@ namespace Lab1_new
                 }
             }
 
+            //TODO: duplication
             while (true)
             {
                 try
@@ -44,6 +46,7 @@ namespace Lab1_new
                 }
             }
 
+            //TODO: duplication
             while (true)
             {
                 try
@@ -64,6 +67,7 @@ namespace Lab1_new
                 }
             }
 
+            //TODO: duplication
             while (true)
             {
                 try
@@ -105,10 +109,12 @@ namespace Lab1_new
             Console.WriteLine(person.GetPersonInfo());
         }
 
+        //TODO: xml
         static void Main(string[] args)
         {
             string frameworkDescription = RuntimeInformation.FrameworkDescription;
             Console.WriteLine(frameworkDescription);
+
             Person person1 = Person.GetRandomPerson();
             Person person2 = Person.GetRandomPerson();
             Person person3 = Person.GetRandomPerson();
