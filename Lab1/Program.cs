@@ -1,5 +1,6 @@
 ﻿using Persons;
 using System;
+using System.Runtime.InteropServices;
 
 namespace Lab1
 {
@@ -106,6 +107,8 @@ namespace Lab1
 
         static void Main(string[] args)
         {
+            string frameworkDescription = RuntimeInformation.FrameworkDescription;
+            Console.WriteLine(frameworkDescription);
             Person person1 = Person.GetRandomPerson();
             Person person2 = Person.GetRandomPerson();
             Person person3 = Person.GetRandomPerson();
