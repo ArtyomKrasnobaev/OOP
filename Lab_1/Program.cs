@@ -1,8 +1,5 @@
-﻿using Persons_new;
-using System;
-using System.Runtime.InteropServices;
-
-namespace Lab1
+﻿using PersonLib;
+namespace Test
 {
     /// <summary>
     /// Класс Program.
