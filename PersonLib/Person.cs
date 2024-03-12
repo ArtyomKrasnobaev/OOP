@@ -36,17 +36,17 @@ namespace PersonLib
         /// <summary>
         /// Константа минимально допустимого возраста.
         /// </summary>
-        private const int minAge = 1;
+        private const int _minAge = 1;
 
         /// <summary>
         /// Константа максимально допустимого возраста.
         /// </summary>
-        private const int maxAge = 120;
+        private const int _maxAge = 120;
 
         /// <summary>
         /// Объект класса Person по умолчанию.
         /// </summary>
-        public Person() : this("Неизвестно", "Неизвестно", minAge, Gender.Male)
+        public Person() : this("Неизвестно", "Неизвестно", _minAge, Gender.Male)
         { }
 
         /// <summary>
@@ -100,11 +100,11 @@ namespace PersonLib
             set
             {
                 //TODO+: duplication 
-                if (value < minAge || value > maxAge)
+                if (value < _minAge || value > _maxAge)
                 {
-                    throw new ArgumentException("Введите возраст в " +
+                    throw new ArgumentOutOfRangeException("Введите возраст" +
                         //TODO+: duplication 
-                        $"диапазоне от {minAge} до {maxAge}");
+                        $" в диапазоне от {_minAge} до {_maxAge}");
                 }
 
                 _age = value;
@@ -129,7 +129,7 @@ namespace PersonLib
         }
 
         /// <summary>
-        /// Метод проверки правильности имени и фамилии.
+        /// Метод проверки правильности и преобразования имен и фамилий.
         /// </summary>
         /// <param name="name">Строка.</param>
         /// <returns>Преобразованная строка.</returns>
@@ -146,7 +146,7 @@ namespace PersonLib
 
             else
             {
-                throw new Exception("Имя и фамилия должны содержать " +
+                throw new ArgumentException("Имя и фамилия должны содержать " +
                     "только русские или английские символы");
             }
         }
@@ -182,25 +182,25 @@ namespace PersonLib
             person.Gender = (Gender)random.Next(Enum.GetValues
                                      (typeof(Gender)).Length);
 
+            person.LastName = lastNameList[random.Next
+                              (0, lastNameList.Count)];
+
             switch (person.Gender)
             {
                 case Gender.Male:
                     person.FirstName = maleFirstNameList[random.Next
-                                      (0, maleFirstNameList.Count)];
-                    person.LastName = lastNameList[random.Next
-                                     (0, lastNameList.Count)];
+                                       (0, maleFirstNameList.Count)];
                     break;
 
                 case Gender.Female:
                     person.FirstName = femaleFirstNameList[random.Next
-                                      (0, femaleFirstNameList.Count)];
-                    person.LastName = lastNameList[random.Next
-                               (0, lastNameList.Count)] + "а";
+                                       (0, femaleFirstNameList.Count)];
+                    person.LastName += "а";
                     break;
             }
 
             //TODO+: duplication
-            person.Age = random.Next(minAge, maxAge);
+            person.Age = random.Next(_minAge, _maxAge);
             return person;
         }
 

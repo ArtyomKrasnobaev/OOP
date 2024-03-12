@@ -14,91 +14,47 @@ namespace Test
         {
             Person person = new Person();
 
-            //TODO: duplication
-            while (true)
+            //TODO+: duplication
+            List<Action> actions = new List<Action>()
             {
-                try
+                () =>
                 {
                     Console.Write("Введите имя: ");
                     person.FirstName = Console.ReadLine();
-                    break;
-                }
-
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-
-            //TODO: duplication
-            while (true)
-            {
-                try
+                },
+                () =>
                 {
                     Console.Write("Введите фамилию: ");
                     person.LastName = Console.ReadLine();
-                    break;
-                }
-
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-
-            //TODO: duplication
-            while (true)
-            {
-                try
+                },
+                () =>
                 {
                     Console.Write("Введите возраст: ");
                     person.Age = Convert.ToInt32(Console.ReadLine());
-                    break;
-                }
-
-                catch (FormatException)
+                },
+                () =>
                 {
-                    Console.WriteLine("Возраст не может содержать символов");
-                }
-
-                catch (ArgumentException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-
-            //TODO: duplication
-            while (true)
-            {
-                try
-                {
-                    Console.Write("Введите пол (М - мужской;" +
-                                            " Ж - женский): ");
-                    string consoleGender = Console.ReadLine();
-                    switch (consoleGender)
+                    Console.Write("Введите пол (м/m - мужской;" +
+                                            " ж/f - женский): ");
+                    string inputGender = Console.ReadLine().ToUpper();
+                    switch (inputGender)
                     {
                         case "М":
-                        case "м":
                         case "M":
-                        case "m":
                             break;
                         case "Ж":
-                        case "ж":
                         case "F":
-                        case "f":
                             person.Gender = Gender.Female;
                             break;
                         default:
-                            throw new Exception();
+                            throw new ArgumentOutOfRangeException("Внимательнее");
                     }
-
-                    break;
                 }
+            };
 
-                catch (Exception)
-                {
-                    Console.WriteLine("Внимательнее");
-                }
+            foreach (Action action in actions)
+            {
+                ActionHandler(action);
             }
 
             return person;
@@ -113,6 +69,34 @@ namespace Test
             Console.WriteLine(person.GetPersonInfo());
         }
 
+        /// <summary>
+        /// Метод обработки возможных исключений.
+        /// </summary>
+        /// <param name="action">Действие.</param>
+        public static void ActionHandler(Action action)
+        {
+            while (true)
+            {
+                try
+                {
+                    action.Invoke();
+                    return;
+                }
+
+                catch (Exception ex)
+                {
+                    var exceptionType = ex.GetType();
+                    if (exceptionType == typeof(FormatException) ||
+                        exceptionType == typeof(ArgumentOutOfRangeException) ||
+                        exceptionType == typeof(ArgumentException))
+
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+        }
+
         //TODO+: xml
         /// <summary>
         /// Метод Main.
@@ -120,32 +104,25 @@ namespace Test
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            Person person1 = Person.GetRandomPerson();
-            Person person2 = Person.GetRandomPerson();
-            Person person3 = Person.GetRandomPerson();
-            Person person4 = Person.GetRandomPerson();
-            Person person5 = Person.GetRandomPerson();
-            Person person6 = Person.GetRandomPerson();
-
             PersonList personList1 = new PersonList();
             PersonList personList2 = new PersonList();
 
+            for (int i = 0; i < 3; i++)
+            {
+                personList1.AddPerson(Person.GetRandomPerson());
+                personList2.AddPerson(Person.GetRandomPerson());
+            }
+
             Console.ReadKey();
-            personList1.AddPerson(person1);
-            personList1.AddPerson(person2);
-            personList1.AddPerson(person3);
-            personList2.AddPerson(person4);
-            personList2.AddPerson(person5);
-            personList2.AddPerson(person6);
             Console.WriteLine("Созданы два списка персон\n");
 
             Console.ReadKey();
             Console.WriteLine($"Список 1:\n{personList1.GetPersonListInfo()}");
             Console.WriteLine($"Список 2:\n{personList2.GetPersonListInfo()}");
 
-            Person person7 = CreatePersonFromConsole();
+            Person personFromConsole = CreatePersonFromConsole();
             Console.ReadKey();
-            personList1.AddPerson(person7);
+            personList1.AddPerson(personFromConsole);
             Console.WriteLine("В список 1 добавлен введенный человек\n");
             Console.WriteLine($"Список 1:\n{personList1.GetPersonListInfo()}");
 
