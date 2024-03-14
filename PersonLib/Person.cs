@@ -29,11 +29,6 @@ namespace PersonLib
         private int _age;
 
         /// <summary>
-        /// Поле пола.
-        /// </summary>
-        private readonly Gender _gender;
-
-        /// <summary>
         /// Константа минимально допустимого возраста.
         /// </summary>
         private const int _minAge = 1;
@@ -58,10 +53,10 @@ namespace PersonLib
         /// <param name="gender">Пол.</param>
         public Person(string firstName, string lastName, int age, Gender gender)
         {
-            _firstName = firstName;
-            _lastName = lastName;
-            _age = age;
-            _gender = gender;
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+            Gender = gender;
         }
 
         /// <summary>
@@ -122,7 +117,7 @@ namespace PersonLib
         /// </summary>
         /// <returns>Строка с данными полей объекта 
         /// класса Person.</returns>
-        public string GetPersonInfo()
+        public string GetInfo()
         {
             return $"Имя: {FirstName}, Фамилия: {LastName}," +
                    $" Возраст: {Age}, Пол: {Gender}\n";
@@ -140,14 +135,14 @@ namespace PersonLib
             if (Regex.IsMatch(name, @"(^[а-яА-Я]+-?[а-яА-Я]+$)") ||
                 Regex.IsMatch(name, @"(^[a-zA-Z]+-?[a-zA-Z]+$)"))
             {
-                TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-                return verifiedName = ti.ToTitleCase(name);
+                TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+                return verifiedName = textInfo.ToTitleCase(name);
             }
 
             else
             {
-                throw new ArgumentException("Имя и фамилия должны содержать " +
-                    "только русские или английские символы");
+                throw new ArgumentException("Имя и фамилия должны " +
+                    "содержать только русские или английские символы");
             }
         }
 

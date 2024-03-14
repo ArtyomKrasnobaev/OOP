@@ -91,12 +91,12 @@ namespace PersonLib
         /// Метод получения данных списка.
         /// </summary>
         /// <returns>Строка с данными полей объектов списка.</returns>
-        public string GetPersonListInfo()
+        public string GetInfo()
         {
             string info = "";
             foreach (Person person in personList)
             {
-                info += person.GetPersonInfo();
+                info += person.GetInfo();
             }
 
             return info;

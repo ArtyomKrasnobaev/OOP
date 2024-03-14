@@ -47,7 +47,8 @@ namespace Test
                             person.Gender = Gender.Female;
                             break;
                         default:
-                            throw new ArgumentOutOfRangeException("Внимательнее");
+                            throw new ArgumentException
+                                 ("Попробуйте еще раз");
                     }
                 }
             };
@@ -66,7 +67,7 @@ namespace Test
         /// <param name="person">Объект класса Person.</param>
         public static void PrintPersonToConsole(Person person)
         {
-            Console.WriteLine(person.GetPersonInfo());
+            Console.WriteLine(person.GetInfo());
         }
 
         /// <summary>
@@ -117,30 +118,30 @@ namespace Test
             Console.WriteLine("Созданы два списка персон\n");
 
             Console.ReadKey();
-            Console.WriteLine($"Список 1:\n{personList1.GetPersonListInfo()}");
-            Console.WriteLine($"Список 2:\n{personList2.GetPersonListInfo()}");
+            Console.WriteLine($"Список 1:\n{personList1.GetInfo()}");
+            Console.WriteLine($"Список 2:\n{personList2.GetInfo()}");
 
             Person personFromConsole = CreatePersonFromConsole();
             Console.ReadKey();
             personList1.AddPerson(personFromConsole);
             Console.WriteLine("В список 1 добавлен введенный человек\n");
-            Console.WriteLine($"Список 1:\n{personList1.GetPersonListInfo()}");
+            Console.WriteLine($"Список 1:\n{personList1.GetInfo()}");
 
             Console.ReadKey();
             personList2.AddPerson(personList1.GetPersonByIndex(1));
             Console.WriteLine("В список 2 добавлен второй человек из списка 1\n");
-            Console.WriteLine($"Список 2:\n{personList2.GetPersonListInfo()}");
+            Console.WriteLine($"Список 2:\n{personList2.GetInfo()}");
 
             Console.ReadKey();
             personList1.RemovePersonByIndex(1);
             Console.WriteLine("Второй человек из списка 1 удалён\n");
-            Console.WriteLine($"Список 1:\n{personList1.GetPersonListInfo()}");
-            Console.WriteLine($"Список 2:\n{personList2.GetPersonListInfo()}");
+            Console.WriteLine($"Список 1:\n{personList1.GetInfo()}");
+            Console.WriteLine($"Список 2:\n{personList2.GetInfo()}");
 
             Console.ReadKey();
             personList2.ClearList();
             Console.WriteLine("Список 2 очищен\n");
-            Console.WriteLine($"Список 2:\n{personList2.GetPersonListInfo()}");
+            Console.WriteLine($"Список 2:\n{personList2.GetInfo()}");
         }
     }
 }
