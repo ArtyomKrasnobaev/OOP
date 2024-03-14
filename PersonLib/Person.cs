@@ -122,10 +122,10 @@ namespace PersonLib
         /// </summary>
         /// <returns>Строка с данными полей объекта 
         /// класса Person.</returns>
-        public string GetPersonInfo()
+        public virtual string GetInfo()
         {
             return $"Имя: {FirstName}, Фамилия: {LastName}," +
-                   $" Возраст: {Age}, Пол: {Gender}\n";
+                   $" Возраст: {Age}, Пол: {Gender}";
         }
 
         /// <summary>

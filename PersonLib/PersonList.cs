@@ -96,7 +96,7 @@ namespace PersonLib
             string info = "";
             foreach (Person person in personList)
             {
-                info += person.GetPersonInfo();
+                info += person.GetInfo();
             }
 
             return info;

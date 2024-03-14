@@ -66,7 +66,7 @@ namespace Test
         /// <param name="person">Объект класса Person.</param>
         public static void PrintPersonToConsole(Person person)
         {
-            Console.WriteLine(person.GetPersonInfo());
+            Console.WriteLine(person.GetInfo());
         }
 
         /// <summary>
@@ -97,50 +97,16 @@ namespace Test
             }
         }
 
-        //TODO+: xml
         /// <summary>
         /// Метод Main.
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            PersonList personList1 = new PersonList();
-            PersonList personList2 = new PersonList();
-
-            for (int i = 0; i < 3; i++)
-            {
-                personList1.AddPerson(Person.GetRandomPerson());
-                personList2.AddPerson(Person.GetRandomPerson());
-            }
-
-            Console.ReadKey();
-            Console.WriteLine("Созданы два списка персон\n");
-
-            Console.ReadKey();
-            Console.WriteLine($"Список 1:\n{personList1.GetPersonListInfo()}");
-            Console.WriteLine($"Список 2:\n{personList2.GetPersonListInfo()}");
-
-            Person personFromConsole = CreatePersonFromConsole();
-            Console.ReadKey();
-            personList1.AddPerson(personFromConsole);
-            Console.WriteLine("В список 1 добавлен введенный человек\n");
-            Console.WriteLine($"Список 1:\n{personList1.GetPersonListInfo()}");
-
-            Console.ReadKey();
-            personList2.AddPerson(personList1.GetPersonByIndex(1));
-            Console.WriteLine("В список 2 добавлен второй человек из списка 1\n");
-            Console.WriteLine($"Список 2:\n{personList2.GetPersonListInfo()}");
-
-            Console.ReadKey();
-            personList1.RemovePersonByIndex(1);
-            Console.WriteLine("Второй человек из списка 1 удалён\n");
-            Console.WriteLine($"Список 1:\n{personList1.GetPersonListInfo()}");
-            Console.WriteLine($"Список 2:\n{personList2.GetPersonListInfo()}");
-
-            Console.ReadKey();
-            personList2.ClearList();
-            Console.WriteLine("Список 2 очищен\n");
-            Console.WriteLine($"Список 2:\n{personList2.GetPersonListInfo()}");
+            Adult adult1 = new ("Леон", "Кеннеди", 30, Gender.Male, 1, 1, null, "Umbrella");
+            Console.WriteLine(adult1.GetInfo());
+            Adult adult2 = new ("Ада", "Вонг", 27, Gender.Female, 1, 1, adult1, "Umbrella");
+            Console.WriteLine(adult1.GetInfo());
         }
     }
 }
