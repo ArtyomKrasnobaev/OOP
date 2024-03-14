@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -74,6 +75,10 @@ namespace PersonLib
             set { _job = value; }
         }
 
+        public Adult() : this("Неизвестно", "Неизвестно", 0, Gender.Male,
+                              0, 0, null, null)
+        { }
+
         /// <summary>
         /// Конструктор класса Adult.
         /// </summary>
@@ -112,6 +117,12 @@ namespace PersonLib
             return base.GetInfo() +
                    $" Паспорт: {PassportSeries} {PassportNumber}," +
                    $" Партнер: {partner}, Место работы: {Job}";
+        }
+
+        public Adult GetRandom()
+        {
+            Adult adult = new();
+            return adult;
         }
     }
 }
