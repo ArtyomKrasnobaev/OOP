@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PersonLib
 {
@@ -37,6 +38,16 @@ namespace PersonLib
         /// Константа максимально допустимого возраста.
         /// </summary>
         private const int _maxAge = 120;
+
+        /// <summary>
+        /// Константа паттерна русского языка.
+        /// </summary>
+        private const string russianPattern = @"(^[а-яА-Я]+-?[а-яА-Я]+$)";
+
+        /// <summary>
+        /// Константа паттерна английского языка.
+        /// </summary>
+        private const string englishPattern = @"(^[a-zA-Z]+-?[a-zA-Z]+$)";
 
         /// <summary>
         /// Объект класса Person по умолчанию.
@@ -81,7 +92,16 @@ namespace PersonLib
             get { return _lastName; }
             set
             {
-                _lastName = VerifyName(value);
+                if (IsLanguageSame(FirstName, value) == true)
+                {
+                    _lastName = VerifyName(value);
+                }
+                else
+                {
+                    throw new InvalidOperationException
+                        ("Имя и фамилия должны быть написаны" +
+                        " на одном языке и не содержать символов");
+                }
             }
         }
 
@@ -130,8 +150,8 @@ namespace PersonLib
         public string VerifyName(string name)
         {
             string verifiedName = "";
-            if (Regex.IsMatch(name, @"(^[а-яА-Я]+-?[а-яА-Я]+$)") ||
-                Regex.IsMatch(name, @"(^[a-zA-Z]+-?[a-zA-Z]+$)"))
+            if (Regex.IsMatch(name, russianPattern) ||
+                Regex.IsMatch(name, englishPattern))
             {
                 TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
                 return verifiedName = textInfo.ToTitleCase(name);
@@ -142,6 +162,20 @@ namespace PersonLib
                 throw new ArgumentException("Имя и фамилия должны " +
                     "содержать только русские или английские символы");
             }
+        }
+
+        /// <summary>
+        /// Метод проверки совпадений языков имени и фамилии.
+        /// </summary>
+        /// <param name="firstName">Имя.</param>
+        /// <param name="lastName">Фамилия.</param>
+        /// <returns></returns>
+        public bool IsLanguageSame(string firstName, string lastName)
+        {
+            return (Regex.IsMatch(firstName, russianPattern) && 
+                    Regex.IsMatch(lastName, russianPattern)) || 
+                   (Regex.IsMatch(firstName, englishPattern) &&
+                    Regex.IsMatch(lastName, englishPattern));
         }
 
         /// <summary>

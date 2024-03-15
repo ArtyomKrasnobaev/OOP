@@ -88,7 +88,8 @@ namespace Test
                     var exceptionType = ex.GetType();
                     if (exceptionType == typeof(FormatException) ||
                         exceptionType == typeof(ArgumentOutOfRangeException) ||
-                        exceptionType == typeof(ArgumentException))
+                        exceptionType == typeof(ArgumentException) ||
+                        exceptionType == typeof(InvalidOperationException))
 
                     {
                         Console.WriteLine(ex.Message);
