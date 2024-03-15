@@ -94,11 +94,9 @@ namespace PersonLib
             get { return _age; }
             set
             {
-                //TODO+: duplication 
                 if (value < _minAge || value > _maxAge)
                 {
                     throw new ArgumentOutOfRangeException("Введите возраст" +
-                        //TODO+: duplication 
                         $" в диапазоне от {_minAge} до {_maxAge}");
                 }
 
@@ -194,10 +192,8 @@ namespace PersonLib
                     break;
             }
 
-            //TODO+: duplication
             person.Age = random.Next(_minAge, _maxAge);
             return person;
         }
-
     }
 }

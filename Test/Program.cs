@@ -14,7 +14,6 @@ namespace Test
         {
             Person person = new Person();
 
-            //TODO+: duplication
             List<Action> actions = new List<Action>()
             {
                 () =>
@@ -98,7 +97,6 @@ namespace Test
             }
         }
 
-        //TODO+: xml
         /// <summary>
         /// Метод Main.
         /// </summary>
