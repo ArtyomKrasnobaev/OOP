@@ -81,7 +81,6 @@ namespace PersonLib
             {
                 father = Father.FirstName + " " + Father.LastName;
             }
-
             if (Mother != null)
             {
                 mother = Mother.LastName + " " + Mother.FirstName;

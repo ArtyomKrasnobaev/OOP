@@ -125,7 +125,7 @@ namespace PersonLib
         public virtual string GetInfo()
         {
             return $"Имя: {FirstName}, Фамилия: {LastName}," +
-                   $" Возраст: {Age}, Пол: {Gender}";
+                   $" Возраст: {Age}, Пол: {Gender},";
         }
 
         /// <summary>
@@ -143,7 +143,6 @@ namespace PersonLib
                 TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
                 return verifiedName = ti.ToTitleCase(name);
             }
-
             else
             {
                 throw new ArgumentException("Имя и фамилия должны содержать " +
@@ -155,7 +154,7 @@ namespace PersonLib
         /// Метод генерации случайного объекта класса Person.
         /// </summary>
         /// <returns>Объект класса Person.</returns>
-        public static Person GetRandomPerson()
+        public virtual Person GetRandom()
         {
             Person person = new Person();
 
@@ -191,7 +190,6 @@ namespace PersonLib
                     person.FirstName = maleFirstNameList[random.Next
                                        (0, maleFirstNameList.Count)];
                     break;
-
                 case Gender.Female:
                     person.FirstName = femaleFirstNameList[random.Next
                                        (0, femaleFirstNameList.Count)];

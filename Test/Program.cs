@@ -106,7 +106,9 @@ namespace Test
             Adult adult1 = new ("Леон", "Кеннеди", 30, Gender.Male, 1, 1, null, "Umbrella");
             Console.WriteLine(adult1.GetInfo());
             Adult adult2 = new ("Ада", "Вонг", 27, Gender.Female, 1, 1, adult1, "Umbrella");
-            Console.WriteLine(adult1.GetInfo());
+            Adult adult = new();
+            adult.GetRandom();
+            Console.WriteLine(adult.GetInfo());
         }
     }
 }

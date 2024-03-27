@@ -108,7 +108,6 @@ namespace PersonLib
             {
                 partner = Partner.FirstName + " " + Partner.LastName;
             }
-
             if (Job == null || Job == "")
             {
                 Job = "Безработный";
@@ -119,9 +118,14 @@ namespace PersonLib
                    $" Партнер: {partner}, Место работы: {Job}";
         }
 
-        public Adult GetRandom()
+        public override Adult GetRandom()
         {
-            Adult adult = new();
+            Person person = base.GetRandom();
+            Adult adult = person as Adult;
+            ((Adult)person).PassportSeries = 1;
+            ((Adult)person).PassportNumber = 1;
+            ((Adult)person).Job = "жопа";
+            ((Adult)person).Partner = null;
             return adult;
         }
     }
