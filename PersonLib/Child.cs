@@ -53,6 +53,9 @@ namespace PersonLib
             set { _school = value; }
         }
 
+        public Child() : this("Неизвестно", "Неизвестно", 0, Gender.Male, null, null, null)
+        { }
+
         /// <summary>
         /// Конструктор класса Child.
         /// </summary>
@@ -86,7 +89,7 @@ namespace PersonLib
                 mother = Mother.LastName + " " + Mother.FirstName;
             }
 
-            return base.GetInfo() + $"Отец: {Father}, Мать: {Mother}, Школа: {School}";
+            return base.GetInfo() + $", Отец: {father}, Мать: {mother}, Школа: {School}";
         }
     }
 }

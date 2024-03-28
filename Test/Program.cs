@@ -103,12 +103,9 @@ namespace Test
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            Adult adult1 = new ("Леон", "Кеннеди", 30, Gender.Male, 1, 1, null, "Umbrella");
-            Console.WriteLine(adult1.GetInfo());
-            Adult adult2 = new ("Ада", "Вонг", 27, Gender.Female, 1, 1, adult1, "Umbrella");
-            Adult adult = new();
-            adult.GetRandom();
-            Console.WriteLine(adult.GetInfo());
+            Console.WriteLine($"Случаный Person:\n{RandomPerson.GetRandomPerson().GetInfo()}");
+            Console.WriteLine($"Случаный Adult:\n{RandomPerson.GetRandomAdult().GetInfo()}");
+            Console.WriteLine($"Случаный Child:\n{RandomPerson.GetRandomChild().GetInfo()}");
         }
     }
 }

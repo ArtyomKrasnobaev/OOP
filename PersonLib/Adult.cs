@@ -114,19 +114,10 @@ namespace PersonLib
             }
 
             return base.GetInfo() +
-                   $" Паспорт: {PassportSeries} {PassportNumber}," +
+                   $", Паспорт: {PassportSeries} {PassportNumber}," +
                    $" Партнер: {partner}, Место работы: {Job}";
         }
 
-        public override Adult GetRandom()
-        {
-            Person person = base.GetRandom();
-            Adult adult = person as Adult;
-            ((Adult)person).PassportSeries = 1;
-            ((Adult)person).PassportNumber = 1;
-            ((Adult)person).Job = "жопа";
-            ((Adult)person).Partner = null;
-            return adult;
-        }
+        
     }
 }

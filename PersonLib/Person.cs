@@ -36,17 +36,17 @@ namespace PersonLib
         /// <summary>
         /// Константа минимально допустимого возраста.
         /// </summary>
-        private const int _minAge = 1;
+        public const int MinAge = 1;
 
         /// <summary>
         /// Константа максимально допустимого возраста.
         /// </summary>
-        private const int _maxAge = 120;
+        public const int MaxAge = 120;
 
         /// <summary>
         /// Объект класса Person по умолчанию.
         /// </summary>
-        public Person() : this("Неизвестно", "Неизвестно", _minAge, Gender.Male)
+        public Person() : this("Неизвестно", "Неизвестно", MinAge, Gender.Male)
         { }
 
         /// <summary>
@@ -100,11 +100,11 @@ namespace PersonLib
             set
             {
                 //TODO+: duplication 
-                if (value < _minAge || value > _maxAge)
+                if (value < MinAge || value > MaxAge)
                 {
                     throw new ArgumentOutOfRangeException("Введите возраст" +
                         //TODO+: duplication 
-                        $" в диапазоне от {_minAge} до {_maxAge}");
+                        $" в диапазоне от {MinAge} до {MaxAge}");
                 }
 
                 _age = value;
@@ -125,7 +125,7 @@ namespace PersonLib
         public virtual string GetInfo()
         {
             return $"Имя: {FirstName}, Фамилия: {LastName}," +
-                   $" Возраст: {Age}, Пол: {Gender},";
+                   $" Возраст: {Age}, Пол: {Gender}";
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace PersonLib
         /// Метод генерации случайного объекта класса Person.
         /// </summary>
         /// <returns>Объект класса Person.</returns>
-        public virtual Person GetRandom()
+        public static Person GetRandom()
         {
             Person person = new Person();
 
@@ -198,9 +198,8 @@ namespace PersonLib
             }
 
             //TODO+: duplication
-            person.Age = random.Next(_minAge, _maxAge);
+            person.Age = random.Next(MinAge, MaxAge);
             return person;
         }
-
     }
 }
