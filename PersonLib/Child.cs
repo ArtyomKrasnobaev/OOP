@@ -86,7 +86,7 @@ namespace PersonLib
             }
             if (Mother != null)
             {
-                mother = Mother.LastName + " " + Mother.FirstName;
+                mother = Mother.FirstName + " " + Mother.LastName;
             }
 
             return base.GetInfo() + $", Отец: {father}, Мать: {mother}, Школа: {School}";

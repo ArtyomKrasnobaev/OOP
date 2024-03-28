@@ -103,7 +103,15 @@ namespace PersonLib
 
         public override string GetInfo()
         {
-            string partner = "не женат/не замужем";
+            string partner = "";
+            if (Gender == Gender.Male && Partner == null)
+            {
+                partner = "не женат";
+            }
+            if (Gender == Gender.Female && Partner == null)
+            {
+                partner = "не замужем";
+            }
             if (Partner != null)
             {
                 partner = Partner.FirstName + " " + Partner.LastName;

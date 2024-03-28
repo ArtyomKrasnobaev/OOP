@@ -12,6 +12,15 @@ namespace PersonLib
         public static Person GetRandomPerson()
         {
             Person person = new();
+            SetPersonGender(person);
+            SetPersonData(person);
+            return person;
+        }
+
+        public static Person GetRandomPerson(Gender gender)
+        {
+            Person person = new();
+            person.Gender = gender;
             SetPersonData(person);
             return person;
         }
@@ -25,6 +34,16 @@ namespace PersonLib
             return adult;
         }
 
+        public static Adult GetRandomAdult(Gender gender)
+        {
+            Adult adult = new();
+            adult.Gender = gender;
+            SetPersonData(adult);
+            SetAdultData(adult);
+            SetAdultPartner(adult);
+            return adult;
+        }
+
         public static Child GetRandomChild()
         {
             Child child = new();
@@ -32,12 +51,20 @@ namespace PersonLib
             SetChildData(child);
             return child;
         }
-                
+        
         public static void SetAdultPartner(Adult adult)
         {
             Adult partner = new();
             SetPersonData(partner);
             adult.Partner = partner;
+            partner.LastName = adult.LastName;
+        }
+
+        public static void SetPersonGender(Person person)
+        {
+            Random random = new Random();
+            person.Gender = (Gender)random.Next(Enum.GetValues
+                                     (typeof(Gender)).Length);
         }
 
         public static void SetPersonData(Person person)
@@ -62,8 +89,8 @@ namespace PersonLib
                 "Умаров", "Наумов", "Андреев", "Бобров", "Копцев"
             };
 
-            person.Gender = (Gender)random.Next(Enum.GetValues
-                                     (typeof(Gender)).Length);
+            //person.Gender = (Gender)random.Next(Enum.GetValues
+            //                         (typeof(Gender)).Length);
 
             person.LastName = lastNames[random.Next
                               (0, lastNames.Count)];
@@ -106,8 +133,9 @@ namespace PersonLib
                 "Гимназия 10", "Лицей 5", "МБОУ СОШ 3", "МБОУ СОШ 8",
                 "Лицей 1", "Церковно-приходская"
             };
-            child.Father = GetRandomAdult();
-            child.Mother = GetRandomAdult();
+            child.Father = GetRandomAdult(Gender.Male);
+            child.Mother = GetRandomAdult(Gender.Female);
+            child.Mother.LastName = child.Father.LastName;
             child.School = schoolList[random.Next(0, schoolList.Count)];
         }
     }

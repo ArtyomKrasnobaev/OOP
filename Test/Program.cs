@@ -89,7 +89,6 @@ namespace Test
                     if (exceptionType == typeof(FormatException) ||
                         exceptionType == typeof(ArgumentOutOfRangeException) ||
                         exceptionType == typeof(ArgumentException))
-
                     {
                         Console.WriteLine(ex.Message);
                     }
