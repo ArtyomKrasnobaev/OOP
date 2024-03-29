@@ -39,11 +39,13 @@ namespace PersonLib
         /// </summary>
         private const int _maxAge = 120;
 
+        //TODO: RSDN
         /// <summary>
         /// Константа паттерна русского языка.
         /// </summary>
         private const string russianPattern = @"(^[а-яА-Я]+-?[а-яА-Я]+$)";
 
+        //TODO: RSDN
         /// <summary>
         /// Константа паттерна английского языка.
         /// </summary>
@@ -92,7 +94,7 @@ namespace PersonLib
             get { return _lastName; }
             set
             {
-                if (IsLanguageSame(FirstName, value) == true)
+                if (IsLanguageSame(FirstName, value))
                 {
                     _lastName = VerifyName(value);
                 }
