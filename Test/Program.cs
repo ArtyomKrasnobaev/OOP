@@ -113,6 +113,7 @@ namespace Test
                 personList2.AddPerson(Person.GetRandomPerson());
             }
 
+            Console.WriteLine("Нажмите любую кнопку...\n");
             Console.ReadKey();
             Console.WriteLine("Созданы два списка персон\n");
 

@@ -39,17 +39,17 @@ namespace PersonLib
         /// </summary>
         private const int _maxAge = 120;
 
-        //TODO: RSDN
+        //TODO+: RSDN
         /// <summary>
         /// Константа паттерна русского языка.
         /// </summary>
-        private const string russianPattern = @"(^[а-яА-Я]+-?[а-яА-Я]+$)";
+        private const string _russianPattern = @"(^[а-яА-Я]+-?[а-яА-Я]+$)";
 
-        //TODO: RSDN
+        //TODO+: RSDN
         /// <summary>
         /// Константа паттерна английского языка.
         /// </summary>
-        private const string englishPattern = @"(^[a-zA-Z]+-?[a-zA-Z]+$)";
+        private const string _englishPattern = @"(^[a-zA-Z]+-?[a-zA-Z]+$)";
 
         /// <summary>
         /// Объект класса Person по умолчанию.
@@ -152,8 +152,8 @@ namespace PersonLib
         public string VerifyName(string name)
         {
             string verifiedName = "";
-            if (Regex.IsMatch(name, russianPattern) ||
-                Regex.IsMatch(name, englishPattern))
+            if (Regex.IsMatch(name, _russianPattern) ||
+                Regex.IsMatch(name, _englishPattern))
             {
                 TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
                 return verifiedName = textInfo.ToTitleCase(name);
@@ -174,10 +174,10 @@ namespace PersonLib
         /// <returns></returns>
         public bool IsLanguageSame(string firstName, string lastName)
         {
-            return (Regex.IsMatch(firstName, russianPattern) && 
-                    Regex.IsMatch(lastName, russianPattern)) || 
-                   (Regex.IsMatch(firstName, englishPattern) &&
-                    Regex.IsMatch(lastName, englishPattern));
+            return (Regex.IsMatch(firstName, _russianPattern) && 
+                    Regex.IsMatch(lastName, _russianPattern)) || 
+                   (Regex.IsMatch(firstName, _englishPattern) &&
+                    Regex.IsMatch(lastName, _englishPattern));
         }
 
         /// <summary>
