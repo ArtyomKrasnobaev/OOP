@@ -39,13 +39,11 @@ namespace PersonLib
         /// </summary>
         private const int _maxAge = 120;
 
-        //TODO+: RSDN
         /// <summary>
         /// Константа паттерна русского языка.
         /// </summary>
         private const string _russianPattern = @"(^[а-яА-Я]+-?[а-яА-Я]+$)";
 
-        //TODO+: RSDN
         /// <summary>
         /// Константа паттерна английского языка.
         /// </summary>

@@ -11,7 +11,7 @@ namespace PersonLib
     /// </summary>
     public class PersonList
     {
-        //TODO+: RSDN
+        //TODO: RSDN
         /// <summary>
         /// Список объектов класса Person.
         /// </summary>
