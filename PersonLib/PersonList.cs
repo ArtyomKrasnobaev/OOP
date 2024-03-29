@@ -11,11 +11,11 @@ namespace PersonLib
     /// </summary>
     public class PersonList
     {
-        //TODO: RSDN
+        //TODO+: RSDN
         /// <summary>
         /// Список объектов класса Person.
         /// </summary>
-        private List<Person> personList = new List<Person>();
+        private List<Person> _personList = new List<Person>();
 
         /// <summary>
         /// Метод добавления объекта в список.
@@ -23,7 +23,7 @@ namespace PersonLib
         /// <param name="person">Объект класса Person.</param>
         public void AddPerson(Person person)
         {
-            personList.Add(person);
+            _personList.Add(person);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace PersonLib
         /// <param name="person">Объект класса Person.</param>
         public void RemovePerson(Person person)
         {
-            personList.Remove(person);
+            _personList.Remove(person);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace PersonLib
         /// <param name="index">Индекс объекта.</param>
         public void RemovePersonByIndex(int index)
         {
-            personList.RemoveAt(index);
+            _personList.RemoveAt(index);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace PersonLib
         /// <returns>Объект класса Person.</returns>
         public Person GetPersonByIndex(int index)
         {
-            return personList[index];
+            return _personList[index];
         }
 
         /// <summary>
@@ -61,9 +61,9 @@ namespace PersonLib
         /// <returns>Индекс объекта.</returns>
         public int GetIndexOfPerson(Person person)
         {
-            if (personList.Contains(person))
+            if (_personList.Contains(person))
             {
-                return personList.IndexOf(person);
+                return _personList.IndexOf(person);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace PersonLib
         /// </summary>
         public void ClearList()
         {
-            personList.Clear();
+            _personList.Clear();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace PersonLib
         /// <returns>Количество объектов списка.</returns>
         public int GetLength()
         {
-            return personList.Count;
+            return _personList.Count;
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace PersonLib
         public string GetInfo()
         {
             string info = "";
-            foreach (Person person in personList)
+            foreach (Person person in _personList)
             {
                 info += person.GetInfo();
             }
