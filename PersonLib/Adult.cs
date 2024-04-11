@@ -125,7 +125,7 @@ namespace PersonLib
 
             return base.GetInfo() +
                    $", Паспорт: {PassportSeries} {PassportNumber}," +
-                   $" Партнер: {partner}, Место работы: {Job}";
+                   $" Партнер: {partner}, Место работы: {Job}\n";
         }
     }
 }

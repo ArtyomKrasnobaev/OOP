@@ -105,11 +105,10 @@ namespace Test
             //Console.WriteLine($"Случаный Child:\n{RandomPerson.GetRandomChild().GetInfo()}");
 
             Random random = new Random();
-            int randomClass = 0;
             PersonList personList = new PersonList();
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 15; i++)
             {
-                randomClass = random.Next(2);
+                int randomClass = random.Next(2);
                 if (randomClass == 0)
                 {
                     personList.AddPerson(RandomPerson.GetRandomAdult());
@@ -119,6 +118,9 @@ namespace Test
                     personList.AddPerson(RandomPerson.GetRandomChild());
                 }
             }
+
+            Console.WriteLine(personList.GetPersonListInfo());
+            Console.WriteLine(personList.GetPersonByIndex(3).GetType());
         }
     }
 }

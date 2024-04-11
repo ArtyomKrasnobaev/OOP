@@ -48,18 +48,23 @@ namespace PersonLib
         public static void SetAdultPartner(Adult adult)
         {
             Adult partner = new Adult();
-            switch (adult.Gender)
+            Random random = new Random();
+            int isMarried = random.Next(3);
+            if (isMarried != 1)
             {
-                case Gender.Male:
-                    partner = GetRandomAdult(Gender.Female);
-                    partner.LastName = adult.LastName + 'а';
-                    break;
-                case Gender.Female:
-                    partner = GetRandomAdult(Gender.Male);
-                    adult.LastName = partner.LastName + 'а';
-                    break;
+                switch (adult.Gender)
+                {
+                    case Gender.Male:
+                        partner = GetRandomAdult(Gender.Female);
+                        partner.LastName = adult.LastName + 'а';
+                        break;
+                    case Gender.Female:
+                        partner = GetRandomAdult(Gender.Male);
+                        adult.LastName = partner.LastName + 'а';
+                        break;
+                }
+                adult.Partner = partner;
             }
-            adult.Partner = partner;
         }
 
         public static void SetPersonGender(Person person)
@@ -119,9 +124,13 @@ namespace PersonLib
                 "РусГидро", "Газпром", "Сбербанк", "РУСАЛ", "Роснефть"
             };
 
+            int isEmployed = random.Next(3);
+            if (isEmployed != 1)
+            {
+                adult.Job = jobList[random.Next(0, jobList.Count)];
+            }
             adult.PassportSeries = random.Next(1000, 9999);
             adult.PassportNumber = random.Next(100000, 999999);
-            adult.Job = jobList[random.Next(0, jobList.Count)];
         }
 
         public static void SetChildData(Child child)
@@ -134,10 +143,24 @@ namespace PersonLib
                 "Физмат лицей 28", "СОШ 228", "Коррекционная"
             };
 
-            child.Father = GetRandomAdult(Gender.Male);
-            child.LastName = child.Father.LastName;
-            SetAdultPartner(child.Father);
-            child.Mother = child.Father.Partner;
+            int parentsStatus = random.Next(3);
+            switch (parentsStatus)
+            {
+                case 0:
+                    break;
+                case 1:
+                    child.Father = GetRandomAdult(Gender.Male);
+                    break;
+                case 2:
+                    child.Father = GetRandomAdult(Gender.Male);
+                    SetAdultPartner(child.Father);
+                    child.Mother = child.Father.Partner;
+                    break;
+                case 3:
+                    child.Mother = GetRandomAdult(Gender.Female);
+                    break;
+            }
+
             child.School = schoolList[random.Next(0, schoolList.Count)];
         }
     }

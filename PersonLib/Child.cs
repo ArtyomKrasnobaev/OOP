@@ -91,7 +91,7 @@ namespace PersonLib
                 mother = Mother.FirstName + " " + Mother.LastName;
             }
 
-            return base.GetInfo() + $", Отец: {father}, Мать: {mother}, Школа: {School}";
+            return base.GetInfo() + $", Отец: {father}, Мать: {mother}, Школа: {School}\n";
         }
     }
 }
