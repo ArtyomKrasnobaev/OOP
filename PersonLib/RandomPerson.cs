@@ -17,17 +17,10 @@ namespace PersonLib
             return person;
         }
 
-        public static Person GetRandomPerson(Gender gender)
-        {
-            Person person = new();
-            person.Gender = gender;
-            SetPersonData(person);
-            return person;
-        }
-
         public static Adult GetRandomAdult()
         {
-            Adult adult = new();
+            Adult adult = new Adult();
+            SetPersonGender(adult);
             SetPersonData(adult);
             SetAdultData(adult);
             SetAdultPartner(adult);
@@ -36,35 +29,44 @@ namespace PersonLib
 
         public static Adult GetRandomAdult(Gender gender)
         {
-            Adult adult = new();
+            Adult adult = new Adult();
             adult.Gender = gender;
             SetPersonData(adult);
             SetAdultData(adult);
-            SetAdultPartner(adult);
             return adult;
         }
 
         public static Child GetRandomChild()
         {
-            Child child = new();
+            Child child = new Child();
+            SetPersonGender(child);
             SetPersonData(child);
             SetChildData(child);
             return child;
         }
-        
+
         public static void SetAdultPartner(Adult adult)
         {
-            Adult partner = new();
-            SetPersonData(partner);
+            Adult partner = new Adult();
+            switch (adult.Gender)
+            {
+                case Gender.Male:
+                    partner = GetRandomAdult(Gender.Female);
+                    partner.LastName = adult.LastName + 'а';
+                    break;
+                case Gender.Female:
+                    partner = GetRandomAdult(Gender.Male);
+                    adult.LastName = partner.LastName + 'а';
+                    break;
+            }
             adult.Partner = partner;
-            partner.LastName = adult.LastName;
         }
 
         public static void SetPersonGender(Person person)
         {
             Random random = new Random();
             person.Gender = (Gender)random.Next(Enum.GetValues
-                                     (typeof(Gender)).Length);
+                (typeof(Gender)).Length);
         }
 
         public static void SetPersonData(Person person)
@@ -89,9 +91,6 @@ namespace PersonLib
                 "Умаров", "Наумов", "Андреев", "Бобров", "Копцев"
             };
 
-            //person.Gender = (Gender)random.Next(Enum.GetValues
-            //                         (typeof(Gender)).Length);
-
             person.LastName = lastNames[random.Next
                               (0, lastNames.Count)];
 
@@ -99,11 +98,11 @@ namespace PersonLib
             {
                 case Gender.Male:
                     person.FirstName = maleNames[random.Next
-                                       (0, maleNames.Count)];
+                        (0, maleNames.Count)];
                     break;
                 case Gender.Female:
                     person.FirstName = femaleNames[random.Next
-                                       (0, femaleNames.Count)];
+                        (0, femaleNames.Count)];
                     person.LastName += "а";
                     break;
             }
@@ -130,12 +129,15 @@ namespace PersonLib
             Random random = new Random();
             List<string> schoolList = new List<string>()
             {
-                "Гимназия 10", "Лицей 5", "МБОУ СОШ 3", "МБОУ СОШ 8",
-                "Лицей 1", "Церковно-приходская"
+                "Гимназия 10", "Лицей 5", "СОШ 154", "Гимназия 1", 
+                "Лицей им. Пушкина", "Церковно-приходская",
+                "Физмат лицей 28", "СОШ 228", "Коррекционная"
             };
+
             child.Father = GetRandomAdult(Gender.Male);
-            child.Mother = GetRandomAdult(Gender.Female);
-            child.Mother.LastName = child.Father.LastName;
+            child.LastName = child.Father.LastName;
+            SetAdultPartner(child.Father);
+            child.Mother = child.Father.Partner;
             child.School = schoolList[random.Next(0, schoolList.Count)];
         }
     }
