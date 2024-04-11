@@ -26,6 +26,8 @@ namespace PersonLib
         /// </summary>
         private string _school;
 
+        public override int MaxAge { get; } = 17;
+
         /// <summary>
         /// Свойство для получения доступа к полю _father.
         /// </summary>

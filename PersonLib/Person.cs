@@ -28,25 +28,14 @@ namespace PersonLib
         /// </summary>
         private int _age;
 
-        /// <summary>
-        /// Поле пола.
-        /// </summary>
-        private readonly Gender _gender;
+        public virtual int MinAge { get; } = 0;
 
-        /// <summary>
-        /// Константа минимально допустимого возраста.
-        /// </summary>
-        public const int MinAge = 1;
-
-        /// <summary>
-        /// Константа максимально допустимого возраста.
-        /// </summary>
-        public const int MaxAge = 120;
+        public virtual int MaxAge { get; } = 120;
 
         /// <summary>
         /// Объект класса Person по умолчанию.
         /// </summary>
-        public Person() : this("Неизвестно", "Неизвестно", MinAge, Gender.Male)
+        public Person() : this("Неизвестно", "Неизвестно", 0, Gender.Male)
         { }
 
         /// <summary>
@@ -58,10 +47,10 @@ namespace PersonLib
         /// <param name="gender">Пол.</param>
         public Person(string firstName, string lastName, int age, Gender gender)
         {
-            _firstName = firstName;
-            _lastName = lastName;
-            _age = age;
-            _gender = gender;
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+            Gender = gender;
         }
 
         /// <summary>
@@ -99,11 +88,9 @@ namespace PersonLib
             get { return _age; }
             set
             {
-                //TODO+: duplication 
                 if (value < MinAge || value > MaxAge)
                 {
                     throw new ArgumentOutOfRangeException("Введите возраст" +
-                        //TODO+: duplication 
                         $" в диапазоне от {MinAge} до {MaxAge}");
                 }
 
@@ -148,58 +135,6 @@ namespace PersonLib
                 throw new ArgumentException("Имя и фамилия должны содержать " +
                     "только русские или английские символы");
             }
-        }
-
-        /// <summary>
-        /// Метод генерации случайного объекта класса Person.
-        /// </summary>
-        /// <returns>Объект класса Person.</returns>
-        public static Person GetRandom()
-        {
-            Person person = new Person();
-
-            List<string> maleFirstNameList = new List<string>()
-            {
-                "Андрей", "Борис", "Владимир", "Дмитрий", "Михаил",
-                "Антон", "Глеб", "Вячеслав", "Егор", "Алексей"
-            };
-
-            List<string> femaleFirstNameList = new List<string>()
-            {
-                "Анна", "Елизавета", "Валерия", "Анастасия", "Наталья",
-                "Евгения", "Виктория", "Екатерина", "Ангелина", "Вера"
-            };
-
-            List<string> lastNameList = new List<string>()
-            {
-                "Иванов", "Алексеев", "Павлов", "Васильев", "Малов",
-                "Умаров", "Наумов", "Андреев", "Бобров", "Копцев"
-            };
-
-            Random random = new Random();
-
-            person.Gender = (Gender)random.Next(Enum.GetValues
-                                     (typeof(Gender)).Length);
-
-            person.LastName = lastNameList[random.Next
-                              (0, lastNameList.Count)];
-
-            switch (person.Gender)
-            {
-                case Gender.Male:
-                    person.FirstName = maleFirstNameList[random.Next
-                                       (0, maleFirstNameList.Count)];
-                    break;
-                case Gender.Female:
-                    person.FirstName = femaleFirstNameList[random.Next
-                                       (0, femaleFirstNameList.Count)];
-                    person.LastName += "а";
-                    break;
-            }
-
-            //TODO+: duplication
-            person.Age = random.Next(MinAge, MaxAge);
-            return person;
         }
     }
 }

@@ -92,7 +92,7 @@ namespace PersonLib
             };
 
             person.LastName = lastNames[random.Next
-                              (0, lastNames.Count)];
+                (0, lastNames.Count)];
 
             switch (person.Gender)
             {
@@ -107,7 +107,7 @@ namespace PersonLib
                     break;
             }
 
-            person.Age = random.Next(Person.MinAge, Person.MaxAge);
+            person.Age = random.Next(person.MinAge, person.MaxAge);
         }   
 
         public static void SetAdultData(Adult adult)

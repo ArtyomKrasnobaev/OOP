@@ -31,7 +31,9 @@ namespace PersonLib
         /// Поле места работы.
         /// </summary>
         private string _job;
-        
+
+        public override int MinAge { get; } = 18;
+
         /// <summary>
         /// Свойство для получения доступа к полю _passportSeries.
         /// </summary>
@@ -75,7 +77,7 @@ namespace PersonLib
             set { _job = value; }
         }
 
-        public Adult() : this("Неизвестно", "Неизвестно", 0, Gender.Male,
+        public Adult() : this("Неизвестно", "Неизвестно", 18, Gender.Male,
                               0, 0, null, null)
         { }
 
@@ -125,7 +127,5 @@ namespace PersonLib
                    $", Паспорт: {PassportSeries} {PassportNumber}," +
                    $" Партнер: {partner}, Место работы: {Job}";
         }
-
-        
     }
 }
