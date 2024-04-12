@@ -121,6 +121,8 @@ namespace Test
 
             Console.WriteLine(personList.GetPersonListInfo());
             Console.WriteLine(personList.GetPersonByIndex(3).GetType());
+
+            //TODO: программно определить тип
         }
     }
 }

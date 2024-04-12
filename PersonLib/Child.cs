@@ -28,6 +28,7 @@ namespace PersonLib
 
         public override int MaxAge { get; } = 17;
 
+        //TODO: validation
         /// <summary>
         /// Свойство для получения доступа к полю _father.
         /// </summary>
@@ -37,6 +38,7 @@ namespace PersonLib
             set { _father = value; }
         }
 
+        //TODO: validation
         /// <summary>
         /// Свойство для получения доступа к полю _mother.
         /// </summary>
@@ -46,6 +48,7 @@ namespace PersonLib
             set { _mother = value; }
         }
 
+        //TODO: validation
         /// <summary>
         /// Свойство для получения доступа к полю _school.
         /// </summary>

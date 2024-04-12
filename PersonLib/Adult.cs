@@ -34,6 +34,7 @@ namespace PersonLib
 
         public override int MinAge { get; } = 18;
 
+        //TODO: validation
         /// <summary>
         /// Свойство для получения доступа к полю _passportSeries.
         /// </summary>
@@ -43,6 +44,7 @@ namespace PersonLib
             set { _passportSeries = value; }
         }
 
+        //TODO: validation
         /// <summary>
         /// Свойство для получения доступа к полю _passportNumber.
         /// </summary>
@@ -52,6 +54,7 @@ namespace PersonLib
             set { _passportNumber = value; }
         }
 
+        //TODO: validation
         /// <summary>
         /// Свойство для получения доступа к полю _partner.
         /// </summary>
@@ -68,6 +71,7 @@ namespace PersonLib
             }
         }
 
+        //TODO: validation
         /// <summary>
         /// Свойство для получения доступа к полю _job.
         /// </summary>

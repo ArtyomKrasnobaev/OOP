@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonLib
 {
+    //TODO: RSDN, abstract
     /// <summary>
     /// класс Person.
     /// </summary>
