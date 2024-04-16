@@ -100,10 +100,6 @@ namespace Test
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //Console.WriteLine($"Случаный Person:\n{RandomPerson.GetRandomPerson().GetInfo()}");
-            //Console.WriteLine($"Случаный Adult:\n{RandomPerson.GetRandomAdult().GetInfo()}");
-            //Console.WriteLine($"Случаный Child:\n{RandomPerson.GetRandomChild().GetInfo()}");
-
             Random random = new Random();
             PersonList personList = new PersonList();
             for (int i = 0; i < 15; i++)
