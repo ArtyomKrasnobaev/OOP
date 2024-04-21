@@ -7,62 +7,10 @@ namespace Test
     internal class Program
     {
         /// <summary>
-        /// Метод создания объекта класса Person с клавиатуры.
-        /// </summary>
-        /// <returns>Объект класса Person.</returns>
-        public static Person CreatePersonFromConsole()
-        {
-            Person person = new Person();
-            List<Action> actions = new List<Action>()
-            {
-                () =>
-                {
-                    Console.Write("Введите имя: ");
-                    person.FirstName = Console.ReadLine();
-                },
-                () =>
-                {
-                    Console.Write("Введите фамилию: ");
-                    person.LastName = Console.ReadLine();
-                },
-                () =>
-                {
-                    Console.Write("Введите возраст: ");
-                    person.Age = Convert.ToInt32(Console.ReadLine());
-                },
-                () =>
-                {
-                    Console.Write("Введите пол (м/m - мужской;" +
-                                            " ж/f - женский): ");
-                    string inputGender = Console.ReadLine().ToUpper();
-                    switch (inputGender)
-                    {
-                        case "М":
-                        case "M":
-                            break;
-                        case "Ж":
-                        case "F":
-                            person.Gender = Gender.Female;
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException("Внимательнее");
-                    }
-                }
-            };
-
-            foreach (Action action in actions)
-            {
-                ActionHandler(action);
-            }
-
-            return person;
-        }
-
-        /// <summary>
         /// Метод вывода данных полей объекта класса Person в консоль.
         /// </summary>
         /// <param name="person">Объект класса Person.</param>
-        public static void PrintPersonToConsole(Person person)
+        public static void PrintPersonToConsole(PersonBase person)
         {
             Console.WriteLine(person.GetInfo());
         }

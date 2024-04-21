@@ -9,14 +9,6 @@ namespace PersonLib
 {
     public class RandomPerson
     {
-        public static Person GetRandomPerson()
-        {
-            Person person = new();
-            SetPersonGender(person);
-            SetPersonData(person);
-            return person;
-        }
-
         public static Adult GetRandomAdult()
         {
             Adult adult = new Adult();
@@ -63,18 +55,19 @@ namespace PersonLib
                         adult.LastName = partner.LastName + 'а';
                         break;
                 }
+
                 adult.Partner = partner;
             }
         }
 
-        public static void SetPersonGender(Person person)
+        public static void SetPersonGender(PersonBase person)
         {
             Random random = new Random();
             person.Gender = (Gender)random.Next(Enum.GetValues
                 (typeof(Gender)).Length);
         }
 
-        public static void SetPersonData(Person person)
+        public static void SetPersonData(PersonBase person)
         {
             Random random = new Random();
 
@@ -129,6 +122,7 @@ namespace PersonLib
             {
                 adult.Job = jobList[random.Next(0, jobList.Count)];
             }
+
             adult.PassportSeries = random.Next(1000, 9999);
             adult.PassportNumber = random.Next(100000, 999999);
         }

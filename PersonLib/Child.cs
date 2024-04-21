@@ -9,7 +9,7 @@ namespace PersonLib
     /// <summary>
     /// Класс Child (наследник класса Person).
     /// </summary>
-    public class Child : Person
+    public class Child : PersonBase
     {
         /// <summary>
         /// Поле отца.

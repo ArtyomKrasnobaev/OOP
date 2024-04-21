@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace PersonLib
 {
-    //TODO: RSDN, abstract
+    //TODO+: RSDN, abstract
     /// <summary>
     /// класс Person.
     /// </summary>
-    public class Person
+    public abstract class PersonBase
     {
         /// <summary>
         /// Поле имени.
@@ -36,7 +36,7 @@ namespace PersonLib
         /// <summary>
         /// Объект класса Person по умолчанию.
         /// </summary>
-        public Person() : this("Неизвестно", "Неизвестно", 0, Gender.Male)
+        public PersonBase() : this("Неизвестно", "Неизвестно", 0, Gender.Male)
         { }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace PersonLib
         /// <param name="lastName">Фамилия.</param>
         /// <param name="age">Возраст.</param>
         /// <param name="gender">Пол.</param>
-        public Person(string firstName, string lastName, int age, Gender gender)
+        public PersonBase(string firstName, string lastName, int age, Gender gender)
         {
             FirstName = firstName;
             LastName = lastName;
