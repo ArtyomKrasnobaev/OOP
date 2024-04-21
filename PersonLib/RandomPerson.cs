@@ -7,8 +7,15 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace PersonLib
 {
+    /// <summary>
+    /// Класс RandomPerson.
+    /// </summary>
     public class RandomPerson
     {
+        /// <summary>
+        /// Метод получения рандомного объекта класса Adult.
+        /// </summary>
+        /// <returns></returns>
         public static Adult GetRandomAdult()
         {
             Adult adult = new Adult();
@@ -19,6 +26,11 @@ namespace PersonLib
             return adult;
         }
 
+        /// <summary>
+        /// Перегруженный метод получения рандомного объекта класса Adult.
+        /// </summary>
+        /// <param name="gender">Пол.</param>
+        /// <returns></returns>
         public static Adult GetRandomAdult(Gender gender)
         {
             Adult adult = new Adult();
@@ -28,6 +40,10 @@ namespace PersonLib
             return adult;
         }
 
+        /// <summary>
+        /// Метод получения рандомного объекта класса Child.
+        /// </summary>
+        /// <returns></returns>
         public static Child GetRandomChild()
         {
             Child child = new Child();
@@ -37,6 +53,10 @@ namespace PersonLib
             return child;
         }
 
+        /// <summary>
+        /// Метод установки партнера объекту класса Adult.
+        /// </summary>
+        /// <param name="adult">Объект класса Adult.</param>
         public static void SetAdultPartner(Adult adult)
         {
             Adult partner = new Adult();
@@ -60,6 +80,10 @@ namespace PersonLib
             }
         }
 
+        /// <summary>
+        /// Метод установки рандомного пола.
+        /// </summary>
+        /// <param name="person">Объект класса PersonBase.</param>
         public static void SetPersonGender(PersonBase person)
         {
             Random random = new Random();
@@ -67,6 +91,10 @@ namespace PersonLib
                 (typeof(Gender)).Length);
         }
 
+        /// <summary>
+        /// Метод установки данных полей базового класса PersonBase.
+        /// </summary>
+        /// <param name="person">Объект класса PersonBase.</param>
         public static void SetPersonData(PersonBase person)
         {
             Random random = new Random();
@@ -106,8 +134,12 @@ namespace PersonLib
             }
 
             person.Age = random.Next(person.MinAge, person.MaxAge);
-        }   
+        }
 
+        /// <summary>
+        /// Метод установки данных полей класса Adult.
+        /// </summary>
+        /// <param name="adult">Объект класса Adult.</param>
         public static void SetAdultData(Adult adult)
         {
             Random random = new Random();
@@ -127,6 +159,10 @@ namespace PersonLib
             adult.PassportNumber = random.Next(100000, 999999);
         }
 
+        /// <summary>
+        /// Метод установки данных полей класса Child.
+        /// </summary>
+        /// <param name="child">Объект класса Child.</param>
         public static void SetChildData(Child child)
         {
             Random random = new Random();
@@ -137,12 +173,10 @@ namespace PersonLib
                 "Физмат лицей 28", "СОШ 228", "Коррекционная"
             };
 
-            int parentsStatus = random.Next(3);
+            int parentsStatus = random.Next(1, 3);
             switch (parentsStatus)
             {
-                case 0:
-                    break;
-                case 1:
+                case 3:
                     child.Father = GetRandomAdult(Gender.Male);
                     break;
                 case 2:
@@ -150,7 +184,7 @@ namespace PersonLib
                     SetAdultPartner(child.Father);
                     child.Mother = child.Father.Partner;
                     break;
-                case 3:
+                case 1:
                     child.Mother = GetRandomAdult(Gender.Female);
                     break;
             }

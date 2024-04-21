@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace PersonLib
 {
     /// <summary>
-    /// Класс Adult (наследник класса Person).
+    /// Класс Adult.
     /// </summary>
     public class Adult : PersonBase
     {
@@ -34,27 +34,48 @@ namespace PersonLib
 
         public override int MinAge { get; } = 18;
 
-        //TODO: validation
+        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _passportSeries.
         /// </summary>
         public int PassportSeries
         {
             get { return _passportSeries; }
-            set { _passportSeries = value; }
+            set
+            {
+                if (VerifyPassport(value, 4))
+                {
+                    _passportSeries = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Серия паспорта должна содержать 4 цифры");
+                }
+            }
         }
 
-        //TODO: validation
+        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _passportNumber.
         /// </summary>
         public int PassportNumber
         {
             get { return _passportNumber; }
-            set { _passportNumber = value; }
+            set
+            {
+                _passportNumber = value;
+                if (VerifyPassport(value, 6))
+                {
+                    _passportNumber = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Номер паспорта должна содержать 4 цифры");
+                }
+            }
         }
 
-        //TODO: validation
+        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _partner.
         /// </summary>
@@ -63,26 +84,39 @@ namespace PersonLib
             get { return _partner; }
             set
             {
+                if (value?.Gender == Gender)
+                {
+                    throw new ArgumentException
+                        ("Невозможно создать однополый брак");
+                }
+
                 _partner = value;
-                if (value != null)
+                if (value is not null)
                 {
                     value._partner = this;
                 }
             }
         }
 
-        //TODO: validation
+        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _job.
         /// </summary>
         public string Job
         {
             get { return _job; }
-            set { _job = value; }
+            set
+            {
+                _job = value;
+                if (value == null || value == "")
+                {
+                    _job = "безработный";
+                }
+            }
         }
 
         public Adult() : this("Неизвестно", "Неизвестно", 18, Gender.Male,
-                              0, 0, null, null)
+            1000, 100000, null, "")
         { }
 
         /// <summary>
@@ -110,26 +144,28 @@ namespace PersonLib
         public override string GetInfo()
         {
             string partner = "";
-            if (Gender == Gender.Male && Partner == null)
+            if (Partner == null)
             {
-                partner = "не женат";
+                partner = "не в браке";
             }
-            if (Gender == Gender.Female && Partner == null)
-            {
-                partner = "не замужем";
-            }
-            if (Partner != null)
+            else
             {
                 partner = Partner.FirstName + " " + Partner.LastName;
             }
-            if (Job == null || Job == "")
-            {
-                Job = "Безработный";
-            }
-
+            
             return base.GetInfo() +
                    $", Паспорт: {PassportSeries} {PassportNumber}," +
                    $" Партнер: {partner}, Место работы: {Job}\n";
+        }
+
+        public string ComplainAboutWork()
+        {
+            return "Жалуется на работу";
+        }
+
+        public bool VerifyPassport(int data, int length)
+        {
+            return data.ToString().Length == length;
         }
     }
 }

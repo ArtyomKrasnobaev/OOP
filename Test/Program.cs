@@ -64,9 +64,20 @@ namespace Test
             }
 
             Console.WriteLine(personList.GetPersonListInfo());
-            Console.WriteLine(personList.GetPersonByIndex(3).GetType());
 
-            //TODO: программно определить тип
+            //TODO+: программно определить тип
+            var person = personList.GetPersonByIndex(3);
+            Type type = person.GetType();
+            Console.WriteLine($"Тип четвертого человека в списке: {type}");
+
+            if (type == typeof(Adult))
+            {
+                Console.WriteLine(((Adult)person).ComplainAboutWork());
+            }
+            if (type == typeof(Child))
+            {
+                Console.WriteLine(((Child)person).ComplainAboutSchool());
+            }
         }
     }
 }

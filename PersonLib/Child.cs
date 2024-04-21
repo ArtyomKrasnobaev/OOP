@@ -28,37 +28,67 @@ namespace PersonLib
 
         public override int MaxAge { get; } = 17;
 
-        //TODO: validation
+        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _father.
         /// </summary>
         public Adult Father
         {
             get { return _father; }
-            set { _father = value; }
+            set
+            {
+                if (value is null || value.Gender == Gender.Male)
+                {
+                    _father = value;
+                }
+                else
+                {
+                    throw new ArgumentException
+                        ("Отец должен быть мужского пола");
+                }
+            }
         }
 
-        //TODO: validation
+        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _mother.
         /// </summary>
         public Adult Mother
         {
             get { return _mother; }
-            set { _mother = value; }
+            set
+            {
+                if (value is null || value.Gender == Gender.Female)
+                {
+                    _mother = value;
+                }
+                else
+                {
+                    throw new ArgumentException
+                        ("Мать должна быть женского пола");
+                }
+            }
         }
 
-        //TODO: validation
+        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _school.
         /// </summary>
         public string School
         {
             get { return _school; }
-            set { _school = value; }
+            set 
+            {
+                _school = value;
+                if (value == null || value == "")
+                {
+                    _school = "не обучается в школе";
+                }
+            }
         }
 
-        public Child() : this("Неизвестно", "Неизвестно", 0, Gender.Male, null, null, null)
+        public Child() : this("Неизвестно", "Неизвестно", 0, Gender.Male,
+            null, null, "")
         { }
 
         /// <summary>
@@ -83,8 +113,8 @@ namespace PersonLib
 
         public override string GetInfo()
         {
-            string father = "Нет отца";
-            string mother = "Нет матери";
+            string father = "нет отца";
+            string mother = "нет матери";
             if (Father != null)
             {
                 father = Father.FirstName + " " + Father.LastName;
@@ -95,6 +125,11 @@ namespace PersonLib
             }
 
             return base.GetInfo() + $", Отец: {father}, Мать: {mother}, Школа: {School}\n";
+        }
+
+        public string ComplainAboutSchool()
+        {
+            return "Жалуется на школу";
         }
     }
 }
