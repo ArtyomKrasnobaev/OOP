@@ -32,8 +32,29 @@ namespace PersonLib
         /// </summary>
         private string _job;
 
-        //TODO: XML
+        //TODO+: XML
+        /// <inheritdoc/>
         public override int MinAge { get; } = 18;
+
+        /// <summary>
+        /// Минимальное значение серии паспорта.
+        /// </summary>
+        public const int MinPassportSeries = 1000;
+
+        /// <summary>
+        /// Максимальное значение серии паспорта.
+        /// </summary>
+        public const int MaxPassportSeries = 9999;
+
+        /// <summary>
+        /// Минимальное значение номера паспорта.
+        /// </summary>
+        public const int MinPassportNumber = 100000;
+
+        /// <summary>
+        /// Максимальное значение номера паспорта.
+        /// </summary>
+        public const int MaxPassportNumber = 999999;
 
         /// <summary>
         /// Свойство для получения доступа к полю _passportSeries.
@@ -43,14 +64,15 @@ namespace PersonLib
             get { return _passportSeries; }
             set
             {
-                if (VerifyPassport(value, 4))
+                if (value >= MinPassportSeries && value <= MaxPassportSeries)
                 {
                     _passportSeries = value;
                 }
                 else
                 {
-                    //TODO: RSDN
-                    throw new ArgumentOutOfRangeException("Серия паспорта должна содержать 4 цифры");
+                    //TODO+: RSDN
+                    throw new ArgumentOutOfRangeException
+                        ("Серия паспорта должна содержать 4 цифры");
                 }
             }
         }
@@ -63,15 +85,15 @@ namespace PersonLib
             get { return _passportNumber; }
             set
             {
-                _passportNumber = value;
-                if (VerifyPassport(value, 6))
+                if (value >= MinPassportNumber && value <= MaxPassportNumber)
                 {
                     _passportNumber = value;
                 }
                 else
                 {
-                    //TODO: RSDN
-                    throw new ArgumentOutOfRangeException("Номер паспорта должна содержать 4 цифры");
+                    //TODO+: RSDN
+                    throw new ArgumentOutOfRangeException
+                        ("Номер паспорта должна содержать 6 цифр");
                 }
             }
         }
@@ -114,7 +136,10 @@ namespace PersonLib
             }
         }
 
-        //TODO: XML
+        //TODO+: XML
+        /// <summary>
+        /// Взрослый по умолчанию
+        /// </summary>
         public Adult() : this("Неизвестно", "Неизвестно", 18, Gender.Male,
             1000, 100000, null, "")
         { }
@@ -141,7 +166,8 @@ namespace PersonLib
             Job = job;
         }
 
-        //TODO: XML
+        //TODO+: XML
+        /// <inheritdoc/>
         public override string GetInfo()
         {
             string partner = "";
@@ -159,17 +185,14 @@ namespace PersonLib
                    $" Партнер: {partner}, Место работы: {Job}\n";
         }
 
-        //TODO: XML
+        //TODO+: XML
+        /// <summary>
+        /// Метод для класса Adult.
+        /// </summary>
+        /// <returns>Строка.</returns>
         public string ComplainAboutWork()
         {
             return "Жалуется на работу";
-        }
-
-        //TODO: XML
-        public bool VerifyPassport(int data, int length)
-        {
-            //TODO: 
-            return data.ToString().Length == length;
         }
     }
 }

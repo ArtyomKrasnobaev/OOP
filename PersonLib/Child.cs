@@ -85,7 +85,10 @@ namespace PersonLib
             }
         }
 
-        //TODO: XML
+        //TODO+: XML
+        /// <summary>
+        /// Объект класса Child по умолчанию.
+        /// </summary>
         public Child() : this("Неизвестно", "Неизвестно", 0, Gender.Male,
             null, null, "")
         { }
@@ -110,7 +113,8 @@ namespace PersonLib
             School = school;
         }
 
-        //TODO: XML
+        //TODO+: XML
+        /// <inheritdoc/>
         public override string GetInfo()
         {
             string father = "нет отца";
@@ -127,7 +131,11 @@ namespace PersonLib
             return base.GetInfo() + $", Отец: {father}, Мать: {mother}, Школа: {School}\n";
         }
 
-        //TODO: XML
+        //TODO+: XML
+        /// <summary>
+        /// Метод для класса Child.
+        /// </summary>
+        /// <returns></returns>
         public string ComplainAboutSchool()
         {
             return "Жалуется на школу";

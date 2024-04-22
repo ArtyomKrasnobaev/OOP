@@ -69,14 +69,15 @@ namespace Test
             Type type = person.GetType();
             Console.WriteLine($"Тип четвертого человека в списке: {type}");
 
-            //TODO: switch-case
-            if (type == typeof(Adult))
+            //TODO+: switch-case
+            switch (person)
             {
-                Console.WriteLine(((Adult)person).ComplainAboutWork());
-            }
-            if (type == typeof(Child))
-            {
-                Console.WriteLine(((Child)person).ComplainAboutSchool());
+                case Adult adult:
+                    Console.WriteLine(adult.ComplainAboutWork());
+                    break;
+                case Child child:
+                    Console.WriteLine(child.ComplainAboutSchool());
+                    break;
             }
         }
     }

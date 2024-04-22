@@ -155,8 +155,10 @@ namespace PersonLib
                 adult.Job = jobList[random.Next(0, jobList.Count)];
             }
 
-            adult.PassportSeries = random.Next(1000, 9999);
-            adult.PassportNumber = random.Next(100000, 999999);
+            adult.PassportSeries = random.Next
+                (Adult.MinPassportSeries, Adult.MaxPassportSeries);
+            adult.PassportNumber = random.Next
+                (Adult.MinPassportNumber, Adult.MaxPassportNumber);
         }
 
         /// <summary>

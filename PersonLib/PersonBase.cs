@@ -28,10 +28,16 @@ namespace PersonLib
         /// </summary>
         private int _age;
 
-        //TODO: XML
+        //TODO+: XML
+        /// <summary>
+        /// Свойство минимального возраста.
+        /// </summary>
         public virtual int MinAge { get; } = 0;
 
-        //TODO: XML
+        //TODO+: XML
+        /// <summary>
+        /// Свойство максимального возраста.
+        /// </summary>
         public virtual int MaxAge { get; } = 120;
 
         /// <summary>
@@ -128,8 +134,8 @@ namespace PersonLib
             if (Regex.IsMatch(name, @"(^[а-яА-Я]+-?[а-яА-Я]+$)") ||
                 Regex.IsMatch(name, @"(^[a-zA-Z]+-?[a-zA-Z]+$)"))
             {
-                TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-                string verifiedName = ti.ToTitleCase(name);
+                TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+                string verifiedName = textInfo.ToTitleCase(name);
                 return verifiedName;
             }
             else
