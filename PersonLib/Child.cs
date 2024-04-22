@@ -85,7 +85,6 @@ namespace PersonLib
             }
         }
 
-        //TODO+: XML
         /// <summary>
         /// Объект класса Child по умолчанию.
         /// </summary>
@@ -113,7 +112,6 @@ namespace PersonLib
             School = school;
         }
 
-        //TODO+: XML
         /// <inheritdoc/>
         public override string GetInfo()
         {
@@ -131,7 +129,6 @@ namespace PersonLib
             return base.GetInfo() + $", Отец: {father}, Мать: {mother}, Школа: {School}\n";
         }
 
-        //TODO+: XML
         /// <summary>
         /// Метод для класса Child.
         /// </summary>

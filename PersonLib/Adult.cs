@@ -32,7 +32,6 @@ namespace PersonLib
         /// </summary>
         private string _job;
 
-        //TODO+: XML
         /// <inheritdoc/>
         public override int MinAge { get; } = 18;
 
@@ -70,7 +69,6 @@ namespace PersonLib
                 }
                 else
                 {
-                    //TODO+: RSDN
                     throw new ArgumentOutOfRangeException
                         ("Серия паспорта должна содержать 4 цифры");
                 }
@@ -91,7 +89,6 @@ namespace PersonLib
                 }
                 else
                 {
-                    //TODO+: RSDN
                     throw new ArgumentOutOfRangeException
                         ("Номер паспорта должна содержать 6 цифр");
                 }
@@ -136,7 +133,6 @@ namespace PersonLib
             }
         }
 
-        //TODO+: XML
         /// <summary>
         /// Взрослый по умолчанию
         /// </summary>
@@ -166,7 +162,6 @@ namespace PersonLib
             Job = job;
         }
 
-        //TODO+: XML
         /// <inheritdoc/>
         public override string GetInfo()
         {
@@ -185,7 +180,6 @@ namespace PersonLib
                    $" Партнер: {partner}, Место работы: {Job}\n";
         }
 
-        //TODO+: XML
         /// <summary>
         /// Метод для класса Adult.
         /// </summary>

@@ -28,13 +28,11 @@ namespace PersonLib
         /// </summary>
         private int _age;
 
-        //TODO+: XML
         /// <summary>
         /// Свойство минимального возраста.
         /// </summary>
         public virtual int MinAge { get; } = 0;
 
-        //TODO+: XML
         /// <summary>
         /// Свойство максимального возраста.
         /// </summary>

@@ -69,7 +69,6 @@ namespace Test
             Type type = person.GetType();
             Console.WriteLine($"Тип четвертого человека в списке: {type}");
 
-            //TODO+: switch-case
             switch (person)
             {
                 case Adult adult:
