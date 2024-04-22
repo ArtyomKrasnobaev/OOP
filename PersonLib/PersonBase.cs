@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace PersonLib
 {
-    //TODO+: RSDN, abstract
     /// <summary>
     /// класс Person.
     /// </summary>
@@ -29,8 +28,10 @@ namespace PersonLib
         /// </summary>
         private int _age;
 
+        //TODO: XML
         public virtual int MinAge { get; } = 0;
 
+        //TODO: XML
         public virtual int MaxAge { get; } = 120;
 
         /// <summary>
@@ -123,13 +124,13 @@ namespace PersonLib
         /// <returns>Преобразованная строка.</returns>
         /// <exception cref="Exception">Исключение.</exception>
         public string VerifyName(string name)
-        {
-            string verifiedName = "";
+        {            
             if (Regex.IsMatch(name, @"(^[а-яА-Я]+-?[а-яА-Я]+$)") ||
                 Regex.IsMatch(name, @"(^[a-zA-Z]+-?[a-zA-Z]+$)"))
             {
                 TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
-                return verifiedName = ti.ToTitleCase(name);
+                string verifiedName = ti.ToTitleCase(name);
+                return verifiedName;
             }
             else
             {

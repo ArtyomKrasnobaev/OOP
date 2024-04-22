@@ -32,9 +32,9 @@ namespace PersonLib
         /// </summary>
         private string _job;
 
+        //TODO: XML
         public override int MinAge { get; } = 18;
 
-        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _passportSeries.
         /// </summary>
@@ -49,12 +49,12 @@ namespace PersonLib
                 }
                 else
                 {
+                    //TODO: RSDN
                     throw new ArgumentOutOfRangeException("Серия паспорта должна содержать 4 цифры");
                 }
             }
         }
 
-        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _passportNumber.
         /// </summary>
@@ -70,12 +70,12 @@ namespace PersonLib
                 }
                 else
                 {
+                    //TODO: RSDN
                     throw new ArgumentOutOfRangeException("Номер паспорта должна содержать 4 цифры");
                 }
             }
         }
 
-        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _partner.
         /// </summary>
@@ -98,7 +98,6 @@ namespace PersonLib
             }
         }
 
-        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _job.
         /// </summary>
@@ -108,13 +107,14 @@ namespace PersonLib
             set
             {
                 _job = value;
-                if (value == null || value == "")
+                if (string.IsNullOrEmpty(value))
                 {
                     _job = "безработный";
                 }
             }
         }
 
+        //TODO: XML
         public Adult() : this("Неизвестно", "Неизвестно", 18, Gender.Male,
             1000, 100000, null, "")
         { }
@@ -141,6 +141,7 @@ namespace PersonLib
             Job = job;
         }
 
+        //TODO: XML
         public override string GetInfo()
         {
             string partner = "";
@@ -158,13 +159,16 @@ namespace PersonLib
                    $" Партнер: {partner}, Место работы: {Job}\n";
         }
 
+        //TODO: XML
         public string ComplainAboutWork()
         {
             return "Жалуется на работу";
         }
 
+        //TODO: XML
         public bool VerifyPassport(int data, int length)
         {
+            //TODO: 
             return data.ToString().Length == length;
         }
     }

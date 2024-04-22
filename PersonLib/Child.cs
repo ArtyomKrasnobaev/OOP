@@ -26,9 +26,9 @@ namespace PersonLib
         /// </summary>
         private string _school;
 
+        /// <inheritdoc/>
         public override int MaxAge { get; } = 17;
 
-        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _father.
         /// </summary>
@@ -49,7 +49,6 @@ namespace PersonLib
             }
         }
 
-        //TODO+: validation
         /// <summary>
         /// Свойство для получения доступа к полю _mother.
         /// </summary>
@@ -70,9 +69,8 @@ namespace PersonLib
             }
         }
 
-        //TODO+: validation
         /// <summary>
-        /// Свойство для получения доступа к полю _school.
+        /// Свойство для получения доступа к полю <see cref="_school"/>
         /// </summary>
         public string School
         {
@@ -87,6 +85,7 @@ namespace PersonLib
             }
         }
 
+        //TODO: XML
         public Child() : this("Неизвестно", "Неизвестно", 0, Gender.Male,
             null, null, "")
         { }
@@ -111,6 +110,7 @@ namespace PersonLib
             School = school;
         }
 
+        //TODO: XML
         public override string GetInfo()
         {
             string father = "нет отца";
@@ -127,6 +127,7 @@ namespace PersonLib
             return base.GetInfo() + $", Отец: {father}, Мать: {mother}, Школа: {School}\n";
         }
 
+        //TODO: XML
         public string ComplainAboutSchool()
         {
             return "Жалуется на школу";

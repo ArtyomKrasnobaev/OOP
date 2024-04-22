@@ -65,11 +65,11 @@ namespace Test
 
             Console.WriteLine(personList.GetPersonListInfo());
 
-            //TODO+: программно определить тип
             var person = personList.GetPersonByIndex(3);
             Type type = person.GetType();
             Console.WriteLine($"Тип четвертого человека в списке: {type}");
 
+            //TODO: switch-case
             if (type == typeof(Adult))
             {
                 Console.WriteLine(((Adult)person).ComplainAboutWork());
