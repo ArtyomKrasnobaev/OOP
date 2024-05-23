@@ -50,7 +50,7 @@ namespace ConsoleLoader
                     default:
                     {
                         throw new ArgumentException
-                            ("Выберите тип движения из представленных");
+                            ("\nВыберите тип движения из представленных");
                     }
                 }
             });
@@ -168,9 +168,18 @@ namespace ConsoleLoader
                     action.Invoke();
                     return;
                 }
-                catch (Exception exeption)
+                catch (Exception exсeption)
                 {
-                    Console.WriteLine(exeption.Message);
+                    var exceptionType = exсeption.GetType();
+                    if (exceptionType == typeof(FormatException) ||
+                        exceptionType == typeof(ArgumentOutOfRangeException) ||
+                        exceptionType == typeof(ArgumentException) ||
+                        exceptionType == typeof(InvalidOperationException) ||
+                        exceptionType == typeof(OverflowException))
+
+                    {
+                        Console.WriteLine(exсeption.Message);
+                    };
                 }
             }
         }
