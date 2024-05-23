@@ -36,7 +36,7 @@ namespace Model
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException
+                    throw new ArgumentException
                         ("Введите положительное значение времени");
                 }
                 _time = value;

@@ -14,7 +14,17 @@ namespace ConsoleLoader
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            MotionReader.ReadMotion();
+            while (true)
+            {
+                Console.WriteLine
+                    ("Для начала работы нажмите любую клавишу...\n");
+
+                Console.ReadKey();
+                
+                MotionBase motion = MotionReader.ReadMotion();
+                Console.WriteLine(Math.Round
+                    (motion.CalculateCoordinate(), 2));
+            }
         }
     }
 }

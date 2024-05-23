@@ -17,169 +17,213 @@ namespace ConsoleLoader
         /// <summary>
         /// Метод чтения типа и параметров движения с клавиатуры.
         /// </summary>
-        public static void ReadMotion()
+        /// <returns>Движение.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static MotionBase ReadMotion()
         {
             MotionBase motion = new ConstantMotion();
 
-            Action startAction = new Action(
-            () =>
+            var actions = new List<Action>()
             {
-                Console.Write("1 - равномерное\n" +
-                    "2 - равноускоренное\n" +
-                    "3 - колебательное\n" +
-                    "Выберите тип движения: ");
-
-                int motionNumber = Convert.ToInt32(Console.ReadLine());
-                switch (motionNumber)
+                () =>
                 {
-                    case 1:
-                    {
-                        motion = new ConstantMotion();
-                        break;
-                    }
-                    case 2:
-                    {
-                        motion = new AcceleratedMotion();
-                        break;
-                    }
-                    case 3:
-                    {
-                        motion = new OscillatoryMotion();
-                        break;
-                    }
-                    default:
-                    {
-                        throw new ArgumentException
-                            ("\nВыберите тип движения из представленных");
-                    }
-                }
-            });
+                    Console.Write("1 - равномерное\n" +
+                        "2 - равноускоренное\n" +
+                        "3 - колебательное\n" +
+                        "Выберите тип движения: ");
+                },
 
-            var constantMotionActions = new List<Action>()
+                () =>
+                {
+                    int inputMotion = Convert.ToInt32(Console.ReadLine());
+                    switch (inputMotion)
+                    {
+                        case 1:
+                        {
+                            motion = ReadConstantMotion();
+                            break;
+                        }
+                        case 2:
+                        {
+                            motion = ReadAcceleratedMotion();
+                            break;
+                        }
+                        case 3:
+                        {
+                            motion = ReadOscillatoryMotion();
+                            break;
+                        }
+                        default:
+                        {
+                            throw new ArgumentException
+                                ("\nВыберите тип движения из" +
+                                " представленных на экране");
+                        }
+                    }
+                },
+            };
+
+            ActionHandler(actions);
+
+            return motion;
+        }
+
+        /// <summary>
+        /// Метод чтения равномерного движения.
+        /// </summary>
+        /// <returns>Равномерное движение.</returns>
+        public static ConstantMotion ReadConstantMotion()
+        {
+            ConstantMotion constantMotion = new ConstantMotion();
+            var actions = new List<Action>()
             {
                 () =>
                 {
                     Console.Write("Введите начальную координату: ");
-                    motion.InitialValue = Convert.ToDouble(Console.ReadLine());
+                    constantMotion.InitialValue = Convert.ToDouble
+                        (Console.ReadLine());
                 },
+
                 () =>
                 {
                     Console.Write("Введите скорость, м/с: ");
-                    motion.Velocity = Convert.ToDouble(Console.ReadLine());
+                    constantMotion.Velocity = Convert.ToDouble
+                        (Console.ReadLine());
                 },
+
                 () =>
                 {
                     Console.Write("Введите время, с: ");
-                    motion.Time = Convert.ToDouble(Console.ReadLine());
-                },
-                () =>
-                {
-                    ConstantMotion constantMotion = (ConstantMotion)motion;
-                    Console.Write($"Координата: {constantMotion.CalculateCoordinate()}");
+                    constantMotion.Time = Convert.ToDouble
+                        (Console.ReadLine());
                 }
             };
 
-            var acceleratedMotionActions = new List<Action>()
+            ActionHandler(actions);
+            return constantMotion;
+        }
+
+        /// <summary>
+        /// Метод чтения равноускоренного движения.
+        /// </summary>
+        /// <returns>Равноускоренное движение.</returns>
+        public static AcceleratedMotion ReadAcceleratedMotion()
+        {
+            AcceleratedMotion acceleratedMotion = new AcceleratedMotion();
+            var actions = new List<Action>()
             {
                 () =>
                 {
                     Console.Write("Введите начальную координату: ");
-                    motion.InitialValue = Convert.ToDouble(Console.ReadLine());
+                    acceleratedMotion.InitialValue = Convert.ToDouble
+                        (Console.ReadLine());
                 },
+
                 () =>
                 {
                     Console.Write("Введите скорость, м/с: ");
-                    motion.Velocity = Convert.ToDouble(Console.ReadLine());
+                    acceleratedMotion.Velocity = Convert.ToDouble
+                        (Console.ReadLine());
                 },
+
                 () =>
                 {
-                    Console.Write("Введите время, с: ");
-                    motion.Time = Convert.ToDouble(Console.ReadLine());
-                },
-                () =>
-                {
-                    AcceleratedMotion acceleratedMotion = (AcceleratedMotion)motion;
                     Console.Write("Введите ускорение, м/с^2: ");
-                    acceleratedMotion.Acceleration = Convert.ToDouble(Console.ReadLine());
+                    acceleratedMotion.Acceleration = Convert.ToDouble
+                        (Console.ReadLine());
                 },
+
                 () =>
                 {
-                    AcceleratedMotion acceleratedMotion = (AcceleratedMotion)motion;
-                    Console.Write($"Координата: {acceleratedMotion.CalculateCoordinate()}");
+                    Console.Write("Введите время, с: ");
+                    acceleratedMotion.Time = Convert.ToDouble
+                        (Console.ReadLine());
                 }
             };
 
-            var oscillatoryMotionActions = new List<Action>()
+            ActionHandler(actions);
+            return acceleratedMotion;
+        }
+
+        /// <summary>
+        /// Метод чтения колебательного движения.
+        /// </summary>
+        /// <returns>Колебательное движение.</returns>
+        public static OscillatoryMotion ReadOscillatoryMotion()
+        {
+            OscillatoryMotion oscillatoryMotion = new OscillatoryMotion();
+            var actions = new List<Action>()
             {
                 () =>
                 {
                     Console.Write("Введите начальную координату: ");
-                    motion.InitialValue = Convert.ToDouble(Console.ReadLine());
+                    oscillatoryMotion.InitialValue = Convert.ToDouble
+                        (Console.ReadLine());
                 },
+
                 () =>
                 {
-                    OscillatoryMotion oscillatoryMotion = (OscillatoryMotion)motion;
-                    Console.Write("Введите частоту колебаний, Гц: ");
-                    oscillatoryMotion.Frequency = Convert.ToDouble(Console.ReadLine());
+                    Console.Write("Введите скорость, м/с: ");
+                    oscillatoryMotion.Frequency = Convert.ToDouble
+                        (Console.ReadLine());
                 },
+
+                () =>
+                {
+                    Console.Write("Введите ускорение, м/с^2: ");
+                    oscillatoryMotion.Amplitude = Convert.ToDouble
+                        (Console.ReadLine());
+                },
+
                 () =>
                 {
                     Console.Write("Введите время, с: ");
-                    motion.Time = Convert.ToDouble(Console.ReadLine());
-                },
-                () =>
-                {
-                    OscillatoryMotion oscillatoryMotion = (OscillatoryMotion)motion;
-                    Console.Write("Введите амплитуду колебаний, м: ");
-                    oscillatoryMotion.Amplitude = Convert.ToDouble(Console.ReadLine());
-                },
-                () =>
-                {
-                    OscillatoryMotion oscillatoryMotion = (OscillatoryMotion)motion;
-                    Console.Write($"Координата: {oscillatoryMotion.CalculateCoordinate()}");
+                    oscillatoryMotion.Time = Convert.ToDouble
+                        (Console.ReadLine());
                 }
             };
 
-            ActionHandler(startAction);
-
-            var ActionDict = new Dictionary<Type, List<Action>>
-            {
-                {typeof(ConstantMotion), constantMotionActions},
-                {typeof(AcceleratedMotion), acceleratedMotionActions},
-                {typeof(OscillatoryMotion), oscillatoryMotionActions},
-            };
-
-            foreach (var action in ActionDict[motion.GetType()])
-            {
-                ActionHandler(action);
-            }
+            ActionHandler(actions);
+            return oscillatoryMotion;
         }
 
         /// <summary>
         /// Обработчик действий.
         /// </summary>
-        /// <param name="action">Действие.</param>
-        public static void ActionHandler(Action action)
+        /// <param name="actions"></param>
+        private static void ActionHandler(List<Action> actions)
         {
-            while (true)
+            Dictionary<Type, Action<string>> catchDictionary =
+                new Dictionary<Type, Action<string>>()
             {
-                try
                 {
-                    action.Invoke();
-                    return;
-                }
-                catch (Exception exсeption)
-                {
-                    var exceptionType = exсeption.GetType();
-                    if (exceptionType == typeof(FormatException) ||
-                        exceptionType == typeof(ArgumentOutOfRangeException) ||
-                        exceptionType == typeof(ArgumentException) ||
-                        exceptionType == typeof(InvalidOperationException) ||
-                        exceptionType == typeof(OverflowException))
-
+                    typeof(FormatException),
+                    (string message) =>
                     {
-                        Console.WriteLine(exсeption.Message);
-                    };
+                        Console.WriteLine($"Некорректный формат ввода");
+                    }
+                },
+
+                {
+                    typeof(ArgumentException),
+                    Console.WriteLine
+                },
+            };
+
+            foreach (var action in actions)
+            {
+                while (true)
+                {
+                    try
+                    {
+                        action.Invoke();
+                        break;
+                    }
+                    catch (Exception exception)
+                    {
+                        catchDictionary
+                            [exception.GetType()].Invoke(exception.Message);
+                    }
                 }
             }
         }
