@@ -86,17 +86,17 @@ namespace ConsoleLoader
 
                 () =>
                 {
-                    //TODO: RSDN
+                    //TODO+: RSDN
                     Console.Write("Введите скорость, м/с: ");
-                    constantMotion.Velocity = Convert.ToDouble
-                        (Console.ReadLine());
+                    constantMotion.Velocity = 
+                        Convert.ToDouble(Console.ReadLine());
                 },
 
                 () =>
                 {
                     Console.Write("Введите время, с: ");
-                    constantMotion.Time = Convert.ToDouble
-                        (Console.ReadLine());
+                    constantMotion.Time = 
+                        Convert.ToDouble(Console.ReadLine());
                 }
             };
 
@@ -116,29 +116,29 @@ namespace ConsoleLoader
                 () =>
                 {
                     Console.Write("Введите начальную координату: ");
-                    acceleratedMotion.InitialValue = Convert.ToDouble
-                        (Console.ReadLine());
+                    acceleratedMotion.InitialValue =
+                        Convert.ToDouble(Console.ReadLine());
                 },
 
                 () =>
                 {
                     Console.Write("Введите скорость, м/с: ");
-                    acceleratedMotion.Velocity = Convert.ToDouble
-                        (Console.ReadLine());
+                    acceleratedMotion.Velocity =
+                        Convert.ToDouble(Console.ReadLine());
                 },
 
                 () =>
                 {
                     Console.Write("Введите ускорение, м/с^2: ");
-                    acceleratedMotion.Acceleration = Convert.ToDouble
-                        (Console.ReadLine());
+                    acceleratedMotion.Acceleration =
+                        Convert.ToDouble(Console.ReadLine());
                 },
 
                 () =>
                 {
                     Console.Write("Введите время, с: ");
-                    acceleratedMotion.Time = Convert.ToDouble
-                        (Console.ReadLine());
+                    acceleratedMotion.Time = 
+                        Convert.ToDouble(Console.ReadLine());
                 }
             };
 
@@ -158,30 +158,30 @@ namespace ConsoleLoader
                 () =>
                 {
                     Console.Write("Введите начальную координату: ");
-                    oscillatoryMotion.InitialValue = Convert.ToDouble
-                        (Console.ReadLine());
+                    oscillatoryMotion.InitialValue = 
+                        Convert.ToDouble(Console.ReadLine());
                 },
 
                 () =>
                 {
-                    Console.Write("Введите скорость, м/с: ");
-                    oscillatoryMotion.Frequency = Convert.ToDouble
-                        (Console.ReadLine());
-                },
-
-                () =>
-                {
-                    Console.Write("Введите ускорение, м/с^2: ");
-                    oscillatoryMotion.Amplitude = Convert.ToDouble
-                        (Console.ReadLine());
+                    Console.Write("Введите амплитуду колебаний, м: ");
+                    oscillatoryMotion.Amplitude =
+                        Convert.ToDouble(Console.ReadLine());
                 },
 
                 () =>
                 {
                     Console.Write("Введите время, с: ");
-                    oscillatoryMotion.Time = Convert.ToDouble
-                        (Console.ReadLine());
-                }
+                    oscillatoryMotion.Time =
+                        Convert.ToDouble(Console.ReadLine());
+                },
+
+                () =>
+                {
+                    Console.Write("Введите частоту колебаний, Гц: ");
+                    oscillatoryMotion.Frequency = 
+                        Convert.ToDouble(Console.ReadLine());
+                },
             };
 
             ActionHandler(actions);
@@ -222,8 +222,8 @@ namespace ConsoleLoader
                     }
                     catch (Exception exception)
                     {
-                        catchDictionary[
-                            exception.GetType()].Invoke(exception.Message);
+                        catchDictionary[exception.GetType()].
+                            Invoke(exception.Message);
                     }
                 }
             }

@@ -16,14 +16,30 @@ namespace ConsoleLoader
         {
             while (true)
             {
-                Console.WriteLine
-                    ("Для начала работы нажмите любую клавишу...\n");
+                Console.WriteLine("Для выхода из программы нажмите \'x\'\n" +
+                    "Для начала работы нажмите любую другую клавишу...");
 
-                Console.ReadKey();
+                ConsoleKeyInfo userInput = Console.ReadKey(true);
+                Console.WriteLine();
+
+                switch (userInput.KeyChar)
+                {
+                    case 'х':
+                    case 'x':
+                    case 'X':
+                    case 'Х':
+                    {
+                        return;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
                 
                 MotionBase motion = MotionReader.ReadMotion();
-                Console.WriteLine(Math.Round
-                    (motion.CalculateCoordinate(), 2));
+                Console.WriteLine($"Координата: " +
+                    $"{Math.Round(motion.CalculateCoordinate(), 2)}\n");
             }
         }
     }
