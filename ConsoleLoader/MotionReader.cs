@@ -86,7 +86,6 @@ namespace ConsoleLoader
 
                 () =>
                 {
-                    //TODO+: RSDN
                     Console.Write("Введите скорость, м/с: ");
                     constantMotion.Velocity = 
                         Convert.ToDouble(Console.ReadLine());
