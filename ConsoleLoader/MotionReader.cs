@@ -80,12 +80,13 @@ namespace ConsoleLoader
                 () =>
                 {
                     Console.Write("Введите начальную координату: ");
-                    constantMotion.InitialValue = Convert.ToDouble
-                        (Console.ReadLine());
+                    constantMotion.InitialValue = 
+                        Convert.ToDouble(Console.ReadLine());
                 },
 
                 () =>
                 {
+                    //TODO: RSDN
                     Console.Write("Введите скорость, м/с: ");
                     constantMotion.Velocity = Convert.ToDouble
                         (Console.ReadLine());
@@ -221,8 +222,8 @@ namespace ConsoleLoader
                     }
                     catch (Exception exception)
                     {
-                        catchDictionary
-                            [exception.GetType()].Invoke(exception.Message);
+                        catchDictionary[
+                            exception.GetType()].Invoke(exception.Message);
                     }
                 }
             }
