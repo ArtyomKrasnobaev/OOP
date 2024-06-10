@@ -126,9 +126,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(661, 306);
+            ClientSize = new Size(661, 338);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Margin = new Padding(3, 2, 3, 2);
