@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class MotionRandom
+    public class MotionRandom
     {
         /// <summary>
         /// Объект класса Random.
@@ -31,8 +31,8 @@ namespace Model
 
         public static MotionBase GetRandomMotion()
         {
-            var motion = _random.Next(0, 2);
-            switch (motion)
+            int motionNumber = _random.Next(0, 3);
+            switch (motionNumber)
             {
                 case 0:
                 {
@@ -42,7 +42,10 @@ namespace Model
                 {
                     return GetRandomAcceleratedMotion();
                 }
-                case 2:
+                default:
+                {
+                    return GetRandomOscillatoryMotion();
+                }
             }
         }
 

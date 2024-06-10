@@ -24,16 +24,20 @@ namespace View
             dataGridView.RowHeadersVisible = false;
             var source = new BindingSource(motions, null);
             dataGridView.DataSource = source;
-            dataGridView.Columns[0].Width = 130;
-            dataGridView.Columns[1].Width = 192;
-            dataGridView.Columns[2].Width = 125;
-            dataGridView.AllowUserToResizeColumns = false;
+
             dataGridView.DefaultCellStyle.Alignment =
-            DataGridViewContentAlignment.MiddleCenter;
+                DataGridViewContentAlignment.MiddleCenter;
+            dataGridView.AllowUserToResizeColumns = false;
             dataGridView.ColumnHeadersDefaultCellStyle.Alignment =
-            DataGridViewContentAlignment.MiddleCenter;
+                DataGridViewContentAlignment.MiddleCenter;
+            dataGridView.AutoSizeRowsMode =
+                DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.DefaultCellStyle.WrapMode =
+                DataGridViewTriState.True;
             dataGridView.SelectionMode =
-            DataGridViewSelectionMode.FullRowSelect;
+                DataGridViewSelectionMode.FullRowSelect;
         }
 
         public MainForm()
@@ -45,6 +49,27 @@ namespace View
         {
             AddForm addForm = new AddForm();
             addForm.Show();
+        }
+
+        private void randomButton_Click(object sender, EventArgs e)
+        {
+            _motionList.Add(MotionRandom.GetRandomMotion());
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            _motionList.Clear();
+        }
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count != 0)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    _motionList.Remove(row.DataBoundItem as MotionBase);
+                }
+            }
         }
     }
 }

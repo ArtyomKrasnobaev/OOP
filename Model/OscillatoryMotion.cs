@@ -76,7 +76,8 @@ namespace Model
         {
             get
             {
-                return $"A = {Amplitude}; w = {Frequency}";
+                return $"A = {Amplitude};" +
+                    $"\n w = {Frequency}";
             }
         }
 
@@ -84,7 +85,7 @@ namespace Model
         {
             get
             {
-                return Amplitude * Math.Sin(InitialValue + (Frequency * Time));
+                return Math.Round(Amplitude * Math.Sin(InitialValue + (Frequency * Time)), 2);
             }
         }
     }

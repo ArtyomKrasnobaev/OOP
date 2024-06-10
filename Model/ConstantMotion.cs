@@ -46,7 +46,7 @@ namespace Model
         {
             get
             {
-                return InitialValue + (Velocity * Time);
+                return Math.Round(InitialValue + (Velocity * Time), 2);
             }
         }
     }

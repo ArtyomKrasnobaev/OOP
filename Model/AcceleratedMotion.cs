@@ -43,7 +43,7 @@ namespace Model
         {
             get
             {
-                return $"v = {Velocity}; a = {Acceleration}";
+                return $"v = {Velocity};\n a = {Acceleration}";
             }
         }
 
@@ -51,8 +51,8 @@ namespace Model
         {
             get
             {
-                return InitialValue + (Velocity * Time) +
-                    (Acceleration * Math.Pow(Time, 2)) / 2;
+                return Math.Round(InitialValue + (Velocity * Time) +
+                    (Acceleration * Math.Pow(Time, 2)) / 2, 2);
             }
         }
     }
