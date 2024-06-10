@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// Абстрактный класс движения.
     /// </summary>
+    //[XmlInclude(typeof(ConstantMotion))]
+    //[XmlInclude(typeof(AcceleratedMotion))]
+    //[XmlInclude(typeof(OscillatoryMotion))]
     public abstract class MotionBase
     {
         /// <summary>
@@ -17,20 +22,23 @@ namespace Model
         private double _time;
 
         /// <summary>
-        /// Начальная координата. 
+        /// Столбец типа движения.
         /// </summary>
-        public double InitialValue { get; set; }
+        [DisplayName("Тип движения")]
+        public abstract string MotionType { get; }
 
         /// <summary>
-        /// Скорость/частота.
+        /// Начальная координата.
         /// </summary>
-        public double Velocity { get; set; }
+        [DisplayName("Начальное значение")]
+        public double InitialValue { get; set; }
 
         /// <summary>
         /// Время.
         /// </summary>
-        public double Time 
-        { 
+        [DisplayName("Время")]
+        public double Time
+        {
             get { return _time; }
             set
             {
@@ -42,6 +50,18 @@ namespace Model
                 _time = value;
             }
         }
+
+        /// <summary>
+        /// Столбец параметров.
+        /// </summary>
+        [DisplayName("Параметры")]
+        public abstract string Parameters { get; }
+
+        /// <summary>
+        /// Столбец координат.
+        /// </summary>
+        [DisplayName("Координата")]
+        public abstract double Coordinate { get; }
 
         /// <summary>
         /// Абстрактный метод расчета координаты.

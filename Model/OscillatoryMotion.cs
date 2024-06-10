@@ -63,5 +63,29 @@ namespace Model
         {
             return Amplitude * Math.Sin(InitialValue + (Frequency * Time));
         }
+
+        public override string MotionType
+        {
+            get
+            {
+                return "Колебательное";
+            }
+        }
+
+        public override string Parameters
+        {
+            get
+            {
+                return $"A = {Amplitude}; w = {Frequency}";
+            }
+        }
+
+        public override double Coordinate
+        {
+            get
+            {
+                return Amplitude * Math.Sin(InitialValue + (Frequency * Time));
+            }
+        }
     }
 }
