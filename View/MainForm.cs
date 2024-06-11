@@ -4,6 +4,7 @@ using Model;
 
 namespace View
 {
+    //TODO: XML
     public partial class MainForm : Form
     {
         /// <summary>
@@ -13,6 +14,7 @@ namespace View
 
         //private XmlSerializer _serializer = new XmlSerializer(typeof(BindingList<MotionBase>));
 
+        //TODO: XML
         private void MainForm_Load(object sender, EventArgs e)
         {
             _motionList = new BindingList<MotionBase>();
