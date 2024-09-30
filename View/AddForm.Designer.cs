@@ -156,12 +156,14 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(389, 415);
             Controls.Add(cancelButton);
             Controls.Add(addButton);
             Controls.Add(parametersGroupBox);
             Controls.Add(motionTypeGroupBox);
             Name = "AddForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Добавить";
             motionTypeGroupBox.ResumeLayout(false);
             motionTypeGroupBox.PerformLayout();

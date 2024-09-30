@@ -30,7 +30,7 @@ namespace Model
         /// <summary>
         /// Начальная координата.
         /// </summary>
-        [DisplayName("Начальное значение")]
+        [DisplayName("Начальная координата")]
         public double InitialValue { get; set; }
 
         /// <summary>

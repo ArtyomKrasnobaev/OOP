@@ -144,6 +144,7 @@
             Controls.Add(editingGroupBox);
             Controls.Add(calculationGroupBox);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Расчет координаты";
             Load += MainForm_Load;
             calculationGroupBox.ResumeLayout(false);
