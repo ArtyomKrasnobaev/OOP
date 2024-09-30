@@ -102,11 +102,11 @@
 
         #endregion
 
-        private Label label1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Label label2;
-        private TextBox textBox3;
-        private Label label3;
+        internal Label label1;
+        internal TextBox textBox1;
+        internal TextBox textBox2;
+        internal Label label2;
+        internal TextBox textBox3;
+        internal Label label3;
     }
 }

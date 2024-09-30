@@ -140,6 +140,7 @@
             addButton.TabIndex = 5;
             addButton.Text = "Далее";
             addButton.UseVisualStyleBackColor = true;
+            addButton.Click += AgreeButtonClick;
             // 
             // cancelButton
             // 

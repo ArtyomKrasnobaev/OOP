@@ -50,7 +50,16 @@ namespace View
         private void addButton_Click(object sender, EventArgs e)
         {
             AddForm addForm = new AddForm();
+            addForm.MotionAdded += AddedMotion;
             addForm.Show();
+        }
+
+        private void AddedMotion(object sender, EventArgs motionBase)
+        {
+            MotionAddedEvent addedEventArgs =
+                motionBase as MotionAddedEvent;
+
+            _motionList.Add(addedEventArgs?.MotionBase);
         }
 
         private void randomButton_Click(object sender, EventArgs e)
