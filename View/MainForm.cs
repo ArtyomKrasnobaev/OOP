@@ -47,6 +47,8 @@ namespace View
             InitializeComponent();
 
             saveButton.Click += SaveFile;
+
+            loadButton.Click += LoadFile;
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -96,7 +98,7 @@ namespace View
 
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                Filter = "Файлы (*tran.)|*.tran|Все файлы (*.*)|*.*"
+                Filter = "Файлы (*mtn.)|*.mtn|Все файлы (*.*)|*.*"
             };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -107,6 +109,34 @@ namespace View
                 {
                     _serializer.Serialize(file, _motionList);
                 }
+            }
+        }
+
+        private void LoadFile(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Файлы (*.mtn)|*.mtn|Все файлы (*.*)|*.*"
+            };
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+
+            string filePath = openFileDialog.FileName.ToString();
+
+            try
+            {
+                using (var file = new StreamReader(filePath))
+                {
+                    _motionList = (BindingList<MotionBase>)
+                        _serializer.Deserialize(file);
+                }
+
+                calculationDataGridView.DataSource = _motionList;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось загрузить файл!", "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

@@ -11,9 +11,9 @@ namespace Model
     /// <summary>
     /// Абстрактный класс движения.
     /// </summary>
-    //[XmlInclude(typeof(ConstantMotion))]
-    //[XmlInclude(typeof(AcceleratedMotion))]
-    //[XmlInclude(typeof(OscillatoryMotion))]
+    [XmlInclude(typeof(ConstantMotion))]
+    [XmlInclude(typeof(AcceleratedMotion))]
+    [XmlInclude(typeof(OscillatoryMotion))]
     public abstract class MotionBase
     {
         /// <summary>
