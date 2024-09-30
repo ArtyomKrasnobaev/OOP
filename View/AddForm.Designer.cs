@@ -47,7 +47,7 @@
             motionTypeGroupBox.Controls.Add(oscillatoryMotionRadioButton);
             motionTypeGroupBox.Controls.Add(acceleratedMotionRadioButton);
             motionTypeGroupBox.Controls.Add(constantMotionRadioButton);
-            motionTypeGroupBox.Location = new Point(14, 15);
+            motionTypeGroupBox.Location = new Point(12, 12);
             motionTypeGroupBox.Name = "motionTypeGroupBox";
             motionTypeGroupBox.Size = new Size(350, 144);
             motionTypeGroupBox.TabIndex = 3;
@@ -98,7 +98,7 @@
             parametersGroupBox.Controls.Add(oscillatoryMotionUserControl1);
             parametersGroupBox.Controls.Add(acceleratedMotionUserControl1);
             parametersGroupBox.Controls.Add(constantMotionUserControl1);
-            parametersGroupBox.Location = new Point(14, 164);
+            parametersGroupBox.Location = new Point(12, 162);
             parametersGroupBox.Name = "parametersGroupBox";
             parametersGroupBox.Size = new Size(350, 199);
             parametersGroupBox.TabIndex = 4;

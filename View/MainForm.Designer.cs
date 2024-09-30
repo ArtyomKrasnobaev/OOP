@@ -35,6 +35,7 @@
             addButton = new Button();
             randomButton = new Button();
             editingGroupBox = new GroupBox();
+            button1 = new Button();
             saveButton = new Button();
             loadButton = new Button();
             calculationGroupBox.SuspendLayout();
@@ -94,16 +95,17 @@
             // 
             // randomButton
             // 
-            randomButton.Location = new Point(124, 27);
+            randomButton.Location = new Point(569, 26);
             randomButton.Name = "randomButton";
             randomButton.Size = new Size(112, 32);
             randomButton.TabIndex = 5;
-            randomButton.Text = "Случайно";
+            randomButton.Text = "Random";
             randomButton.UseVisualStyleBackColor = true;
             randomButton.Click += randomButton_Click;
             // 
             // editingGroupBox
             // 
+            editingGroupBox.Controls.Add(button1);
             editingGroupBox.Controls.Add(addButton);
             editingGroupBox.Controls.Add(clearButton);
             editingGroupBox.Controls.Add(randomButton);
@@ -114,6 +116,16 @@
             editingGroupBox.TabIndex = 6;
             editingGroupBox.TabStop = false;
             editingGroupBox.Text = "Редактирование списка";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(124, 27);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 32);
+            button1.TabIndex = 6;
+            button1.Text = "Фильтр";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // saveButton
             // 
@@ -138,6 +150,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            AutoValidate = AutoValidate.EnablePreventFocusChange;
             ClientSize = new Size(755, 455);
             Controls.Add(loadButton);
             Controls.Add(saveButton);
@@ -164,5 +177,6 @@
         private GroupBox editingGroupBox;
         private Button saveButton;
         private Button loadButton;
+        private Button button1;
     }
 }
