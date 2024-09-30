@@ -41,7 +41,7 @@ namespace View
             oscillatoryMotionUserControl1.Visible = true;
         }
 
-        private void AgreeButtonClick(object sender, EventArgs e)
+        private void AddButtonClick(object sender, EventArgs e)
         {
             MotionBase motionBase = null;
 
@@ -49,9 +49,9 @@ namespace View
             {
                 motionBase = new ConstantMotion()
                 {
-                    InitialValue = Convert.ToDouble(constantMotionUserControl1.textBox1.Text),
-                    Time = Convert.ToDouble(constantMotionUserControl1.textBox2.Text),
-                    Velocity = Convert.ToDouble(constantMotionUserControl1.textBox3.Text),
+                    InitialValue = Convert.ToDouble(constantMotionUserControl1.initialValueTextBox.Text),
+                    Time = Convert.ToDouble(constantMotionUserControl1.timeTextBox.Text),
+                    Velocity = Convert.ToDouble(constantMotionUserControl1.velocityTextBox.Text),
                 };
             }
 

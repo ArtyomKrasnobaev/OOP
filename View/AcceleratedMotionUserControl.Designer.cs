@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             velocityTextBox = new TextBox();
-            label3 = new Label();
+            velocityLabel = new Label();
             timeTextBox = new TextBox();
-            label2 = new Label();
+            timeLabel = new Label();
             initialValueTextBox = new TextBox();
-            label1 = new Label();
+            initialValueLabel = new Label();
             accelerationTextBox = new TextBox();
-            label4 = new Label();
+            accelerationLabel = new Label();
             SuspendLayout();
             // 
             // velocityTextBox
@@ -46,14 +46,14 @@
             velocityTextBox.Size = new Size(114, 27);
             velocityTextBox.TabIndex = 11;
             // 
-            // label3
+            // velocityLabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(3, 85);
-            label3.Name = "label3";
-            label3.Size = new Size(73, 20);
-            label3.TabIndex = 10;
-            label3.Text = "Скорость";
+            velocityLabel.AutoSize = true;
+            velocityLabel.Location = new Point(3, 85);
+            velocityLabel.Name = "velocityLabel";
+            velocityLabel.Size = new Size(73, 20);
+            velocityLabel.TabIndex = 10;
+            velocityLabel.Text = "Скорость";
             // 
             // timeTextBox
             // 
@@ -63,14 +63,14 @@
             timeTextBox.Size = new Size(114, 27);
             timeTextBox.TabIndex = 9;
             // 
-            // label2
+            // timeLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(3, 47);
-            label2.Name = "label2";
-            label2.Size = new Size(54, 20);
-            label2.TabIndex = 8;
-            label2.Text = "Время";
+            timeLabel.AutoSize = true;
+            timeLabel.Location = new Point(3, 47);
+            timeLabel.Name = "timeLabel";
+            timeLabel.Size = new Size(54, 20);
+            timeLabel.TabIndex = 8;
+            timeLabel.Text = "Время";
             // 
             // initialValueTextBox
             // 
@@ -80,14 +80,14 @@
             initialValueTextBox.Size = new Size(114, 27);
             initialValueTextBox.TabIndex = 7;
             // 
-            // label1
+            // initialValueLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 8);
-            label1.Name = "label1";
-            label1.Size = new Size(171, 20);
-            label1.TabIndex = 6;
-            label1.Text = "Начальная координата";
+            initialValueLabel.AutoSize = true;
+            initialValueLabel.Location = new Point(3, 8);
+            initialValueLabel.Name = "initialValueLabel";
+            initialValueLabel.Size = new Size(171, 20);
+            initialValueLabel.TabIndex = 6;
+            initialValueLabel.Text = "Начальная координата";
             // 
             // accelerationTextBox
             // 
@@ -97,27 +97,27 @@
             accelerationTextBox.Size = new Size(114, 27);
             accelerationTextBox.TabIndex = 13;
             // 
-            // label4
+            // accelerationLabel
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(3, 124);
-            label4.Name = "label4";
-            label4.Size = new Size(84, 20);
-            label4.TabIndex = 12;
-            label4.Text = "Ускорение";
+            accelerationLabel.AutoSize = true;
+            accelerationLabel.Location = new Point(3, 124);
+            accelerationLabel.Name = "accelerationLabel";
+            accelerationLabel.Size = new Size(84, 20);
+            accelerationLabel.TabIndex = 12;
+            accelerationLabel.Text = "Ускорение";
             // 
             // AcceleratedMotionUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(accelerationTextBox);
-            Controls.Add(label4);
+            Controls.Add(accelerationLabel);
             Controls.Add(velocityTextBox);
-            Controls.Add(label3);
+            Controls.Add(velocityLabel);
             Controls.Add(timeTextBox);
-            Controls.Add(label2);
+            Controls.Add(timeLabel);
             Controls.Add(initialValueTextBox);
-            Controls.Add(label1);
+            Controls.Add(initialValueLabel);
             Margin = new Padding(3, 4, 3, 4);
             Name = "AcceleratedMotionUserControl";
             Size = new Size(326, 245);
@@ -128,12 +128,12 @@
         #endregion
 
         internal TextBox velocityTextBox;
-        internal Label label3;
+        internal Label velocityLabel;
         internal TextBox timeTextBox;
-        internal Label label2;
+        internal Label timeLabel;
         internal TextBox initialValueTextBox;
-        internal Label label1;
+        internal Label initialValueLabel;
         internal TextBox accelerationTextBox;
-        internal Label label4;
+        internal Label accelerationLabel;
     }
 }

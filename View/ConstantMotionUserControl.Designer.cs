@@ -28,85 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            textBox3 = new TextBox();
-            label3 = new Label();
+            initialValueLabel = new Label();
+            initialValueTextBox = new TextBox();
+            timeTextBox = new TextBox();
+            timeLabel = new Label();
+            velocityTextBox = new TextBox();
+            velocityLabel = new Label();
             SuspendLayout();
             // 
-            // label1
+            // initialValueLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 6);
-            label1.Name = "label1";
-            label1.Size = new Size(134, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Начальная координата";
+            initialValueLabel.AutoSize = true;
+            initialValueLabel.Location = new Point(3, 8);
+            initialValueLabel.Name = "initialValueLabel";
+            initialValueLabel.Size = new Size(171, 20);
+            initialValueLabel.TabIndex = 0;
+            initialValueLabel.Text = "Начальная координата";
             // 
-            // textBox1
+            // initialValueTextBox
             // 
-            textBox1.Location = new Point(182, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 1;
+            initialValueTextBox.Location = new Point(208, 4);
+            initialValueTextBox.Margin = new Padding(3, 4, 3, 4);
+            initialValueTextBox.Name = "initialValueTextBox";
+            initialValueTextBox.Size = new Size(114, 27);
+            initialValueTextBox.TabIndex = 1;
             // 
-            // textBox2
+            // timeTextBox
             // 
-            textBox2.Location = new Point(182, 32);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 3;
+            timeTextBox.Location = new Point(208, 43);
+            timeTextBox.Margin = new Padding(3, 4, 3, 4);
+            timeTextBox.Name = "timeTextBox";
+            timeTextBox.Size = new Size(114, 27);
+            timeTextBox.TabIndex = 3;
             // 
-            // label2
+            // timeLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(3, 35);
-            label2.Name = "label2";
-            label2.Size = new Size(42, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Время";
+            timeLabel.AutoSize = true;
+            timeLabel.Location = new Point(3, 47);
+            timeLabel.Name = "timeLabel";
+            timeLabel.Size = new Size(54, 20);
+            timeLabel.TabIndex = 2;
+            timeLabel.Text = "Время";
             // 
-            // textBox3
+            // velocityTextBox
             // 
-            textBox3.Location = new Point(182, 61);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 5;
+            velocityTextBox.Location = new Point(208, 81);
+            velocityTextBox.Margin = new Padding(3, 4, 3, 4);
+            velocityTextBox.Name = "velocityTextBox";
+            velocityTextBox.Size = new Size(114, 27);
+            velocityTextBox.TabIndex = 5;
             // 
-            // label3
+            // velocityLabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(3, 64);
-            label3.Name = "label3";
-            label3.Size = new Size(59, 15);
-            label3.TabIndex = 4;
-            label3.Text = "Скорость";
+            velocityLabel.AutoSize = true;
+            velocityLabel.Location = new Point(3, 85);
+            velocityLabel.Name = "velocityLabel";
+            velocityLabel.Size = new Size(73, 20);
+            velocityLabel.TabIndex = 4;
+            velocityLabel.Text = "Скорость";
             // 
             // ConstantMotionUserControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(textBox3);
-            Controls.Add(label3);
-            Controls.Add(textBox2);
-            Controls.Add(label2);
-            Controls.Add(textBox1);
-            Controls.Add(label1);
+            Controls.Add(velocityTextBox);
+            Controls.Add(velocityLabel);
+            Controls.Add(timeTextBox);
+            Controls.Add(timeLabel);
+            Controls.Add(initialValueTextBox);
+            Controls.Add(initialValueLabel);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ConstantMotionUserControl";
-            Size = new Size(285, 184);
+            Size = new Size(326, 245);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        internal Label label1;
-        internal TextBox textBox1;
-        internal TextBox textBox2;
-        internal Label label2;
-        internal TextBox textBox3;
-        internal Label label3;
+        internal Label initialValueLabel;
+        internal TextBox initialValueTextBox;
+        internal TextBox timeTextBox;
+        internal Label timeLabel;
+        internal TextBox velocityTextBox;
+        internal Label velocityLabel;
     }
 }

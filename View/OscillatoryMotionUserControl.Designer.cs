@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             frequencyTextBox = new TextBox();
-            label4 = new Label();
+            frequencyLabel = new Label();
             amplitudeTextBox = new TextBox();
-            label3 = new Label();
+            amplitudeLabel = new Label();
             timeTextBox = new TextBox();
-            label2 = new Label();
+            timeLabel = new Label();
             initialValueTextBox = new TextBox();
-            label1 = new Label();
+            initialValueLabel = new Label();
             SuspendLayout();
             // 
             // frequencyTextBox
@@ -46,14 +46,14 @@
             frequencyTextBox.Size = new Size(114, 27);
             frequencyTextBox.TabIndex = 21;
             // 
-            // label4
+            // frequencyLabel
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(3, 124);
-            label4.Name = "label4";
-            label4.Size = new Size(63, 20);
-            label4.TabIndex = 20;
-            label4.Text = "Частота";
+            frequencyLabel.AutoSize = true;
+            frequencyLabel.Location = new Point(3, 124);
+            frequencyLabel.Name = "frequencyLabel";
+            frequencyLabel.Size = new Size(63, 20);
+            frequencyLabel.TabIndex = 20;
+            frequencyLabel.Text = "Частота";
             // 
             // amplitudeTextBox
             // 
@@ -63,14 +63,14 @@
             amplitudeTextBox.Size = new Size(114, 27);
             amplitudeTextBox.TabIndex = 19;
             // 
-            // label3
+            // amplitudeLabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(3, 85);
-            label3.Name = "label3";
-            label3.Size = new Size(85, 20);
-            label3.TabIndex = 18;
-            label3.Text = "Амплитуда";
+            amplitudeLabel.AutoSize = true;
+            amplitudeLabel.Location = new Point(3, 85);
+            amplitudeLabel.Name = "amplitudeLabel";
+            amplitudeLabel.Size = new Size(85, 20);
+            amplitudeLabel.TabIndex = 18;
+            amplitudeLabel.Text = "Амплитуда";
             // 
             // timeTextBox
             // 
@@ -80,14 +80,14 @@
             timeTextBox.Size = new Size(114, 27);
             timeTextBox.TabIndex = 17;
             // 
-            // label2
+            // timeLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(3, 47);
-            label2.Name = "label2";
-            label2.Size = new Size(54, 20);
-            label2.TabIndex = 16;
-            label2.Text = "Время";
+            timeLabel.AutoSize = true;
+            timeLabel.Location = new Point(3, 47);
+            timeLabel.Name = "timeLabel";
+            timeLabel.Size = new Size(54, 20);
+            timeLabel.TabIndex = 16;
+            timeLabel.Text = "Время";
             // 
             // initialValueTextBox
             // 
@@ -97,27 +97,27 @@
             initialValueTextBox.Size = new Size(114, 27);
             initialValueTextBox.TabIndex = 15;
             // 
-            // label1
+            // initialValueLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 8);
-            label1.Name = "label1";
-            label1.Size = new Size(171, 20);
-            label1.TabIndex = 14;
-            label1.Text = "Начальная координата";
+            initialValueLabel.AutoSize = true;
+            initialValueLabel.Location = new Point(3, 8);
+            initialValueLabel.Name = "initialValueLabel";
+            initialValueLabel.Size = new Size(171, 20);
+            initialValueLabel.TabIndex = 14;
+            initialValueLabel.Text = "Начальная координата";
             // 
             // OscillatoryMotionUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(frequencyTextBox);
-            Controls.Add(label4);
+            Controls.Add(frequencyLabel);
             Controls.Add(amplitudeTextBox);
-            Controls.Add(label3);
+            Controls.Add(amplitudeLabel);
             Controls.Add(timeTextBox);
-            Controls.Add(label2);
+            Controls.Add(timeLabel);
             Controls.Add(initialValueTextBox);
-            Controls.Add(label1);
+            Controls.Add(initialValueLabel);
             Margin = new Padding(3, 4, 3, 4);
             Name = "OscillatoryMotionUserControl";
             Size = new Size(326, 245);
@@ -128,12 +128,12 @@
         #endregion
 
         internal TextBox frequencyTextBox;
-        internal Label label4;
+        internal Label frequencyLabel;
         internal TextBox amplitudeTextBox;
-        internal Label label3;
+        internal Label amplitudeLabel;
         internal TextBox timeTextBox;
-        internal Label label2;
+        internal Label timeLabel;
         internal TextBox initialValueTextBox;
-        internal Label label1;
+        internal Label initialValueLabel;
     }
 }

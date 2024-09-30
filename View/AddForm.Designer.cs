@@ -28,82 +28,82 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            oscillatedMotionButton = new RadioButton();
-            acceleratedMotionButton = new RadioButton();
-            constantMotionButton = new RadioButton();
-            groupBox2 = new GroupBox();
+            motionTypeGroupBox = new GroupBox();
+            oscillatoryMotionRadioButton = new RadioButton();
+            acceleratedMotionRadioButton = new RadioButton();
+            constantMotionRadioButton = new RadioButton();
+            parametersGroupBox = new GroupBox();
             oscillatoryMotionUserControl1 = new OscillatoryMotionUserControl();
             acceleratedMotionUserControl1 = new AcceleratedMotionUserControl();
             constantMotionUserControl1 = new ConstantMotionUserControl();
             addButton = new Button();
             cancelButton = new Button();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            motionTypeGroupBox.SuspendLayout();
+            parametersGroupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // motionTypeGroupBox
             // 
-            groupBox1.Controls.Add(oscillatedMotionButton);
-            groupBox1.Controls.Add(acceleratedMotionButton);
-            groupBox1.Controls.Add(constantMotionButton);
-            groupBox1.Location = new Point(14, 15);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(350, 144);
-            groupBox1.TabIndex = 3;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Тип движения";
+            motionTypeGroupBox.Controls.Add(oscillatoryMotionRadioButton);
+            motionTypeGroupBox.Controls.Add(acceleratedMotionRadioButton);
+            motionTypeGroupBox.Controls.Add(constantMotionRadioButton);
+            motionTypeGroupBox.Location = new Point(14, 15);
+            motionTypeGroupBox.Name = "motionTypeGroupBox";
+            motionTypeGroupBox.Size = new Size(350, 144);
+            motionTypeGroupBox.TabIndex = 3;
+            motionTypeGroupBox.TabStop = false;
+            motionTypeGroupBox.Text = "Тип движения";
             // 
-            // oscillatedMotionButton
+            // oscillatoryMotionRadioButton
             // 
-            oscillatedMotionButton.AutoSize = true;
-            oscillatedMotionButton.Location = new Point(7, 95);
-            oscillatedMotionButton.Margin = new Padding(3, 4, 3, 4);
-            oscillatedMotionButton.Name = "oscillatedMotionButton";
-            oscillatedMotionButton.Size = new Size(137, 24);
-            oscillatedMotionButton.TabIndex = 5;
-            oscillatedMotionButton.TabStop = true;
-            oscillatedMotionButton.Text = "Колебательное";
-            oscillatedMotionButton.UseVisualStyleBackColor = true;
-            oscillatedMotionButton.CheckedChanged += oscillatedMotionButton_CheckedChanged;
+            oscillatoryMotionRadioButton.AutoSize = true;
+            oscillatoryMotionRadioButton.Location = new Point(7, 95);
+            oscillatoryMotionRadioButton.Margin = new Padding(3, 4, 3, 4);
+            oscillatoryMotionRadioButton.Name = "oscillatoryMotionRadioButton";
+            oscillatoryMotionRadioButton.Size = new Size(137, 24);
+            oscillatoryMotionRadioButton.TabIndex = 5;
+            oscillatoryMotionRadioButton.TabStop = true;
+            oscillatoryMotionRadioButton.Text = "Колебательное";
+            oscillatoryMotionRadioButton.UseVisualStyleBackColor = true;
+            oscillatoryMotionRadioButton.CheckedChanged += oscillatedMotionButton_CheckedChanged;
             // 
-            // acceleratedMotionButton
+            // acceleratedMotionRadioButton
             // 
-            acceleratedMotionButton.AutoSize = true;
-            acceleratedMotionButton.Location = new Point(7, 61);
-            acceleratedMotionButton.Margin = new Padding(3, 4, 3, 4);
-            acceleratedMotionButton.Name = "acceleratedMotionButton";
-            acceleratedMotionButton.Size = new Size(154, 24);
-            acceleratedMotionButton.TabIndex = 4;
-            acceleratedMotionButton.TabStop = true;
-            acceleratedMotionButton.Text = "Равноускоренное";
-            acceleratedMotionButton.UseVisualStyleBackColor = true;
-            acceleratedMotionButton.CheckedChanged += acceleratedMotionButton_CheckedChanged;
+            acceleratedMotionRadioButton.AutoSize = true;
+            acceleratedMotionRadioButton.Location = new Point(7, 61);
+            acceleratedMotionRadioButton.Margin = new Padding(3, 4, 3, 4);
+            acceleratedMotionRadioButton.Name = "acceleratedMotionRadioButton";
+            acceleratedMotionRadioButton.Size = new Size(154, 24);
+            acceleratedMotionRadioButton.TabIndex = 4;
+            acceleratedMotionRadioButton.TabStop = true;
+            acceleratedMotionRadioButton.Text = "Равноускоренное";
+            acceleratedMotionRadioButton.UseVisualStyleBackColor = true;
+            acceleratedMotionRadioButton.CheckedChanged += acceleratedMotionButton_CheckedChanged;
             // 
-            // constantMotionButton
+            // constantMotionRadioButton
             // 
-            constantMotionButton.AutoSize = true;
-            constantMotionButton.Location = new Point(7, 28);
-            constantMotionButton.Margin = new Padding(3, 4, 3, 4);
-            constantMotionButton.Name = "constantMotionButton";
-            constantMotionButton.Size = new Size(126, 24);
-            constantMotionButton.TabIndex = 0;
-            constantMotionButton.TabStop = true;
-            constantMotionButton.Text = "Равномерное";
-            constantMotionButton.UseVisualStyleBackColor = true;
-            constantMotionButton.CheckedChanged += constantMotionButton_CheckedChanged;
+            constantMotionRadioButton.AutoSize = true;
+            constantMotionRadioButton.Location = new Point(7, 28);
+            constantMotionRadioButton.Margin = new Padding(3, 4, 3, 4);
+            constantMotionRadioButton.Name = "constantMotionRadioButton";
+            constantMotionRadioButton.Size = new Size(126, 24);
+            constantMotionRadioButton.TabIndex = 0;
+            constantMotionRadioButton.TabStop = true;
+            constantMotionRadioButton.Text = "Равномерное";
+            constantMotionRadioButton.UseVisualStyleBackColor = true;
+            constantMotionRadioButton.CheckedChanged += constantMotionButton_CheckedChanged;
             // 
-            // groupBox2
+            // parametersGroupBox
             // 
-            groupBox2.Controls.Add(oscillatoryMotionUserControl1);
-            groupBox2.Controls.Add(acceleratedMotionUserControl1);
-            groupBox2.Controls.Add(constantMotionUserControl1);
-            groupBox2.Location = new Point(14, 164);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(350, 199);
-            groupBox2.TabIndex = 4;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Параметры движения";
+            parametersGroupBox.Controls.Add(oscillatoryMotionUserControl1);
+            parametersGroupBox.Controls.Add(acceleratedMotionUserControl1);
+            parametersGroupBox.Controls.Add(constantMotionUserControl1);
+            parametersGroupBox.Location = new Point(14, 164);
+            parametersGroupBox.Name = "parametersGroupBox";
+            parametersGroupBox.Size = new Size(350, 199);
+            parametersGroupBox.TabIndex = 4;
+            parametersGroupBox.TabStop = false;
+            parametersGroupBox.Text = "Параметры движения";
             // 
             // oscillatoryMotionUserControl1
             // 
@@ -138,9 +138,9 @@
             addButton.Name = "addButton";
             addButton.Size = new Size(112, 32);
             addButton.TabIndex = 5;
-            addButton.Text = "Далее";
+            addButton.Text = "Добавить";
             addButton.UseVisualStyleBackColor = true;
-            addButton.Click += AgreeButtonClick;
+            addButton.Click += AddButtonClick;
             // 
             // cancelButton
             // 
@@ -159,22 +159,22 @@
             ClientSize = new Size(389, 415);
             Controls.Add(cancelButton);
             Controls.Add(addButton);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(parametersGroupBox);
+            Controls.Add(motionTypeGroupBox);
             Name = "AddForm";
             Text = "Добавить";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
+            motionTypeGroupBox.ResumeLayout(false);
+            motionTypeGroupBox.PerformLayout();
+            parametersGroupBox.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private GroupBox groupBox1;
-        private RadioButton oscillatedMotionButton;
-        private RadioButton acceleratedMotionButton;
-        private RadioButton constantMotionButton;
-        private GroupBox groupBox2;
+        private GroupBox motionTypeGroupBox;
+        private RadioButton oscillatoryMotionRadioButton;
+        private RadioButton acceleratedMotionRadioButton;
+        private RadioButton constantMotionRadioButton;
+        private GroupBox parametersGroupBox;
         private OscillatoryMotionUserControl oscillatoryMotionUserControl;
         private ConstantMotionUserControl constantMotionUserControl1;
         private AcceleratedMotionUserControl acceleratedMotionUserControl1;

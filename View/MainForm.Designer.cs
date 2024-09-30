@@ -28,47 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            dataGridView1 = new DataGridView();
+            calculationGroupBox = new GroupBox();
+            calculationDataGridView = new DataGridView();
             removeButton = new Button();
             clearButton = new Button();
             addButton = new Button();
             randomButton = new Button();
-            groupBox2 = new GroupBox();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            groupBox2.SuspendLayout();
+            editingGroupBox = new GroupBox();
+            saveButton = new Button();
+            loadButton = new Button();
+            calculationGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)calculationDataGridView).BeginInit();
+            editingGroupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // calculationGroupBox
             // 
-            groupBox1.Controls.Add(dataGridView1);
-            groupBox1.Location = new Point(10, 9);
-            groupBox1.Margin = new Padding(3, 2, 3, 2);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(602, 229);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Координаты";
+            calculationGroupBox.Controls.Add(calculationDataGridView);
+            calculationGroupBox.Location = new Point(12, 50);
+            calculationGroupBox.Name = "calculationGroupBox";
+            calculationGroupBox.Size = new Size(688, 305);
+            calculationGroupBox.TabIndex = 0;
+            calculationGroupBox.TabStop = false;
+            calculationGroupBox.Text = "Расчет координаты";
             // 
-            // dataGridView1
+            // calculationDataGridView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(5, 20);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(591, 205);
-            dataGridView1.TabIndex = 0;
+            calculationDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            calculationDataGridView.Location = new Point(6, 27);
+            calculationDataGridView.Name = "calculationDataGridView";
+            calculationDataGridView.RowHeadersWidth = 51;
+            calculationDataGridView.RowTemplate.Height = 29;
+            calculationDataGridView.Size = new Size(675, 273);
+            calculationDataGridView.TabIndex = 0;
             // 
             // removeButton
             // 
-            removeButton.Location = new Point(213, 20);
-            removeButton.Margin = new Padding(3, 2, 3, 2);
+            removeButton.Location = new Point(242, 27);
             removeButton.Name = "removeButton";
-            removeButton.Size = new Size(98, 24);
+            removeButton.Size = new Size(112, 32);
             removeButton.TabIndex = 2;
             removeButton.Text = "Удалить";
             removeButton.UseVisualStyleBackColor = true;
@@ -76,10 +74,9 @@
             // 
             // clearButton
             // 
-            clearButton.Location = new Point(317, 20);
-            clearButton.Margin = new Padding(3, 2, 3, 2);
+            clearButton.Location = new Point(360, 27);
             clearButton.Name = "clearButton";
-            clearButton.Size = new Size(98, 24);
+            clearButton.Size = new Size(112, 32);
             clearButton.TabIndex = 3;
             clearButton.Text = "Очистить";
             clearButton.UseVisualStyleBackColor = true;
@@ -87,10 +84,9 @@
             // 
             // addButton
             // 
-            addButton.Location = new Point(5, 20);
-            addButton.Margin = new Padding(3, 2, 3, 2);
+            addButton.Location = new Point(6, 27);
             addButton.Name = "addButton";
-            addButton.Size = new Size(98, 24);
+            addButton.Size = new Size(112, 32);
             addButton.TabIndex = 4;
             addButton.Text = "Добавить";
             addButton.UseVisualStyleBackColor = true;
@@ -98,56 +94,74 @@
             // 
             // randomButton
             // 
-            randomButton.Location = new Point(109, 20);
-            randomButton.Margin = new Padding(3, 2, 3, 2);
+            randomButton.Location = new Point(124, 27);
             randomButton.Name = "randomButton";
-            randomButton.Size = new Size(98, 24);
+            randomButton.Size = new Size(112, 32);
             randomButton.TabIndex = 5;
             randomButton.Text = "Случайно";
             randomButton.UseVisualStyleBackColor = true;
             randomButton.Click += randomButton_Click;
             // 
-            // groupBox2
+            // editingGroupBox
             // 
-            groupBox2.Controls.Add(addButton);
-            groupBox2.Controls.Add(clearButton);
-            groupBox2.Controls.Add(randomButton);
-            groupBox2.Controls.Add(removeButton);
-            groupBox2.Location = new Point(10, 242);
-            groupBox2.Margin = new Padding(3, 2, 3, 2);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(602, 53);
-            groupBox2.TabIndex = 6;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Редактирование списка";
+            editingGroupBox.Controls.Add(addButton);
+            editingGroupBox.Controls.Add(clearButton);
+            editingGroupBox.Controls.Add(randomButton);
+            editingGroupBox.Controls.Add(removeButton);
+            editingGroupBox.Location = new Point(12, 361);
+            editingGroupBox.Name = "editingGroupBox";
+            editingGroupBox.Size = new Size(688, 71);
+            editingGroupBox.TabIndex = 6;
+            editingGroupBox.TabStop = false;
+            editingGroupBox.Text = "Редактирование списка";
+            // 
+            // saveButton
+            // 
+            saveButton.Location = new Point(18, 12);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(112, 32);
+            saveButton.TabIndex = 7;
+            saveButton.Text = "Сохранить";
+            saveButton.UseVisualStyleBackColor = true;
+            // 
+            // loadButton
+            // 
+            loadButton.Location = new Point(136, 12);
+            loadButton.Name = "loadButton";
+            loadButton.Size = new Size(112, 32);
+            loadButton.TabIndex = 8;
+            loadButton.Text = "Загрузить";
+            loadButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(661, 338);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
-            Margin = new Padding(3, 2, 3, 2);
+            ClientSize = new Size(755, 455);
+            Controls.Add(loadButton);
+            Controls.Add(saveButton);
+            Controls.Add(editingGroupBox);
+            Controls.Add(calculationGroupBox);
             Name = "MainForm";
             Text = "Расчет координаты";
             Load += MainForm_Load;
-            groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            groupBox2.ResumeLayout(false);
+            calculationGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)calculationDataGridView).EndInit();
+            editingGroupBox.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupBox1;
-        private DataGridView dataGridView1;
+        private GroupBox calculationGroupBox;
+        private DataGridView calculationDataGridView;
         private Button removeButton;
         private Button clearButton;
         private Button addButton;
         private Button randomButton;
-        private GroupBox groupBox2;
+        private GroupBox editingGroupBox;
+        private Button saveButton;
+        private Button loadButton;
     }
 }

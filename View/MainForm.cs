@@ -12,13 +12,13 @@ namespace View
         /// </summary>
         private BindingList<MotionBase> _motionList = new();
 
-        //private XmlSerializer _serializer = new XmlSerializer(typeof(BindingList<MotionBase>));
+        private XmlSerializer _serializer = new XmlSerializer(typeof(BindingList<MotionBase>));
 
         //TODO: XML
         private void MainForm_Load(object sender, EventArgs e)
         {
             _motionList = new BindingList<MotionBase>();
-            CreateTable(_motionList, dataGridView1);
+            CreateTable(_motionList, calculationDataGridView);
         }
 
         public static void CreateTable(BindingList<MotionBase> motions, DataGridView dataGridView)
@@ -45,6 +45,8 @@ namespace View
         public MainForm()
         {
             InitializeComponent();
+
+            saveButton.Click += SaveFile;
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -74,11 +76,36 @@ namespace View
 
         private void removeButton_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedCells.Count != 0)
+            if (calculationDataGridView.SelectedCells.Count != 0)
             {
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                foreach (DataGridViewRow row in calculationDataGridView.SelectedRows)
                 {
                     _motionList.Remove(row.DataBoundItem as MotionBase);
+                }
+            }
+        }
+
+        private void SaveFile(object sender, EventArgs e)
+        {
+            if (!_motionList.Any() || _motionList is null)
+            {
+                MessageBox.Show("Список пуст!", "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Файлы (*tran.)|*.tran|Все файлы (*.*)|*.*"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName.ToString();
+
+                using (var file = File.Create(filePath))
+                {
+                    _serializer.Serialize(file, _motionList);
                 }
             }
         }
