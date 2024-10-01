@@ -53,6 +53,8 @@ namespace View
             loadButton.Click += LoadFile;
 
             filterButton.Click += ClickFilterButton;
+
+            resetButton.Click += ResetFilter;
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -157,8 +159,12 @@ namespace View
                 motionList as MotionFilteredEvent;
 
             _filteredMotionList = filterEventArgs?.FilteredMotionList;
+            CreateTable(_filteredMotionList, calculationDataGridView);
+        }
 
-            calculationDataGridView.DataSource = _filteredMotionList;
+        private void ResetFilter(object sender, EventArgs e)
+        {
+            CreateTable(_motionList, calculationDataGridView);
         }
     }
 }

@@ -38,6 +38,7 @@
             filterButton = new Button();
             saveButton = new Button();
             loadButton = new Button();
+            resetButton = new Button();
             calculationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)calculationDataGridView).BeginInit();
             editingGroupBox.SuspendLayout();
@@ -65,7 +66,7 @@
             // 
             // removeButton
             // 
-            removeButton.Location = new Point(242, 27);
+            removeButton.Location = new Point(452, 27);
             removeButton.Name = "removeButton";
             removeButton.Size = new Size(112, 32);
             removeButton.TabIndex = 2;
@@ -75,7 +76,7 @@
             // 
             // clearButton
             // 
-            clearButton.Location = new Point(360, 27);
+            clearButton.Location = new Point(570, 27);
             clearButton.Name = "clearButton";
             clearButton.Size = new Size(112, 32);
             clearButton.TabIndex = 3;
@@ -95,7 +96,7 @@
             // 
             // randomButton
             // 
-            randomButton.Location = new Point(569, 26);
+            randomButton.Location = new Point(581, 12);
             randomButton.Name = "randomButton";
             randomButton.Size = new Size(112, 32);
             randomButton.TabIndex = 5;
@@ -105,10 +106,10 @@
             // 
             // editingGroupBox
             // 
+            editingGroupBox.Controls.Add(resetButton);
             editingGroupBox.Controls.Add(filterButton);
             editingGroupBox.Controls.Add(addButton);
             editingGroupBox.Controls.Add(clearButton);
-            editingGroupBox.Controls.Add(randomButton);
             editingGroupBox.Controls.Add(removeButton);
             editingGroupBox.Location = new Point(12, 361);
             editingGroupBox.Name = "editingGroupBox";
@@ -144,6 +145,15 @@
             loadButton.Text = "Загрузить";
             loadButton.UseVisualStyleBackColor = true;
             // 
+            // resetButton
+            // 
+            resetButton.Location = new Point(242, 27);
+            resetButton.Name = "resetButton";
+            resetButton.Size = new Size(112, 32);
+            resetButton.TabIndex = 7;
+            resetButton.Text = "Сбросить";
+            resetButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -154,6 +164,7 @@
             Controls.Add(loadButton);
             Controls.Add(saveButton);
             Controls.Add(editingGroupBox);
+            Controls.Add(randomButton);
             Controls.Add(calculationGroupBox);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -177,5 +188,6 @@
         private Button saveButton;
         private Button loadButton;
         private Button filterButton;
+        private Button resetButton;
     }
 }

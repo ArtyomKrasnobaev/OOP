@@ -33,7 +33,13 @@
             checkBoxAcceleratedMotion = new CheckBox();
             checkBoxConstantMotion = new CheckBox();
             buttonOK = new Button();
+            groupBox2 = new GroupBox();
+            checkBox1 = new CheckBox();
+            checkBox2 = new CheckBox();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -83,18 +89,66 @@
             // 
             // buttonOK
             // 
-            buttonOK.Location = new Point(12, 371);
+            buttonOK.Location = new Point(12, 285);
             buttonOK.Name = "buttonOK";
             buttonOK.Size = new Size(112, 32);
             buttonOK.TabIndex = 1;
             buttonOK.Text = "ОК";
             buttonOK.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(checkBox2);
+            groupBox2.Controls.Add(checkBox1);
+            groupBox2.Location = new Point(12, 162);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(350, 117);
+            groupBox2.TabIndex = 2;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Параметры движения";
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(6, 26);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(193, 24);
+            checkBox1.TabIndex = 0;
+            checkBox1.Text = "Начальная координата";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.Location = new Point(7, 65);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(76, 24);
+            checkBox2.TabIndex = 1;
+            checkBox2.Text = "Время";
+            checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(230, 24);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(114, 27);
+            textBox1.TabIndex = 2;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(230, 63);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(114, 27);
+            textBox2.TabIndex = 3;
+            // 
             // FilterForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(389, 415);
+            ClientSize = new Size(389, 335);
+            Controls.Add(groupBox2);
             Controls.Add(buttonOK);
             Controls.Add(groupBox1);
             Name = "FilterForm";
@@ -102,6 +156,8 @@
             Text = "Настройки фильтрации";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -112,5 +168,10 @@
         private CheckBox checkBoxAcceleratedMotion;
         private CheckBox checkBoxConstantMotion;
         private Button buttonOK;
+        private GroupBox groupBox2;
+        private CheckBox checkBox1;
+        private CheckBox checkBox2;
+        private TextBox textBox1;
+        private TextBox textBox2;
     }
 }
