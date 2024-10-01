@@ -32,7 +32,8 @@ namespace View
         {
             bool checkClick = checkBoxConstantMotion.Checked
                 || checkBoxAcceleratedMotion.Checked
-                || checkBoxOscillatoryMotion.Checked;
+                || checkBoxOscillatoryMotion.Checked
+                || checkBoxInitialValue.Checked;
 
             if (checkClick)
             {
@@ -95,9 +96,24 @@ namespace View
             {
                 motionList = new BindingList<MotionBase>(_motionList);
             }
+
+            if (checkBoxInitialValue.Checked)
+            {
+                if (!string.IsNullOrEmpty(textBoxInitialValue.Text))
+                {
+                    FilterByInitialValue(motionList,
+                    Convert.ToDouble(textBoxInitialValue.Text));
+                    _filteredMotionList = motionList;
+                }
+                else
+                {
+                    MessageBox.Show("Введите начальную координату.", "Предупреждение",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
 
-        private static void FilterByType<MotionBase>(
+        private static void FilterByType(
             BindingList<MotionBase> motionList,
             BindingList<MotionBase> filteredMotionList,
             Type motionType)
@@ -107,6 +123,18 @@ namespace View
                 if (motionType == motion.GetType())
                 {
                     filteredMotionList.Add(motion);
+                }
+            }
+        }
+
+        private static void FilterByInitialValue(
+            BindingList<MotionBase> motionList, double initialValue)
+        {
+            for (int i = motionList.Count - 1; i >= 0; i--)
+            {
+                if (motionList[i].InitialValue != initialValue)
+                {
+                    motionList.RemoveAt(i);
                 }
             }
         }

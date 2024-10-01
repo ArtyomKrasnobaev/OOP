@@ -34,10 +34,10 @@
             checkBoxConstantMotion = new CheckBox();
             buttonOK = new Button();
             groupBox2 = new GroupBox();
-            checkBox1 = new CheckBox();
-            checkBox2 = new CheckBox();
-            textBox1 = new TextBox();
             textBox2 = new TextBox();
+            textBoxInitialValue = new TextBox();
+            checkBox2 = new CheckBox();
+            checkBoxInitialValue = new CheckBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -99,9 +99,9 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(textBox2);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(textBoxInitialValue);
             groupBox2.Controls.Add(checkBox2);
-            groupBox2.Controls.Add(checkBox1);
+            groupBox2.Controls.Add(checkBoxInitialValue);
             groupBox2.Location = new Point(12, 162);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(350, 117);
@@ -109,15 +109,19 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Параметры движения";
             // 
-            // checkBox1
+            // textBox2
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(6, 26);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(193, 24);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "Начальная координата";
-            checkBox1.UseVisualStyleBackColor = true;
+            textBox2.Location = new Point(230, 63);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(114, 27);
+            textBox2.TabIndex = 3;
+            // 
+            // textBoxInitialValue
+            // 
+            textBoxInitialValue.Location = new Point(230, 24);
+            textBoxInitialValue.Name = "textBoxInitialValue";
+            textBoxInitialValue.Size = new Size(114, 27);
+            textBoxInitialValue.TabIndex = 2;
             // 
             // checkBox2
             // 
@@ -129,19 +133,15 @@
             checkBox2.Text = "Время";
             checkBox2.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // checkBoxInitialValue
             // 
-            textBox1.Location = new Point(230, 24);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(114, 27);
-            textBox1.TabIndex = 2;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(230, 63);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(114, 27);
-            textBox2.TabIndex = 3;
+            checkBoxInitialValue.AutoSize = true;
+            checkBoxInitialValue.Location = new Point(6, 26);
+            checkBoxInitialValue.Name = "checkBoxInitialValue";
+            checkBoxInitialValue.Size = new Size(193, 24);
+            checkBoxInitialValue.TabIndex = 0;
+            checkBoxInitialValue.Text = "Начальная координата";
+            checkBoxInitialValue.UseVisualStyleBackColor = true;
             // 
             // FilterForm
             // 
@@ -169,9 +169,9 @@
         private CheckBox checkBoxConstantMotion;
         private Button buttonOK;
         private GroupBox groupBox2;
-        private CheckBox checkBox1;
+        private CheckBox checkBoxInitialValue;
         private CheckBox checkBox2;
-        private TextBox textBox1;
+        private TextBox textBoxInitialValue;
         private TextBox textBox2;
     }
 }
