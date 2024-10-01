@@ -12,6 +12,8 @@ namespace View
         /// </summary>
         private BindingList<MotionBase> _motionList = new();
 
+        private BindingList<MotionBase> _filteredMotionList;
+
         private XmlSerializer _serializer = new XmlSerializer(typeof(BindingList<MotionBase>));
 
         //TODO: XML
@@ -49,6 +51,8 @@ namespace View
             saveButton.Click += SaveFile;
 
             loadButton.Click += LoadFile;
+
+            filterButton.Click += ClickFilterButton;
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -140,10 +144,21 @@ namespace View
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ClickFilterButton(object sender, EventArgs e)
         {
-            FilterForm filterForm = new FilterForm();
+            FilterForm filterForm = new FilterForm(_motionList);
+            filterForm.MotionFiltered += FilterTransport;
             filterForm.Show();
+        }
+
+        private void FilterTransport(object sender, EventArgs motionList)
+        {
+            MotionFilteredEvent filterEventArgs =
+                motionList as MotionFilteredEvent;
+
+            _filteredMotionList = filterEventArgs?.FilteredMotionList;
+
+            calculationDataGridView.DataSource = _filteredMotionList;
         }
     }
 }

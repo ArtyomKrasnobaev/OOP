@@ -35,7 +35,7 @@
             addButton = new Button();
             randomButton = new Button();
             editingGroupBox = new GroupBox();
-            button1 = new Button();
+            filterButton = new Button();
             saveButton = new Button();
             loadButton = new Button();
             calculationGroupBox.SuspendLayout();
@@ -105,7 +105,7 @@
             // 
             // editingGroupBox
             // 
-            editingGroupBox.Controls.Add(button1);
+            editingGroupBox.Controls.Add(filterButton);
             editingGroupBox.Controls.Add(addButton);
             editingGroupBox.Controls.Add(clearButton);
             editingGroupBox.Controls.Add(randomButton);
@@ -117,15 +117,14 @@
             editingGroupBox.TabStop = false;
             editingGroupBox.Text = "Редактирование списка";
             // 
-            // button1
+            // filterButton
             // 
-            button1.Location = new Point(124, 27);
-            button1.Name = "button1";
-            button1.Size = new Size(112, 32);
-            button1.TabIndex = 6;
-            button1.Text = "Фильтр";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            filterButton.Location = new Point(124, 27);
+            filterButton.Name = "filterButton";
+            filterButton.Size = new Size(112, 32);
+            filterButton.TabIndex = 6;
+            filterButton.Text = "Фильтр";
+            filterButton.UseVisualStyleBackColor = true;
             // 
             // saveButton
             // 
@@ -177,6 +176,6 @@
         private GroupBox editingGroupBox;
         private Button saveButton;
         private Button loadButton;
-        private Button button1;
+        private Button filterButton;
     }
 }
