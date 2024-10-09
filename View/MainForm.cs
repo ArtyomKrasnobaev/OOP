@@ -73,9 +73,9 @@ namespace View
             InitializeComponent();
 
             _addButton.Click += ClickAddButton;
-
+#if DEBUG
             _randomButton.Click += ClickRandomButton;
-
+#endif
             _deleteButton.Click += ClickDeleteButton;
 
             _clearButton.Click += ClickClearButton;
