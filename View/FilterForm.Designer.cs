@@ -34,9 +34,9 @@
             checkBoxConstantMotion = new CheckBox();
             okButton = new Button();
             groupBox2 = new GroupBox();
-            textBox2 = new TextBox();
+            timeTextBox = new TextBox();
             textBoxInitialValue = new TextBox();
-            checkBox2 = new CheckBox();
+            timeCheckBox = new CheckBox();
             checkBoxInitialValue = new CheckBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -98,9 +98,9 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(timeTextBox);
             groupBox2.Controls.Add(textBoxInitialValue);
-            groupBox2.Controls.Add(checkBox2);
+            groupBox2.Controls.Add(timeCheckBox);
             groupBox2.Controls.Add(checkBoxInitialValue);
             groupBox2.Location = new Point(12, 162);
             groupBox2.Name = "groupBox2";
@@ -109,12 +109,12 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Параметры движения";
             // 
-            // textBox2
+            // timeTextBox
             // 
-            textBox2.Location = new Point(230, 63);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(114, 27);
-            textBox2.TabIndex = 3;
+            timeTextBox.Location = new Point(230, 63);
+            timeTextBox.Name = "timeTextBox";
+            timeTextBox.Size = new Size(114, 27);
+            timeTextBox.TabIndex = 3;
             // 
             // textBoxInitialValue
             // 
@@ -123,15 +123,15 @@
             textBoxInitialValue.Size = new Size(114, 27);
             textBoxInitialValue.TabIndex = 2;
             // 
-            // checkBox2
+            // timeCheckBox
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(7, 65);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(76, 24);
-            checkBox2.TabIndex = 1;
-            checkBox2.Text = "Время";
-            checkBox2.UseVisualStyleBackColor = true;
+            timeCheckBox.AutoSize = true;
+            timeCheckBox.Location = new Point(7, 65);
+            timeCheckBox.Name = "timeCheckBox";
+            timeCheckBox.Size = new Size(76, 24);
+            timeCheckBox.TabIndex = 1;
+            timeCheckBox.Text = "Время";
+            timeCheckBox.UseVisualStyleBackColor = true;
             // 
             // checkBoxInitialValue
             // 
@@ -170,8 +170,8 @@
         private Button okButton;
         private GroupBox groupBox2;
         private CheckBox checkBoxInitialValue;
-        private CheckBox checkBox2;
+        private CheckBox timeCheckBox;
         private TextBox textBoxInitialValue;
-        private TextBox textBox2;
+        private TextBox timeTextBox;
     }
 }

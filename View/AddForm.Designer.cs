@@ -138,7 +138,6 @@
             addButton.TabIndex = 5;
             addButton.Text = "Добавить";
             addButton.UseVisualStyleBackColor = true;
-            addButton.Click += ClickAddButton;
             // 
             // cancelButton
             // 

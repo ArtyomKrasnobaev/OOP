@@ -18,12 +18,10 @@ namespace View
         public static void CheckInput(KeyPressEventArgs e)
         {
             const int backSpace = 8;
-
             char number = e.KeyChar;
             if ((e.KeyChar < '0' || e.KeyChar > '9')
                 && number != backSpace
-                && number != ','
-                && number != '-')
+                && number != ',')
             {
                 e.Handled = true;
             }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             initialValueLabel = new Label();
-            initialValueTextBox = new TextBox();
-            timeTextBox = new TextBox();
+            initialValueTextBox = new NumericBox();
+            timeTextBox = new NumericBox();
             timeLabel = new Label();
-            velocityTextBox = new TextBox();
+            velocityTextBox = new NumericBox();
             velocityLabel = new Label();
             SuspendLayout();
             // 
@@ -107,10 +107,10 @@
         #endregion
 
         internal Label initialValueLabel;
-        internal TextBox initialValueTextBox;
-        internal TextBox timeTextBox;
+        internal NumericBox initialValueTextBox;
+        internal NumericBox timeTextBox;
         internal Label timeLabel;
-        internal TextBox velocityTextBox;
+        internal NumericBox velocityTextBox;
         internal Label velocityLabel;
     }
 }

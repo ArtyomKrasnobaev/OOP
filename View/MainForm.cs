@@ -219,7 +219,7 @@ namespace View
         private void ClickFilterButton(object sender, EventArgs e)
         {
             FilterForm filterForm = new FilterForm(_motionList);
-            filterForm.MotionFiltered += FilterMotion;
+            filterForm.FiguresFilteredOut += FilterMotion;
             filterForm.Show();
         }
 

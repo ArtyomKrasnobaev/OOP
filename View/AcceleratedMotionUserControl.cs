@@ -21,24 +21,6 @@ namespace View
         public AcceleratedMotionUserControl()
         {
             InitializeComponent();
-
-            initialValueTextBox.KeyPress += PressTextBox;
-
-            timeTextBox.KeyPress += PressTextBox;
-
-            velocityTextBox.KeyPress += PressTextBox;
-
-            accelerationTextBox.KeyPress += PressTextBox;
-        }
-
-        /// <summary>
-        /// Метод проверки введенных символов.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PressTextBox(object sender, KeyPressEventArgs e)
-        {
-            TextBoxReader.CheckInput(e);
         }
     }
 }

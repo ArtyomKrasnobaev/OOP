@@ -15,17 +15,6 @@ namespace View
         public ConstantMotionUserControl()
         {
             InitializeComponent();
-
-            initialValueTextBox.KeyPress += PressTextBox;
-
-            timeTextBox.KeyPress += PressTextBox;
-
-            velocityTextBox.KeyPress += PressTextBox;
-        }
-
-        private void PressTextBox(object sender, KeyPressEventArgs e)
-        {
-            TextBoxReader.CheckInput(e);
         }
     }
 }

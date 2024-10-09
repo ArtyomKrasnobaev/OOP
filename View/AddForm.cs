@@ -1,14 +1,4 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 namespace View
 {
     /// <summary>
@@ -30,6 +20,8 @@ namespace View
             acceleratedMotionRadioButton.CheckedChanged += ChangeAcceleratedMotionStatus;
 
             oscillatoryMotionRadioButton.CheckedChanged += ChangeOscillatoryMotionStatus;
+
+            addButton.Click += ClickAddButton;
         }
 
         /// <summary>
@@ -73,53 +65,56 @@ namespace View
             oscillatoryMotionUserControl1.Visible = true;
         }
 
-        /// <summary>
-        /// Метод нажатия на кнопку "Добавить"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ClickAddButton(object sender, EventArgs e)
         {
-            MotionBase motionBase = null;
-
-            if (constantMotionUserControl1.Visible)
+            try
             {
-                motionBase = new ConstantMotion()
-                {
-                    InitialValue = Convert.ToDouble(constantMotionUserControl1.initialValueTextBox.Text),
-                    Time = Convert.ToDouble(constantMotionUserControl1.timeTextBox.Text),
-                    Velocity = Convert.ToDouble(constantMotionUserControl1.velocityTextBox.Text),
-                };
-            }
+                MotionBase motionBase = null;
 
-            if (acceleratedMotionUserControl1.Visible)
+                if (constantMotionUserControl1.Visible)
+                {
+                    motionBase = new ConstantMotion()
+                    {
+                        InitialValue = Convert.ToDouble(constantMotionUserControl1.initialValueTextBox.Text),
+                        Time = Convert.ToDouble(constantMotionUserControl1.timeTextBox.Text),
+                        Velocity = Convert.ToDouble(constantMotionUserControl1.velocityTextBox.Text),
+                    };
+                }
+
+                if (acceleratedMotionUserControl1.Visible)
+                {
+                    motionBase = new AcceleratedMotion()
+                    {
+                        InitialValue = Convert.ToDouble(acceleratedMotionUserControl1.initialValueTextBox.Text),
+                        Time = Convert.ToDouble(acceleratedMotionUserControl1.timeTextBox.Text),
+                        Velocity = Convert.ToDouble(acceleratedMotionUserControl1.velocityTextBox.Text),
+                        Acceleration = Convert.ToDouble(acceleratedMotionUserControl1.accelerationTextBox.Text),
+                    };
+                }
+
+                if (oscillatoryMotionUserControl1.Visible)
+                {
+                    motionBase = new OscillatoryMotion()
+                    {
+                        InitialValue = Convert.ToDouble(oscillatoryMotionUserControl1.initialValueTextBox.Text),
+                        Time = Convert.ToDouble(oscillatoryMotionUserControl1.timeTextBox.Text),
+                        Amplitude = Convert.ToDouble(oscillatoryMotionUserControl1.amplitudeTextBox.Text),
+                        Frequency = Convert.ToDouble(oscillatoryMotionUserControl1.frequencyTextBox.Text),
+                    };
+                }
+
+                MotionAdded?.Invoke(this,
+                    new MotionAddedEvent(motionBase));
+            }
+            catch
             {
-                motionBase = new AcceleratedMotion()
-                {
-                    InitialValue = Convert.ToDouble(acceleratedMotionUserControl1.initialValueTextBox.Text),
-                    Time = Convert.ToDouble(acceleratedMotionUserControl1.timeTextBox.Text),
-                    Velocity = Convert.ToDouble(acceleratedMotionUserControl1.velocityTextBox.Text),
-                    Acceleration = Convert.ToDouble(acceleratedMotionUserControl1.accelerationTextBox.Text),
-                };
+                MessageBox.Show("Введите корректные данные.", "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            if (oscillatoryMotionUserControl1.Visible)
-            {
-                motionBase = new OscillatoryMotion()
-                {
-                    InitialValue = Convert.ToDouble(oscillatoryMotionUserControl1.initialValueTextBox.Text),
-                    Time = Convert.ToDouble(oscillatoryMotionUserControl1.timeTextBox.Text),
-                    Amplitude = Convert.ToDouble(oscillatoryMotionUserControl1.amplitudeTextBox.Text),
-                    Frequency = Convert.ToDouble(oscillatoryMotionUserControl1.frequencyTextBox.Text),
-                };
-            }
-
-            MotionAdded?.Invoke(this,
-                new MotionAddedEvent(motionBase));
         }
 
         /// <summary>
-        /// Метод нажатия на кнопку "Закрыть"
+        /// Метод нажатия на кнопку "Закрыть".
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

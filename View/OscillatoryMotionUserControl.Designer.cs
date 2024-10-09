@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            frequencyTextBox = new TextBox();
+            frequencyTextBox = new NumericBox();
             frequencyLabel = new Label();
-            amplitudeTextBox = new TextBox();
+            amplitudeTextBox = new NumericBox();
             amplitudeLabel = new Label();
-            timeTextBox = new TextBox();
+            timeTextBox = new NumericBox();
             timeLabel = new Label();
-            initialValueTextBox = new TextBox();
+            initialValueTextBox = new NumericBox();
             initialValueLabel = new Label();
             SuspendLayout();
             // 
@@ -127,13 +127,13 @@
 
         #endregion
 
-        internal TextBox frequencyTextBox;
+        internal NumericBox frequencyTextBox;
         internal Label frequencyLabel;
-        internal TextBox amplitudeTextBox;
+        internal NumericBox amplitudeTextBox;
         internal Label amplitudeLabel;
-        internal TextBox timeTextBox;
+        internal NumericBox timeTextBox;
         internal Label timeLabel;
-        internal TextBox initialValueTextBox;
+        internal NumericBox initialValueTextBox;
         internal Label initialValueLabel;
     }
 }

@@ -15,19 +15,6 @@ namespace View
         public OscillatoryMotionUserControl()
         {
             InitializeComponent();
-
-            initialValueTextBox.KeyPress += PressTextBox;
-
-            timeTextBox.KeyPress += PressTextBox;
-
-            amplitudeTextBox.KeyPress += PressTextBox;
-
-            frequencyTextBox.KeyPress += PressTextBox;
-        }
-
-        private void PressTextBox(object sender, KeyPressEventArgs e)
-        {
-            TextBoxReader.CheckInput(e);
         }
     }
 }
