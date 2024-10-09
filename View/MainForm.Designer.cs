@@ -30,15 +30,15 @@
         {
             calculationGroupBox = new GroupBox();
             calculationDataGridView = new DataGridView();
-            removeButton = new Button();
+            deleteButton = new Button();
             clearButton = new Button();
             addButton = new Button();
             randomButton = new Button();
             editingGroupBox = new GroupBox();
+            resetButton = new Button();
             filterButton = new Button();
             saveButton = new Button();
             loadButton = new Button();
-            resetButton = new Button();
             calculationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)calculationDataGridView).BeginInit();
             editingGroupBox.SuspendLayout();
@@ -64,15 +64,14 @@
             calculationDataGridView.Size = new Size(675, 273);
             calculationDataGridView.TabIndex = 0;
             // 
-            // removeButton
+            // deleteButton
             // 
-            removeButton.Location = new Point(452, 27);
-            removeButton.Name = "removeButton";
-            removeButton.Size = new Size(112, 32);
-            removeButton.TabIndex = 2;
-            removeButton.Text = "Удалить";
-            removeButton.UseVisualStyleBackColor = true;
-            removeButton.Click += removeButton_Click;
+            deleteButton.Location = new Point(452, 27);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Size = new Size(112, 32);
+            deleteButton.TabIndex = 2;
+            deleteButton.Text = "Удалить";
+            deleteButton.UseVisualStyleBackColor = true;
             // 
             // clearButton
             // 
@@ -82,7 +81,6 @@
             clearButton.TabIndex = 3;
             clearButton.Text = "Очистить";
             clearButton.UseVisualStyleBackColor = true;
-            clearButton.Click += clearButton_Click;
             // 
             // addButton
             // 
@@ -92,7 +90,6 @@
             addButton.TabIndex = 4;
             addButton.Text = "Добавить";
             addButton.UseVisualStyleBackColor = true;
-            addButton.Click += addButton_Click;
             // 
             // randomButton
             // 
@@ -102,7 +99,6 @@
             randomButton.TabIndex = 5;
             randomButton.Text = "Random";
             randomButton.UseVisualStyleBackColor = true;
-            randomButton.Click += randomButton_Click;
             // 
             // editingGroupBox
             // 
@@ -110,13 +106,22 @@
             editingGroupBox.Controls.Add(filterButton);
             editingGroupBox.Controls.Add(addButton);
             editingGroupBox.Controls.Add(clearButton);
-            editingGroupBox.Controls.Add(removeButton);
+            editingGroupBox.Controls.Add(deleteButton);
             editingGroupBox.Location = new Point(12, 361);
             editingGroupBox.Name = "editingGroupBox";
             editingGroupBox.Size = new Size(688, 71);
             editingGroupBox.TabIndex = 6;
             editingGroupBox.TabStop = false;
             editingGroupBox.Text = "Редактирование списка";
+            // 
+            // resetButton
+            // 
+            resetButton.Location = new Point(242, 27);
+            resetButton.Name = "resetButton";
+            resetButton.Size = new Size(112, 32);
+            resetButton.TabIndex = 7;
+            resetButton.Text = "Сбросить";
+            resetButton.UseVisualStyleBackColor = true;
             // 
             // filterButton
             // 
@@ -145,15 +150,6 @@
             loadButton.Text = "Загрузить";
             loadButton.UseVisualStyleBackColor = true;
             // 
-            // resetButton
-            // 
-            resetButton.Location = new Point(242, 27);
-            resetButton.Name = "resetButton";
-            resetButton.Size = new Size(112, 32);
-            resetButton.TabIndex = 7;
-            resetButton.Text = "Сбросить";
-            resetButton.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -169,7 +165,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Расчет координаты";
-            Load += MainForm_Load;
+            Load += LoadMainForm;
             calculationGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)calculationDataGridView).EndInit();
             editingGroupBox.ResumeLayout(false);
@@ -180,7 +176,7 @@
 
         private GroupBox calculationGroupBox;
         private DataGridView calculationDataGridView;
-        private Button removeButton;
+        private Button deleteButton;
         private Button clearButton;
         private Button addButton;
         private Button randomButton;

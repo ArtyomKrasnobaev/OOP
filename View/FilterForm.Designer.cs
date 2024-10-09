@@ -32,7 +32,7 @@
             checkBoxOscillatoryMotion = new CheckBox();
             checkBoxAcceleratedMotion = new CheckBox();
             checkBoxConstantMotion = new CheckBox();
-            buttonOK = new Button();
+            okButton = new Button();
             groupBox2 = new GroupBox();
             textBox2 = new TextBox();
             textBoxInitialValue = new TextBox();
@@ -87,14 +87,14 @@
             checkBoxConstantMotion.Text = "Равномерное";
             checkBoxConstantMotion.UseVisualStyleBackColor = true;
             // 
-            // buttonOK
+            // okButton
             // 
-            buttonOK.Location = new Point(12, 285);
-            buttonOK.Name = "buttonOK";
-            buttonOK.Size = new Size(112, 32);
-            buttonOK.TabIndex = 1;
-            buttonOK.Text = "ОК";
-            buttonOK.UseVisualStyleBackColor = true;
+            okButton.Location = new Point(12, 285);
+            okButton.Name = "okButton";
+            okButton.Size = new Size(112, 32);
+            okButton.TabIndex = 1;
+            okButton.Text = "ОК";
+            okButton.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -149,7 +149,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(389, 335);
             Controls.Add(groupBox2);
-            Controls.Add(buttonOK);
+            Controls.Add(okButton);
             Controls.Add(groupBox1);
             Name = "FilterForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -167,7 +167,7 @@
         private CheckBox checkBoxOscillatoryMotion;
         private CheckBox checkBoxAcceleratedMotion;
         private CheckBox checkBoxConstantMotion;
-        private Button buttonOK;
+        private Button okButton;
         private GroupBox groupBox2;
         private CheckBox checkBoxInitialValue;
         private CheckBox checkBox2;

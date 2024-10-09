@@ -65,7 +65,6 @@
             oscillatoryMotionRadioButton.TabStop = true;
             oscillatoryMotionRadioButton.Text = "Колебательное";
             oscillatoryMotionRadioButton.UseVisualStyleBackColor = true;
-            oscillatoryMotionRadioButton.CheckedChanged += oscillatedMotionButton_CheckedChanged;
             // 
             // acceleratedMotionRadioButton
             // 
@@ -78,7 +77,6 @@
             acceleratedMotionRadioButton.TabStop = true;
             acceleratedMotionRadioButton.Text = "Равноускоренное";
             acceleratedMotionRadioButton.UseVisualStyleBackColor = true;
-            acceleratedMotionRadioButton.CheckedChanged += acceleratedMotionButton_CheckedChanged;
             // 
             // constantMotionRadioButton
             // 
@@ -91,7 +89,7 @@
             constantMotionRadioButton.TabStop = true;
             constantMotionRadioButton.Text = "Равномерное";
             constantMotionRadioButton.UseVisualStyleBackColor = true;
-            constantMotionRadioButton.CheckedChanged += constantMotionButton_CheckedChanged;
+            //constantMotionRadioButton.CheckedChanged += constantMotionButton_CheckedChanged;
             // 
             // parametersGroupBox
             // 
@@ -140,7 +138,7 @@
             addButton.TabIndex = 5;
             addButton.Text = "Добавить";
             addButton.UseVisualStyleBackColor = true;
-            addButton.Click += AddButtonClick;
+            addButton.Click += ClickAddButton;
             // 
             // cancelButton
             // 
@@ -150,7 +148,7 @@
             cancelButton.TabIndex = 6;
             cancelButton.Text = "Закрыть";
             cancelButton.UseVisualStyleBackColor = true;
-            cancelButton.Click += button1_Click;
+            //cancelButton.Click += cancelButton_Click_1;
             // 
             // AddForm
             // 

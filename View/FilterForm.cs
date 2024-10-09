@@ -11,24 +11,40 @@ using Model;
 
 namespace View
 {
+    /// <summary>
+    /// Форма настроек фильтрации.
+    /// </summary>
     public partial class FilterForm : Form
     {
+        /// <summary>
+        /// Исходный список.
+        /// </summary>
         private BindingList<MotionBase> _motionList;
 
+        /// <summary>
+        /// Отфильтрованный список.
+        /// </summary>
         private BindingList<MotionBase> _filteredMotionList;
 
+        /// <summary>
+        /// Событие фильтрации списка.
+        /// </summary>
         public EventHandler MotionFiltered;
 
+        /// <summary>
+        /// Конструктор класса FilterForm.
+        /// </summary>
+        /// <param name="motionList"></param>
         public FilterForm(BindingList<MotionBase> motionList)
         {
             _motionList = motionList;
 
             InitializeComponent();
 
-            buttonOK.Click += new EventHandler(ClickButtonOK);
+            okButton.Click += new EventHandler(ClickOkButton);
         }
 
-        private void ClickButtonOK(object sender, EventArgs e)
+        private void ClickOkButton(object sender, EventArgs e)
         {
             bool checkClick = checkBoxConstantMotion.Checked
                 || checkBoxAcceleratedMotion.Checked
@@ -77,7 +93,6 @@ namespace View
                 MessageBox.Show("Заполните критерии поиска.", "Предупреждение",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private void CheckedData()
@@ -113,6 +128,12 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Метод фильтрации по типу движения.
+        /// </summary>
+        /// <param name="motionList"></param>
+        /// <param name="filteredMotionList"></param>
+        /// <param name="motionType"></param>
         private static void FilterByType(
             BindingList<MotionBase> motionList,
             BindingList<MotionBase> filteredMotionList,
@@ -127,6 +148,11 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Метод фильтрации по начальной координате.
+        /// </summary>
+        /// <param name="motionList"></param>
+        /// <param name="initialValue"></param>
         private static void FilterByInitialValue(
             BindingList<MotionBase> motionList, double initialValue)
         {

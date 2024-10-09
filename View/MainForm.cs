@@ -4,7 +4,10 @@ using Model;
 
 namespace View
 {
-    //TODO: XML
+    //TODO+: XML
+    /// <summary>
+    /// Основная форма программы.
+    /// </summary>
     public partial class MainForm : Form
     {
         /// <summary>
@@ -12,17 +15,33 @@ namespace View
         /// </summary>
         private BindingList<MotionBase> _motionList = new();
 
+        /// <summary>
+        /// Отфильтрованный список.
+        /// </summary>
         private BindingList<MotionBase> _filteredMotionList;
 
+        /// <summary>
+        /// Сериализация списка.
+        /// </summary>
         private XmlSerializer _serializer = new XmlSerializer(typeof(BindingList<MotionBase>));
 
-        //TODO: XML
-        private void MainForm_Load(object sender, EventArgs e)
+        //TODO+: XML
+        /// <summary>
+        /// Метод загрузки формы.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadMainForm(object sender, EventArgs e)
         {
             _motionList = new BindingList<MotionBase>();
             CreateTable(_motionList, calculationDataGridView);
         }
 
+        /// <summary>
+        /// Метод создания таблицы на форме.
+        /// </summary>
+        /// <param name="motions"></param>
+        /// <param name="dataGridView"></param>
         public static void CreateTable(BindingList<MotionBase> motions, DataGridView dataGridView)
         {
             dataGridView.RowHeadersVisible = false;
@@ -44,26 +63,67 @@ namespace View
                 DataGridViewSelectionMode.FullRowSelect;
         }
 
+        /// <summary>
+        /// Конструктор класса MainForm.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
 
-            saveButton.Click += SaveFile;
+            addButton.Click += ClickAddButton;
 
-            loadButton.Click += LoadFile;
+            randomButton.Click += ClickRandomButton;
+
+            deleteButton.Click += ClickDeleteButton;
+
+            clearButton.Click += ClickClearButton;
+
+            saveButton.Click += ClickSaveButton;
+
+            loadButton.Click += ClickLoadButton;
 
             filterButton.Click += ClickFilterButton;
 
-            resetButton.Click += ResetFilter;
+            resetButton.Click += ClickResetButton;
         }
 
-        private void addButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод нажатия на кнопку "Добавить".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClickAddButton(object sender, EventArgs e)
         {
             AddForm addForm = new AddForm();
             addForm.MotionAdded += AddedMotion;
             addForm.Show();
         }
 
+        /// <summary>
+        /// Метод нажатия на кнопку "Random".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClickRandomButton(object sender, EventArgs e)
+        {
+            _motionList.Add(MotionRandom.GetRandomMotion());
+        }
+
+        /// <summary>
+        /// Метод нажатия на кнопку "Очистить".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClickClearButton(object sender, EventArgs e)
+        {
+            _motionList.Clear();
+        }
+
+        /// <summary>
+        /// Обработчик добавления данных.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="motionBase"></param>
         private void AddedMotion(object sender, EventArgs motionBase)
         {
             MotionAddedEvent addedEventArgs =
@@ -72,17 +132,12 @@ namespace View
             _motionList.Add(addedEventArgs?.MotionBase);
         }
 
-        private void randomButton_Click(object sender, EventArgs e)
-        {
-            _motionList.Add(MotionRandom.GetRandomMotion());
-        }
-
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            _motionList.Clear();
-        }
-
-        private void removeButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод нажатия на кнопку "Удалить"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClickDeleteButton(object sender, EventArgs e)
         {
             if (calculationDataGridView.SelectedCells.Count != 0)
             {
@@ -93,7 +148,12 @@ namespace View
             }
         }
 
-        private void SaveFile(object sender, EventArgs e)
+        /// <summary>
+        /// Метод сохранения списка в файл.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClickSaveButton(object sender, EventArgs e)
         {
             if (!_motionList.Any() || _motionList is null)
             {
@@ -118,7 +178,12 @@ namespace View
             }
         }
 
-        private void LoadFile(object sender, EventArgs e)
+        /// <summary>
+        /// Метод загрузки списка из файла.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClickLoadButton(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -146,14 +211,24 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Метод нажатия на кнопку фильтра.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClickFilterButton(object sender, EventArgs e)
         {
             FilterForm filterForm = new FilterForm(_motionList);
-            filterForm.MotionFiltered += FilterTransport;
+            filterForm.MotionFiltered += FilterMotion;
             filterForm.Show();
         }
 
-        private void FilterTransport(object sender, EventArgs motionList)
+        /// <summary>
+        /// Метод фильтрации.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="motionList"></param>
+        private void FilterMotion(object sender, EventArgs motionList)
         {
             MotionFilteredEvent filterEventArgs =
                 motionList as MotionFilteredEvent;
@@ -162,7 +237,12 @@ namespace View
             CreateTable(_filteredMotionList, calculationDataGridView);
         }
 
-        private void ResetFilter(object sender, EventArgs e)
+        /// <summary>
+        /// Метод нажатия на кнопку "Сбросить".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClickResetButton(object sender, EventArgs e)
         {
             CreateTable(_motionList, calculationDataGridView);
         }

@@ -11,37 +11,74 @@ using System.Windows.Forms;
 
 namespace View
 {
+    /// <summary>
+    /// Форма для добавления движения.
+    /// </summary>
     public partial class AddForm : Form
     {
+        /// <summary>
+        /// Конструктор класса AddForm.
+        /// </summary>
         public AddForm()
         {
             InitializeComponent();
+
+            cancelButton.Click += ClickCancelButton;
+
+            constantMotionRadioButton.CheckedChanged += ChangeConstantMotionStatus;
+
+            acceleratedMotionRadioButton.CheckedChanged += ChangeAcceleratedMotionStatus;
+
+            oscillatoryMotionRadioButton.CheckedChanged += ChangeOscillatoryMotionStatus;
         }
 
+        /// <summary>
+        /// Событие добавления движения.
+        /// </summary>
         public EventHandler MotionAdded;
 
-        private void constantMotionButton_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Метод изменения статуса равномерного движения.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangeConstantMotionStatus(object sender, EventArgs e)
         {
             constantMotionUserControl1.Visible = true;
             acceleratedMotionUserControl1.Visible = false;
             oscillatoryMotionUserControl1.Visible = false;
         }
 
-        private void acceleratedMotionButton_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Метод изменения статуса равноускоренного движения.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangeAcceleratedMotionStatus(object sender, EventArgs e)
         {
             constantMotionUserControl1.Visible = false;
             acceleratedMotionUserControl1.Visible = true;
             oscillatoryMotionUserControl1.Visible = false;
         }
 
-        private void oscillatedMotionButton_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Метод изменения статуса колебательного движения.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangeOscillatoryMotionStatus(object sender, EventArgs e)
         {
             constantMotionUserControl1.Visible = false;
             acceleratedMotionUserControl1.Visible = false;
             oscillatoryMotionUserControl1.Visible = true;
         }
 
-        private void AddButtonClick(object sender, EventArgs e)
+        /// <summary>
+        /// Метод нажатия на кнопку "Добавить"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClickAddButton(object sender, EventArgs e)
         {
             MotionBase motionBase = null;
 
@@ -81,9 +118,15 @@ namespace View
                 new MotionAddedEvent(motionBase));
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод нажатия на кнопку "Закрыть"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ClickCancelButton(object sender, EventArgs e)
         {
             Close();
         }
     }
 }
+ 
