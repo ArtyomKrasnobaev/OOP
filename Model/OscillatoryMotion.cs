@@ -64,6 +64,10 @@ namespace Model
             return Amplitude * Math.Sin(InitialValue + (Frequency * Time));
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns>Тип движения.</returns>
         public override string MotionType
         {
             get
@@ -72,6 +76,10 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns>Параметры движения.</returns>
         public override string Parameters
         {
             get
@@ -81,11 +89,16 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns>Координата.</returns>
         public override double Coordinate
         {
             get
             {
-                return Math.Round(Amplitude * Math.Sin(InitialValue + (Frequency * Time)), 2);
+                return Math.Round(Amplitude * Math.Sin(InitialValue +
+                    (Frequency * Time)), 2);
             }
         }
     }

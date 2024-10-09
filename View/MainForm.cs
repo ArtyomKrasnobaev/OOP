@@ -23,7 +23,8 @@ namespace View
         /// <summary>
         /// Сериализация списка.
         /// </summary>
-        private XmlSerializer _serializer = new XmlSerializer(typeof(BindingList<MotionBase>));
+        private XmlSerializer _serializer = new XmlSerializer(
+            typeof(BindingList<MotionBase>));
 
         //TODO+: XML
         /// <summary>
@@ -42,7 +43,8 @@ namespace View
         /// </summary>
         /// <param name="motions"></param>
         /// <param name="dataGridView"></param>
-        public static void CreateTable(BindingList<MotionBase> motions, DataGridView dataGridView)
+        public static void CreateTable(BindingList<MotionBase> motions,
+            DataGridView dataGridView)
         {
             dataGridView.RowHeadersVisible = false;
             var source = new BindingSource(motions, null);
@@ -70,21 +72,21 @@ namespace View
         {
             InitializeComponent();
 
-            addButton.Click += ClickAddButton;
+            _addButton.Click += ClickAddButton;
 
-            randomButton.Click += ClickRandomButton;
+            _randomButton.Click += ClickRandomButton;
 
-            deleteButton.Click += ClickDeleteButton;
+            _deleteButton.Click += ClickDeleteButton;
 
-            clearButton.Click += ClickClearButton;
+            _clearButton.Click += ClickClearButton;
 
-            saveButton.Click += ClickSaveButton;
+            _saveButton.Click += ClickSaveButton;
 
-            loadButton.Click += ClickLoadButton;
+            _loadButton.Click += ClickLoadButton;
 
-            filterButton.Click += ClickFilterButton;
+            _filterButton.Click += ClickFilterButton;
 
-            resetButton.Click += ClickResetButton;
+            _resetButton.Click += ClickResetButton;
         }
 
         /// <summary>
@@ -141,7 +143,8 @@ namespace View
         {
             if (calculationDataGridView.SelectedCells.Count != 0)
             {
-                foreach (DataGridViewRow row in calculationDataGridView.SelectedRows)
+                foreach (DataGridViewRow row in
+                    calculationDataGridView.SelectedRows)
                 {
                     _motionList.Remove(row.DataBoundItem as MotionBase);
                 }
@@ -206,8 +209,9 @@ namespace View
             }
             catch (Exception)
             {
-                MessageBox.Show("Не удалось загрузить файл!", "Предупреждение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Не удалось загрузить файл!",
+                    "Предупреждение", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
 
@@ -219,7 +223,7 @@ namespace View
         private void ClickFilterButton(object sender, EventArgs e)
         {
             FilterForm filterForm = new FilterForm(_motionList);
-            filterForm.FiguresFilteredOut += FilterMotion;
+            filterForm.MotionsFiltered += FilterMotion;
             filterForm.Show();
         }
 

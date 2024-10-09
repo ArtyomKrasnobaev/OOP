@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            calculationGroupBox = new GroupBox();
+            _calculationGroupBox = new GroupBox();
             calculationDataGridView = new DataGridView();
-            deleteButton = new Button();
-            clearButton = new Button();
-            addButton = new Button();
-            randomButton = new Button();
-            editingGroupBox = new GroupBox();
-            resetButton = new Button();
-            filterButton = new Button();
-            saveButton = new Button();
-            loadButton = new Button();
-            calculationGroupBox.SuspendLayout();
+            _deleteButton = new Button();
+            _clearButton = new Button();
+            _addButton = new Button();
+            _randomButton = new Button();
+            _editingGroupBox = new GroupBox();
+            _resetButton = new Button();
+            _filterButton = new Button();
+            _saveButton = new Button();
+            _loadButton = new Button();
+            _calculationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)calculationDataGridView).BeginInit();
-            editingGroupBox.SuspendLayout();
+            _editingGroupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // calculationGroupBox
+            // _calculationGroupBox
             // 
-            calculationGroupBox.Controls.Add(calculationDataGridView);
-            calculationGroupBox.Location = new Point(12, 50);
-            calculationGroupBox.Name = "calculationGroupBox";
-            calculationGroupBox.Size = new Size(688, 305);
-            calculationGroupBox.TabIndex = 0;
-            calculationGroupBox.TabStop = false;
-            calculationGroupBox.Text = "Расчет координаты";
+            _calculationGroupBox.Controls.Add(calculationDataGridView);
+            _calculationGroupBox.Location = new Point(12, 50);
+            _calculationGroupBox.Name = "_calculationGroupBox";
+            _calculationGroupBox.Size = new Size(688, 305);
+            _calculationGroupBox.TabIndex = 0;
+            _calculationGroupBox.TabStop = false;
+            _calculationGroupBox.Text = "Расчет координаты";
             // 
             // calculationDataGridView
             // 
@@ -64,91 +64,91 @@
             calculationDataGridView.Size = new Size(675, 273);
             calculationDataGridView.TabIndex = 0;
             // 
-            // deleteButton
+            // _deleteButton
             // 
-            deleteButton.Location = new Point(452, 27);
-            deleteButton.Name = "deleteButton";
-            deleteButton.Size = new Size(112, 32);
-            deleteButton.TabIndex = 2;
-            deleteButton.Text = "Удалить";
-            deleteButton.UseVisualStyleBackColor = true;
+            _deleteButton.Location = new Point(452, 27);
+            _deleteButton.Name = "_deleteButton";
+            _deleteButton.Size = new Size(112, 32);
+            _deleteButton.TabIndex = 2;
+            _deleteButton.Text = "Удалить";
+            _deleteButton.UseVisualStyleBackColor = true;
             // 
-            // clearButton
+            // _clearButton
             // 
-            clearButton.Location = new Point(570, 27);
-            clearButton.Name = "clearButton";
-            clearButton.Size = new Size(112, 32);
-            clearButton.TabIndex = 3;
-            clearButton.Text = "Очистить";
-            clearButton.UseVisualStyleBackColor = true;
+            _clearButton.Location = new Point(570, 27);
+            _clearButton.Name = "_clearButton";
+            _clearButton.Size = new Size(112, 32);
+            _clearButton.TabIndex = 3;
+            _clearButton.Text = "Очистить";
+            _clearButton.UseVisualStyleBackColor = true;
             // 
-            // addButton
+            // _addButton
             // 
-            addButton.Location = new Point(6, 27);
-            addButton.Name = "addButton";
-            addButton.Size = new Size(112, 32);
-            addButton.TabIndex = 4;
-            addButton.Text = "Добавить";
-            addButton.UseVisualStyleBackColor = true;
+            _addButton.Location = new Point(6, 27);
+            _addButton.Name = "_addButton";
+            _addButton.Size = new Size(112, 32);
+            _addButton.TabIndex = 4;
+            _addButton.Text = "Добавить";
+            _addButton.UseVisualStyleBackColor = true;
             // 
-            // randomButton
+            // _randomButton
             // 
-            randomButton.Location = new Point(581, 12);
-            randomButton.Name = "randomButton";
-            randomButton.Size = new Size(112, 32);
-            randomButton.TabIndex = 5;
-            randomButton.Text = "Random";
-            randomButton.UseVisualStyleBackColor = true;
+            _randomButton.Location = new Point(581, 12);
+            _randomButton.Name = "_randomButton";
+            _randomButton.Size = new Size(112, 32);
+            _randomButton.TabIndex = 5;
+            _randomButton.Text = "Random";
+            _randomButton.UseVisualStyleBackColor = true;
             // 
-            // editingGroupBox
+            // _editingGroupBox
             // 
-            editingGroupBox.Controls.Add(resetButton);
-            editingGroupBox.Controls.Add(filterButton);
-            editingGroupBox.Controls.Add(addButton);
-            editingGroupBox.Controls.Add(clearButton);
-            editingGroupBox.Controls.Add(deleteButton);
-            editingGroupBox.Location = new Point(12, 361);
-            editingGroupBox.Name = "editingGroupBox";
-            editingGroupBox.Size = new Size(688, 71);
-            editingGroupBox.TabIndex = 6;
-            editingGroupBox.TabStop = false;
-            editingGroupBox.Text = "Редактирование списка";
+            _editingGroupBox.Controls.Add(_resetButton);
+            _editingGroupBox.Controls.Add(_filterButton);
+            _editingGroupBox.Controls.Add(_addButton);
+            _editingGroupBox.Controls.Add(_clearButton);
+            _editingGroupBox.Controls.Add(_deleteButton);
+            _editingGroupBox.Location = new Point(12, 361);
+            _editingGroupBox.Name = "_editingGroupBox";
+            _editingGroupBox.Size = new Size(688, 71);
+            _editingGroupBox.TabIndex = 6;
+            _editingGroupBox.TabStop = false;
+            _editingGroupBox.Text = "Редактирование списка";
             // 
-            // resetButton
+            // _resetButton
             // 
-            resetButton.Location = new Point(242, 27);
-            resetButton.Name = "resetButton";
-            resetButton.Size = new Size(112, 32);
-            resetButton.TabIndex = 7;
-            resetButton.Text = "Сбросить";
-            resetButton.UseVisualStyleBackColor = true;
+            _resetButton.Location = new Point(242, 27);
+            _resetButton.Name = "_resetButton";
+            _resetButton.Size = new Size(112, 32);
+            _resetButton.TabIndex = 7;
+            _resetButton.Text = "Сбросить";
+            _resetButton.UseVisualStyleBackColor = true;
             // 
-            // filterButton
+            // _filterButton
             // 
-            filterButton.Location = new Point(124, 27);
-            filterButton.Name = "filterButton";
-            filterButton.Size = new Size(112, 32);
-            filterButton.TabIndex = 6;
-            filterButton.Text = "Фильтр";
-            filterButton.UseVisualStyleBackColor = true;
+            _filterButton.Location = new Point(124, 27);
+            _filterButton.Name = "_filterButton";
+            _filterButton.Size = new Size(112, 32);
+            _filterButton.TabIndex = 6;
+            _filterButton.Text = "Фильтр";
+            _filterButton.UseVisualStyleBackColor = true;
             // 
-            // saveButton
+            // _saveButton
             // 
-            saveButton.Location = new Point(18, 12);
-            saveButton.Name = "saveButton";
-            saveButton.Size = new Size(112, 32);
-            saveButton.TabIndex = 7;
-            saveButton.Text = "Сохранить";
-            saveButton.UseVisualStyleBackColor = true;
+            _saveButton.Location = new Point(18, 12);
+            _saveButton.Name = "_saveButton";
+            _saveButton.Size = new Size(112, 32);
+            _saveButton.TabIndex = 7;
+            _saveButton.Text = "Сохранить";
+            _saveButton.UseVisualStyleBackColor = true;
             // 
-            // loadButton
+            // _loadButton
             // 
-            loadButton.Location = new Point(136, 12);
-            loadButton.Name = "loadButton";
-            loadButton.Size = new Size(112, 32);
-            loadButton.TabIndex = 8;
-            loadButton.Text = "Загрузить";
-            loadButton.UseVisualStyleBackColor = true;
+            _loadButton.Location = new Point(136, 12);
+            _loadButton.Name = "_loadButton";
+            _loadButton.Size = new Size(112, 32);
+            _loadButton.TabIndex = 8;
+            _loadButton.Text = "Загрузить";
+            _loadButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -157,33 +157,33 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             AutoValidate = AutoValidate.EnablePreventFocusChange;
             ClientSize = new Size(755, 455);
-            Controls.Add(loadButton);
-            Controls.Add(saveButton);
-            Controls.Add(editingGroupBox);
-            Controls.Add(randomButton);
-            Controls.Add(calculationGroupBox);
+            Controls.Add(_loadButton);
+            Controls.Add(_saveButton);
+            Controls.Add(_editingGroupBox);
+            Controls.Add(_randomButton);
+            Controls.Add(_calculationGroupBox);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Расчет координаты";
             Load += LoadMainForm;
-            calculationGroupBox.ResumeLayout(false);
+            _calculationGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)calculationDataGridView).EndInit();
-            editingGroupBox.ResumeLayout(false);
+            _editingGroupBox.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox calculationGroupBox;
+        private GroupBox _calculationGroupBox;
         private DataGridView calculationDataGridView;
-        private Button deleteButton;
-        private Button clearButton;
-        private Button addButton;
-        private Button randomButton;
-        private GroupBox editingGroupBox;
-        private Button saveButton;
-        private Button loadButton;
-        private Button filterButton;
-        private Button resetButton;
+        private Button _deleteButton;
+        private Button _clearButton;
+        private Button _addButton;
+        private Button _randomButton;
+        private GroupBox _editingGroupBox;
+        private Button _saveButton;
+        private Button _loadButton;
+        private Button _filterButton;
+        private Button _resetButton;
     }
 }

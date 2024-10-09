@@ -64,7 +64,7 @@ namespace Model
         public abstract double Coordinate { get; }
 
         /// <summary>
-        /// Абстрактный метод расчета координаты.
+        /// Метод расчета координаты.
         /// </summary>
         /// <returns>Координата.</returns>
         public abstract double CalculateCoordinate();

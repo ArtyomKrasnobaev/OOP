@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 using Model;
 
 namespace View
@@ -17,212 +9,218 @@ namespace View
     public partial class FilterForm : Form
     {
         /// <summary>
-        /// Список фигур.
+        /// Список на форме.
         /// </summary>
-        private BindingList<MotionBase> _geometricFigures;
+        private BindingList<MotionBase> _motionList;
 
         /// <summary>
-        /// Отфильтрованный список фигур.
+        /// Отфильтрованный список.
         /// </summary>
-        private BindingList<MotionBase> _filteredGeometricFigures;
+        private BindingList<MotionBase> _filteredMotionList;
 
         /// <summary>
-        /// Событие на фильтрацию списка.
+        /// Событие фильтрации списка.
         /// </summary>
-        public EventHandler FiguresFilteredOut;
+        public EventHandler MotionsFiltered;
 
         /// <summary>
-        /// Инициализирует новый экземпляр класса <see cref="FilterForm"/>.
+        /// Конструктор класса <see cref="FilterForm"/>.
         /// </summary>
-        /// <param name="geometricFigures">Список 
+        /// <param name="motionList">Список 
         /// геометрических фигур для фильтрации.</param>
-        public FilterForm(BindingList<MotionBase> geometricFigures)
+        public FilterForm(BindingList<MotionBase> motionList)
         {
-            _geometricFigures = geometricFigures;
+            _motionList = motionList;
             InitializeComponent();
-            DeactivateElements();
-
-            okButton.Click += Filter;
-            checkBoxInitialValue.CheckedChanged += ActivateAreaBox;
-            timeCheckBox.CheckedChanged += ActivatePerimeterBox;
-
-            checkBoxConstantMotion.CheckedChanged += ActivateElements;
-            checkBoxAcceleratedMotion.CheckedChanged += ActivateElements;
-            checkBoxOscillatoryMotion.CheckedChanged += ActivateElements;
+            _initialValueTextBox.Enabled = false;
+            _timeTextBox.Enabled = false;
+            _okButton.Enabled = false;
+            _okButton.Click += Filter;
+            _initialValueCheckBox.CheckedChanged += ActivateInitialValueTextBox;
+            _timeCheckBox.CheckedChanged += ActivateTimeTextBox;
+            _constantMotionCheckBox.CheckedChanged += ActivateOkButton;
+            _acceleratedMotionCheckBox.CheckedChanged += ActivateOkButton;
+            _oscillatoryMotionCheckBox.CheckedChanged += ActivateOkButton;
+            _initialValueCheckBox.CheckedChanged += ActivateOkButton;
+            _timeCheckBox.CheckedChanged += ActivateOkButton;
         }
 
         /// <summary>
-        /// Деактивирует элементы управления на форме.
+        /// Метод активации элементов.
         /// </summary>
-        private void DeactivateElements()
+        /// <param name="sender"></param>
+        /// <param name="e"><see cref="EventArgs"/>
+        private void ActivateOkButton(object sender, EventArgs e)
         {
-            checkBoxInitialValue.Enabled = false;
-            timeCheckBox.Enabled = false;
+            bool activate = _constantMotionCheckBox.Checked
+                || _acceleratedMotionCheckBox.Checked
+                || _oscillatoryMotionCheckBox.Checked
+                || _initialValueCheckBox.Checked
+                || _timeCheckBox.Checked;
 
-            textBoxInitialValue.Enabled = false;
-            timeTextBox.Enabled = false;
-
-            okButton.Enabled = false;
+            _okButton.Enabled = activate;
         }
 
         /// <summary>
-        /// Активирует или деактивирует элементы управления
-        /// в зависимости от состояния чекбоксов типа фигуры.
+        /// Метод активации поля ввода начальной координаты.
         /// </summary>
-        /// <param name="sender">Источник события.</param>
-        /// <param name="e">Объект <see cref="EventArgs"/>,
-        /// содержащий данные события.</param>
-        private void ActivateElements(object sender, EventArgs e)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ActivateInitialValueTextBox(object sender, EventArgs e)
         {
-            bool activate = checkBoxConstantMotion.Checked
-                || checkBoxAcceleratedMotion.Checked
-                || checkBoxOscillatoryMotion.Checked;
-
-            okButton.Enabled = activate;
-            checkBoxInitialValue.Enabled = activate;
-            timeCheckBox.Enabled = activate;
+            _initialValueTextBox.Enabled = _initialValueCheckBox.Checked;
         }
 
         /// <summary>
-        /// Активация поля ввода Площади.
+        /// Метод активации поля ввода времени.
         /// </summary>
-        /// <param name="sender">Источник события.</param>
-        /// <param name="e">Объект <see cref="EventArgs"/>,
-        /// содержащий данные события.</param>
-        private void ActivateAreaBox(object sender, EventArgs e)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ActivateTimeTextBox(object sender, EventArgs e)
         {
-            textBoxInitialValue.Enabled = checkBoxInitialValue.Checked;
-        }
-
-        /// <summary>
-        /// Активациия поля ввода Периметра.
-        /// </summary>
-        /// <param name="sender">Источник события.</param>
-        /// <param name="e">Объект <see cref="EventArgs"/>,
-        /// содержащий данные события.</param>
-        private void ActivatePerimeterBox(object sender, EventArgs e)
-        {
-            timeTextBox.Enabled = timeCheckBox.Checked;
+            _timeTextBox.Enabled = _timeCheckBox.Checked;
         }
 
         /// <summary>
         /// Фильтрация списка.
         /// </summary>
-        /// <param name="sender">Источник события.</param>
-        /// <param name="e">Объект <see cref="EventArgs"/>,
-        /// содержащий данные события.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"><see cref="EventArgs"/>
         private void Filter(object sender, EventArgs e)
         {
-            _filteredGeometricFigures = new BindingList<MotionBase>();
+            _filteredMotionList = new BindingList<MotionBase>();
 
-            if (checkBoxConstantMotion.Checked) 
+            bool check = _constantMotionCheckBox.Checked
+                || _acceleratedMotionCheckBox.Checked
+                || _oscillatoryMotionCheckBox.Checked;
+
+            if (_constantMotionCheckBox.Checked) 
             {
-                FilterByType(_geometricFigures, _filteredGeometricFigures,
+                FilterByType(_motionList, _filteredMotionList,
                     typeof(ConstantMotion));
             }
-            if (checkBoxAcceleratedMotion.Checked)
+
+            if (_acceleratedMotionCheckBox.Checked)
             {
-                FilterByType(_geometricFigures, _filteredGeometricFigures,
+                FilterByType(_motionList, _filteredMotionList,
                     typeof(AcceleratedMotion));
             }
-            if (checkBoxOscillatoryMotion.Checked)
+
+            if (_oscillatoryMotionCheckBox.Checked)
             {
-                FilterByType(_geometricFigures, _filteredGeometricFigures,
+                FilterByType(_motionList, _filteredMotionList,
                     typeof(OscillatoryMotion));
             }
-            if (checkBoxInitialValue.Checked)
+
+            if (check)
             {
-                if (!string.IsNullOrWhiteSpace(textBoxInitialValue.Text))
-                {
-                    _filteredGeometricFigures = 
-                        FilterByArea(_filteredGeometricFigures,
-                        Convert.ToDouble(textBoxInitialValue.Text));
-                }
-                else 
-                {
-                    _ = MessageBox.Show("Пожалуйста, заполните Площадь",
-                        "Сообщение", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
+                CheckParameters(_filteredMotionList);
             }
-            if (timeCheckBox.Checked)
+            else
             {
-                if (!string.IsNullOrWhiteSpace(timeTextBox.Text))
+                CheckParameters(_motionList);
+            }
+            
+            MotionsFiltered.Invoke(this, 
+                new MotionFilteredEvent(_filteredMotionList));
+        }
+
+        /// <summary>
+        /// Метод проверки параметров.
+        /// </summary>
+        /// <param name="motionList"></param>
+        public void CheckParameters(BindingList<MotionBase> motionList)
+        {
+            if (_initialValueCheckBox.Checked)
+            {
+                if (!string.IsNullOrWhiteSpace(_initialValueTextBox.Text))
                 {
-                    _filteredGeometricFigures = 
-                        FilterByPerimeter(_filteredGeometricFigures,
-                        Convert.ToDouble(timeTextBox.Text));
+                    _filteredMotionList =
+                        FilterByInitialValue(motionList,
+                        Convert.ToDouble(_initialValueTextBox.Text));
                 }
                 else
                 {
-                    _ = MessageBox.Show("Пожалуйста, заполните Периметр",
+                    MessageBox.Show("Введите начальную координату",
                         "Сообщение", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
             }
-            FiguresFilteredOut.Invoke(this, 
-                new MotionFilteredEvent(_filteredGeometricFigures));
+
+            if (_timeCheckBox.Checked)
+            {
+                if (!string.IsNullOrWhiteSpace(_timeTextBox.Text))
+                {
+                    _filteredMotionList =
+                        FilterByTime(motionList,
+                        Convert.ToDouble(_timeTextBox.Text));
+                }
+                else
+                {
+                    MessageBox.Show("Введите время",
+                        "Сообщение", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+            }
         }
 
         /// <summary>
-        /// Отфильтровывает список по типу.
+        /// Метод фильтрации по типу движения.
         /// </summary>
-        /// <typeparam name="T">Тип значений списка.</typeparam>
-        /// <param name="originalList">Лист подлежащий фильтрации.</param>
-        /// <param name="filteredList">Список в который будут добавленны
-        /// отфильтрованные значения</param>
-        /// <param name="typeFilter">Тип отфильтрованных значений.</param>
-        private static void FilterByType<T>(
-            BindingList<T> originalList, BindingList<T> filteredList,
-            Type typeFilter) where T : class
+        /// <param name="originalList">Исходный список.</param>
+        /// <param name="filteredList">Отфильтрованный список.</param>
+        /// <param name="type">Тип движения.</param>
+        public static void FilterByType(BindingList<MotionBase> originalList,
+            BindingList<MotionBase> filteredList, Type type)
         {
             foreach (var item in originalList)
             {
-                if (typeFilter.IsInstanceOfType(item))
+                if (type.IsInstanceOfType(item))
                 {
                     filteredList.Add(item);
                 }
             }
         }
 
-
         /// <summary>
-        /// Отфильтровывает список по Площади.
+        /// Метод фильтрации по начальной координате.
         /// </summary>
-        /// <param name="originalList">Лист подлежащий фильтрации.</param>
-        /// <param name="valueArea">Значение Площади.</param>
+        /// <param name="originalList">Исходный список.</param>
+        /// <param name="initialValue">Начальная координата.</param>
         /// <returns>Отфильтрованный список.</returns>
-        private static BindingList<MotionBase> FilterByArea(
-            BindingList<MotionBase> originalList, double valueArea)
+        private static BindingList<MotionBase> FilterByInitialValue(
+            BindingList<MotionBase> originalList, double initialValue)
         {
             BindingList<MotionBase> filteredList = new();
-            foreach (var item in originalList)
+            foreach (var element in originalList)
             {
-                if (item.InitialValue == valueArea)
+                if (element.InitialValue == initialValue)
                 {
-                    filteredList.Add(item);
+                    filteredList.Add(element);
                 }
             }
+
             return filteredList;
         }
 
         /// <summary>
-        /// Отфильтровывает список по Периметру.
+        /// Метод фильтрации по времени.
         /// </summary>
-        /// <param name="originalList">Лист пдлежащий ильтрации.</param>
-        /// <param name="valuePerimeter">Значение Периметра.</param>
+        /// <param name="originalList">Исходный список.</param>
+        /// <param name="time">Время.</param>
         /// <returns>Отфильтрованный список.</returns>
-        private static BindingList<MotionBase> FilterByPerimeter(
-            BindingList<MotionBase> originalList, double valuePerimeter)
+        private static BindingList<MotionBase> FilterByTime(
+            BindingList<MotionBase> originalList, double time)
         {
             BindingList<MotionBase> filteredList = new();
-            foreach (var item in originalList)
+            foreach (var element in originalList)
             {
-                if (item.Time == valuePerimeter)
+                if (element.Time == time)
                 {
-                    filteredList.Add(item);
+                    filteredList.Add(element);
                 }
             }
+
             return filteredList;
         }
     }

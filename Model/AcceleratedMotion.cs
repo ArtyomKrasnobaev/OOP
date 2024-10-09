@@ -31,6 +31,10 @@ namespace Model
                 (Acceleration * Math.Pow(Time, 2)) / 2;
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns>Тип движения.</returns>
         public override string MotionType
         {
             get
@@ -39,6 +43,10 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns>Параметры движения.</returns>
         public override string Parameters
         {
             get
@@ -47,6 +55,10 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns>Координата.</returns>
         public override double Coordinate
         {
             get

@@ -23,12 +23,20 @@ namespace Model
         /// </summary>
         private const int _maxValue = 100;
 
+        /// <summary>
+        /// Метод генерации случайного числа типа double.
+        /// </summary>
+        /// <returns></returns>
         public static double GetRandomDouble()
         {
             double randomDouble = _random.Next(_minValue, _maxValue);
             return randomDouble;
         }
 
+        /// <summary>
+        /// Метод генерации случайного движения.
+        /// </summary>
+        /// <returns></returns>
         public static MotionBase GetRandomMotion()
         {
             int motionNumber = _random.Next(0, 3);
@@ -49,6 +57,10 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Метод установки общих параметров класса.
+        /// </summary>
+        /// <param name="motionBase"></param>
         public static void SetRandomMotionBaseData(MotionBase motionBase)
         {
             motionBase.InitialValue = GetRandomDouble();
@@ -67,6 +79,10 @@ namespace Model
             return constantMotion;
         }
 
+        /// <summary>
+        /// Метод генерации рандомного равноускоренного движения.
+        /// </summary>
+        /// <returns></returns>
         public static AcceleratedMotion GetRandomAcceleratedMotion()
         {
             AcceleratedMotion acceleratedMotion = new();
@@ -76,6 +92,10 @@ namespace Model
             return acceleratedMotion;
         }
 
+        /// <summary>
+        /// Метод генерации рандомного колебательного движения.
+        /// </summary>
+        /// <returns></returns>
         public static OscillatoryMotion GetRandomOscillatoryMotion()
         {
             OscillatoryMotion oscillatoryMotion = new();

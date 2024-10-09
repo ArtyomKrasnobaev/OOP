@@ -13,15 +13,18 @@ namespace View
         {
             InitializeComponent();
 
-            cancelButton.Click += ClickCancelButton;
+            _cancelButton.Click += ClickCancelButton;
 
-            constantMotionRadioButton.CheckedChanged += ChangeConstantMotionStatus;
+            _constantMotionRadioButton.CheckedChanged +=
+                ChangeConstantMotionStatus;
 
-            acceleratedMotionRadioButton.CheckedChanged += ChangeAcceleratedMotionStatus;
+            _acceleratedMotionRadioButton.CheckedChanged +=
+                ChangeAcceleratedMotionStatus;
 
-            oscillatoryMotionRadioButton.CheckedChanged += ChangeOscillatoryMotionStatus;
+            _oscillatoryMotionRadioButton.CheckedChanged +=
+                ChangeOscillatoryMotionStatus;
 
-            addButton.Click += ClickAddButton;
+            _addButton.Click += ClickAddButton;
         }
 
         /// <summary>
@@ -36,9 +39,9 @@ namespace View
         /// <param name="e"></param>
         private void ChangeConstantMotionStatus(object sender, EventArgs e)
         {
-            constantMotionUserControl1.Visible = true;
-            acceleratedMotionUserControl1.Visible = false;
-            oscillatoryMotionUserControl1.Visible = false;
+            constantMotionUserControl.Visible = true;
+            acceleratedMotionUserControl.Visible = false;
+            oscillatoryMotionUserControl.Visible = false;
         }
 
         /// <summary>
@@ -46,11 +49,12 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ChangeAcceleratedMotionStatus(object sender, EventArgs e)
+        private void ChangeAcceleratedMotionStatus(
+            object sender, EventArgs e)
         {
-            constantMotionUserControl1.Visible = false;
-            acceleratedMotionUserControl1.Visible = true;
-            oscillatoryMotionUserControl1.Visible = false;
+            constantMotionUserControl.Visible = false;
+            acceleratedMotionUserControl.Visible = true;
+            oscillatoryMotionUserControl.Visible = false;
         }
 
         /// <summary>
@@ -58,48 +62,76 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ChangeOscillatoryMotionStatus(object sender, EventArgs e)
+        private void ChangeOscillatoryMotionStatus(
+            object sender, EventArgs e)
         {
-            constantMotionUserControl1.Visible = false;
-            acceleratedMotionUserControl1.Visible = false;
-            oscillatoryMotionUserControl1.Visible = true;
+            constantMotionUserControl.Visible = false;
+            acceleratedMotionUserControl.Visible = false;
+            oscillatoryMotionUserControl.Visible = true;
         }
 
+        /// <summary>
+        /// Метод нажатия на кнопку "Добавить".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClickAddButton(object sender, EventArgs e)
         {
             try
             {
                 MotionBase motionBase = null;
 
-                if (constantMotionUserControl1.Visible)
+                if (constantMotionUserControl.Visible)
                 {
                     motionBase = new ConstantMotion()
                     {
-                        InitialValue = Convert.ToDouble(constantMotionUserControl1.initialValueTextBox.Text),
-                        Time = Convert.ToDouble(constantMotionUserControl1.timeTextBox.Text),
-                        Velocity = Convert.ToDouble(constantMotionUserControl1.velocityTextBox.Text),
+                        InitialValue = Convert.ToDouble(
+                            constantMotionUserControl.
+                            _initialValueTextBox.Text),
+                        Time = Convert.ToDouble(
+                            constantMotionUserControl.
+                            _timeTextBox.Text),
+                        Velocity = Convert.ToDouble(
+                            constantMotionUserControl.
+                            _velocityTextBox.Text),
                     };
                 }
 
-                if (acceleratedMotionUserControl1.Visible)
+                if (acceleratedMotionUserControl.Visible)
                 {
                     motionBase = new AcceleratedMotion()
                     {
-                        InitialValue = Convert.ToDouble(acceleratedMotionUserControl1.initialValueTextBox.Text),
-                        Time = Convert.ToDouble(acceleratedMotionUserControl1.timeTextBox.Text),
-                        Velocity = Convert.ToDouble(acceleratedMotionUserControl1.velocityTextBox.Text),
-                        Acceleration = Convert.ToDouble(acceleratedMotionUserControl1.accelerationTextBox.Text),
+                        InitialValue = Convert.ToDouble(
+                            acceleratedMotionUserControl.
+                            _initialValueTextBox.Text),
+                        Time = Convert.ToDouble(
+                            acceleratedMotionUserControl.
+                            _timeTextBox.Text),
+                        Velocity = Convert.ToDouble(
+                            acceleratedMotionUserControl.
+                            _velocityTextBox.Text),
+                        Acceleration = Convert.ToDouble(
+                            acceleratedMotionUserControl.
+                            _accelerationTextBox.Text),
                     };
                 }
 
-                if (oscillatoryMotionUserControl1.Visible)
+                if (oscillatoryMotionUserControl.Visible)
                 {
                     motionBase = new OscillatoryMotion()
                     {
-                        InitialValue = Convert.ToDouble(oscillatoryMotionUserControl1.initialValueTextBox.Text),
-                        Time = Convert.ToDouble(oscillatoryMotionUserControl1.timeTextBox.Text),
-                        Amplitude = Convert.ToDouble(oscillatoryMotionUserControl1.amplitudeTextBox.Text),
-                        Frequency = Convert.ToDouble(oscillatoryMotionUserControl1.frequencyTextBox.Text),
+                        InitialValue = Convert.ToDouble(
+                            oscillatoryMotionUserControl.
+                            _initialValueTextBox.Text),
+                        Time = Convert.ToDouble(
+                            oscillatoryMotionUserControl.
+                            _timeTextBox.Text),
+                        Amplitude = Convert.ToDouble(
+                            oscillatoryMotionUserControl.
+                            _amplitudeTextBox.Text),
+                        Frequency = Convert.ToDouble(
+                            oscillatoryMotionUserControl.
+                            _frequencyTextBox.Text),
                     };
                 }
 
@@ -108,8 +140,9 @@ namespace View
             }
             catch
             {
-                MessageBox.Show("Введите корректные данные.", "Предупреждение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Введите корректные данные.",
+                    "Предупреждение", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
 

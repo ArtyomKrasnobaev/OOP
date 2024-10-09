@@ -28,96 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            frequencyTextBox = new NumericBox();
-            frequencyLabel = new Label();
-            amplitudeTextBox = new NumericBox();
-            amplitudeLabel = new Label();
-            timeTextBox = new NumericBox();
-            timeLabel = new Label();
-            initialValueTextBox = new NumericBox();
-            initialValueLabel = new Label();
+            _frequencyTextBox = new NumericBox();
+            _frequencyLabel = new Label();
+            _amplitudeTextBox = new NumericBox();
+            _amplitudeLabel = new Label();
+            _timeTextBox = new NumericBox();
+            _timeLabel = new Label();
+            _initialValueTextBox = new NumericBox();
+            _initialValueLabel = new Label();
             SuspendLayout();
             // 
-            // frequencyTextBox
+            // _frequencyTextBox
             // 
-            frequencyTextBox.Location = new Point(208, 120);
-            frequencyTextBox.Margin = new Padding(3, 4, 3, 4);
-            frequencyTextBox.Name = "frequencyTextBox";
-            frequencyTextBox.Size = new Size(114, 27);
-            frequencyTextBox.TabIndex = 21;
+            _frequencyTextBox.Location = new Point(208, 120);
+            _frequencyTextBox.Margin = new Padding(3, 4, 3, 4);
+            _frequencyTextBox.Name = "_frequencyTextBox";
+            _frequencyTextBox.Size = new Size(114, 27);
+            _frequencyTextBox.TabIndex = 21;
             // 
-            // frequencyLabel
+            // _frequencyLabel
             // 
-            frequencyLabel.AutoSize = true;
-            frequencyLabel.Location = new Point(3, 124);
-            frequencyLabel.Name = "frequencyLabel";
-            frequencyLabel.Size = new Size(63, 20);
-            frequencyLabel.TabIndex = 20;
-            frequencyLabel.Text = "Частота";
+            _frequencyLabel.AutoSize = true;
+            _frequencyLabel.Location = new Point(3, 124);
+            _frequencyLabel.Name = "_frequencyLabel";
+            _frequencyLabel.Size = new Size(63, 20);
+            _frequencyLabel.TabIndex = 20;
+            _frequencyLabel.Text = "Частота";
             // 
-            // amplitudeTextBox
+            // _amplitudeTextBox
             // 
-            amplitudeTextBox.Location = new Point(208, 81);
-            amplitudeTextBox.Margin = new Padding(3, 4, 3, 4);
-            amplitudeTextBox.Name = "amplitudeTextBox";
-            amplitudeTextBox.Size = new Size(114, 27);
-            amplitudeTextBox.TabIndex = 19;
+            _amplitudeTextBox.Location = new Point(208, 81);
+            _amplitudeTextBox.Margin = new Padding(3, 4, 3, 4);
+            _amplitudeTextBox.Name = "_amplitudeTextBox";
+            _amplitudeTextBox.Size = new Size(114, 27);
+            _amplitudeTextBox.TabIndex = 19;
             // 
-            // amplitudeLabel
+            // _amplitudeLabel
             // 
-            amplitudeLabel.AutoSize = true;
-            amplitudeLabel.Location = new Point(3, 85);
-            amplitudeLabel.Name = "amplitudeLabel";
-            amplitudeLabel.Size = new Size(85, 20);
-            amplitudeLabel.TabIndex = 18;
-            amplitudeLabel.Text = "Амплитуда";
+            _amplitudeLabel.AutoSize = true;
+            _amplitudeLabel.Location = new Point(3, 85);
+            _amplitudeLabel.Name = "_amplitudeLabel";
+            _amplitudeLabel.Size = new Size(85, 20);
+            _amplitudeLabel.TabIndex = 18;
+            _amplitudeLabel.Text = "Амплитуда";
             // 
-            // timeTextBox
+            // _timeTextBox
             // 
-            timeTextBox.Location = new Point(208, 43);
-            timeTextBox.Margin = new Padding(3, 4, 3, 4);
-            timeTextBox.Name = "timeTextBox";
-            timeTextBox.Size = new Size(114, 27);
-            timeTextBox.TabIndex = 17;
+            _timeTextBox.Location = new Point(208, 43);
+            _timeTextBox.Margin = new Padding(3, 4, 3, 4);
+            _timeTextBox.Name = "_timeTextBox";
+            _timeTextBox.Size = new Size(114, 27);
+            _timeTextBox.TabIndex = 17;
             // 
-            // timeLabel
+            // _timeLabel
             // 
-            timeLabel.AutoSize = true;
-            timeLabel.Location = new Point(3, 47);
-            timeLabel.Name = "timeLabel";
-            timeLabel.Size = new Size(54, 20);
-            timeLabel.TabIndex = 16;
-            timeLabel.Text = "Время";
+            _timeLabel.AutoSize = true;
+            _timeLabel.Location = new Point(3, 47);
+            _timeLabel.Name = "_timeLabel";
+            _timeLabel.Size = new Size(54, 20);
+            _timeLabel.TabIndex = 16;
+            _timeLabel.Text = "Время";
             // 
-            // initialValueTextBox
+            // _initialValueTextBox
             // 
-            initialValueTextBox.Location = new Point(208, 4);
-            initialValueTextBox.Margin = new Padding(3, 4, 3, 4);
-            initialValueTextBox.Name = "initialValueTextBox";
-            initialValueTextBox.Size = new Size(114, 27);
-            initialValueTextBox.TabIndex = 15;
+            _initialValueTextBox.Location = new Point(208, 4);
+            _initialValueTextBox.Margin = new Padding(3, 4, 3, 4);
+            _initialValueTextBox.Name = "_initialValueTextBox";
+            _initialValueTextBox.Size = new Size(114, 27);
+            _initialValueTextBox.TabIndex = 15;
             // 
-            // initialValueLabel
+            // _initialValueLabel
             // 
-            initialValueLabel.AutoSize = true;
-            initialValueLabel.Location = new Point(3, 8);
-            initialValueLabel.Name = "initialValueLabel";
-            initialValueLabel.Size = new Size(171, 20);
-            initialValueLabel.TabIndex = 14;
-            initialValueLabel.Text = "Начальная координата";
+            _initialValueLabel.AutoSize = true;
+            _initialValueLabel.Location = new Point(3, 8);
+            _initialValueLabel.Name = "_initialValueLabel";
+            _initialValueLabel.Size = new Size(171, 20);
+            _initialValueLabel.TabIndex = 14;
+            _initialValueLabel.Text = "Начальная координата";
+            _initialValueLabel.Click += _initialValueLabel_Click;
             // 
             // OscillatoryMotionUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(frequencyTextBox);
-            Controls.Add(frequencyLabel);
-            Controls.Add(amplitudeTextBox);
-            Controls.Add(amplitudeLabel);
-            Controls.Add(timeTextBox);
-            Controls.Add(timeLabel);
-            Controls.Add(initialValueTextBox);
-            Controls.Add(initialValueLabel);
+            Controls.Add(_frequencyTextBox);
+            Controls.Add(_frequencyLabel);
+            Controls.Add(_amplitudeTextBox);
+            Controls.Add(_amplitudeLabel);
+            Controls.Add(_timeTextBox);
+            Controls.Add(_timeLabel);
+            Controls.Add(_initialValueTextBox);
+            Controls.Add(_initialValueLabel);
             Margin = new Padding(3, 4, 3, 4);
             Name = "OscillatoryMotionUserControl";
             Size = new Size(326, 245);
@@ -127,13 +128,13 @@
 
         #endregion
 
-        internal NumericBox frequencyTextBox;
-        internal Label frequencyLabel;
-        internal NumericBox amplitudeTextBox;
-        internal Label amplitudeLabel;
-        internal NumericBox timeTextBox;
-        internal Label timeLabel;
-        internal NumericBox initialValueTextBox;
-        internal Label initialValueLabel;
+        internal NumericBox _frequencyTextBox;
+        internal Label _frequencyLabel;
+        internal NumericBox _amplitudeTextBox;
+        internal Label _amplitudeLabel;
+        internal NumericBox _timeTextBox;
+        internal Label _timeLabel;
+        internal NumericBox _initialValueTextBox;
+        internal Label _initialValueLabel;
     }
 }
