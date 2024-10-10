@@ -4,7 +4,6 @@ using Model;
 
 namespace View
 {
-    //TODO+: XML
     /// <summary>
     /// Основная форма программы.
     /// </summary>
@@ -26,7 +25,6 @@ namespace View
         private XmlSerializer _serializer = new XmlSerializer(
             typeof(BindingList<MotionBase>));
 
-        //TODO+: XML
         /// <summary>
         /// Метод загрузки формы.
         /// </summary>
