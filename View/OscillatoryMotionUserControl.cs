@@ -12,10 +12,5 @@
         {
             InitializeComponent();
         }
-
-        private void _initialValueLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
