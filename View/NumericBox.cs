@@ -17,8 +17,7 @@
         /// Корректировка ввода данных.
         /// </summary>
         /// <param name="sender">Источник события.</param>
-        /// <param name="e">Объект <see cref="EventArgs"/>,
-        /// содержащий данные события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ValidateInput(object sender, KeyPressEventArgs e)
         {
             char symbol = e.KeyChar;

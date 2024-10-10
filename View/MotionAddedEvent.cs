@@ -16,8 +16,8 @@ namespace View
         /// <summary>
         /// Конструктор класса MotionAddedEvent.
         /// </summary>
-        /// <param name="motionBase"></param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <param name="motionBase">Объект класса MotionBase.</param>
+        /// <exception cref="ArgumentNullException">Исключение.</exception>
         public MotionAddedEvent(MotionBase motionBase)
         {
             if (motionBase == null)

@@ -26,8 +26,7 @@ namespace View
         /// <summary>
         /// Конструктор класса <see cref="FilterForm"/>.
         /// </summary>
-        /// <param name="motionList">Список 
-        /// геометрических фигур для фильтрации.</param>
+        /// <param name="motionList">Список движений.</param>
         public FilterForm(BindingList<MotionBase> motionList)
         {
             _motionList = motionList;
@@ -46,10 +45,10 @@ namespace View
         }
 
         /// <summary>
-        /// Метод активации элементов.
+        /// Метод активации кнопки "Ок".
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"><see cref="EventArgs"/>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ActivateOkButton(object sender, EventArgs e)
         {
             bool activate = _constantMotionCheckBox.Checked
@@ -64,8 +63,8 @@ namespace View
         /// <summary>
         /// Метод активации поля ввода начальной координаты.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ActivateInitialValueTextBox(object sender, EventArgs e)
         {
             _initialValueTextBox.Enabled = _initialValueCheckBox.Checked;
@@ -74,8 +73,8 @@ namespace View
         /// <summary>
         /// Метод активации поля ввода времени.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ActivateTimeTextBox(object sender, EventArgs e)
         {
             _timeTextBox.Enabled = _timeCheckBox.Checked;
@@ -84,8 +83,8 @@ namespace View
         /// <summary>
         /// Фильтрация списка.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"><see cref="EventArgs"/>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void Filter(object sender, EventArgs e)
         {
             _filteredMotionList = new BindingList<MotionBase>();
@@ -128,7 +127,7 @@ namespace View
         /// <summary>
         /// Метод проверки параметров.
         /// </summary>
-        /// <param name="motionList"></param>
+        /// <param name="motionList">Список движений.</param>
         public void CheckParameters(BindingList<MotionBase> motionList)
         {
             if (_initialValueCheckBox.Checked)

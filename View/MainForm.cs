@@ -30,8 +30,8 @@ namespace View
         /// <summary>
         /// Метод загрузки формы.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void LoadMainForm(object sender, EventArgs e)
         {
             _motionList = new BindingList<MotionBase>();
@@ -41,13 +41,13 @@ namespace View
         /// <summary>
         /// Метод создания таблицы на форме.
         /// </summary>
-        /// <param name="motions"></param>
-        /// <param name="dataGridView"></param>
-        public static void CreateTable(BindingList<MotionBase> motions,
+        /// <param name="motionList">Список движений.</param>
+        /// <param name="dataGridView">Сетка.</param>
+        public static void CreateTable(BindingList<MotionBase> motionList,
             DataGridView dataGridView)
         {
             dataGridView.RowHeadersVisible = false;
-            var source = new BindingSource(motions, null);
+            var source = new BindingSource(motionList, null);
             dataGridView.DataSource = source;
 
             dataGridView.DefaultCellStyle.Alignment =
@@ -92,8 +92,8 @@ namespace View
         /// <summary>
         /// Метод нажатия на кнопку "Добавить".
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickAddButton(object sender, EventArgs e)
         {
             AddForm addForm = new AddForm();
@@ -104,8 +104,8 @@ namespace View
         /// <summary>
         /// Метод нажатия на кнопку "Random".
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickRandomButton(object sender, EventArgs e)
         {
             _motionList.Add(MotionRandom.GetRandomMotion());
@@ -114,8 +114,8 @@ namespace View
         /// <summary>
         /// Метод нажатия на кнопку "Очистить".
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickClearButton(object sender, EventArgs e)
         {
             _motionList.Clear();
@@ -124,8 +124,8 @@ namespace View
         /// <summary>
         /// Обработчик добавления данных.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="motionBase"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="motionBase">Объект класса MotionBase.</param>
         private void AddedMotion(object sender, EventArgs motionBase)
         {
             MotionAddedEvent addedEventArgs =
@@ -137,8 +137,8 @@ namespace View
         /// <summary>
         /// Метод нажатия на кнопку "Удалить"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickDeleteButton(object sender, EventArgs e)
         {
             if (calculationDataGridView.SelectedCells.Count != 0)
@@ -154,8 +154,8 @@ namespace View
         /// <summary>
         /// Метод сохранения списка в файл.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickSaveButton(object sender, EventArgs e)
         {
             if (!_motionList.Any() || _motionList is null)
@@ -184,8 +184,8 @@ namespace View
         /// <summary>
         /// Метод загрузки списка из файла.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickLoadButton(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -218,8 +218,8 @@ namespace View
         /// <summary>
         /// Метод нажатия на кнопку фильтра.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickFilterButton(object sender, EventArgs e)
         {
             FilterForm filterForm = new FilterForm(_motionList);
@@ -230,8 +230,8 @@ namespace View
         /// <summary>
         /// Метод фильтрации.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="motionList"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="motionList">Список движений.</param>
         private void FilterMotion(object sender, EventArgs motionList)
         {
             MotionFilteredEvent filterEventArgs =
@@ -244,8 +244,8 @@ namespace View
         /// <summary>
         /// Метод нажатия на кнопку "Сбросить".
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickResetButton(object sender, EventArgs e)
         {
             CreateTable(_motionList, calculationDataGridView);

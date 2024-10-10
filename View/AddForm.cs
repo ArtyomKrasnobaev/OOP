@@ -35,8 +35,8 @@ namespace View
         /// <summary>
         /// Метод изменения статуса равномерного движения.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ChangeConstantMotionStatus(object sender, EventArgs e)
         {
             constantMotionUserControl.Visible = true;
@@ -47,8 +47,8 @@ namespace View
         /// <summary>
         /// Метод изменения статуса равноускоренного движения.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ChangeAcceleratedMotionStatus(
             object sender, EventArgs e)
         {
@@ -60,8 +60,8 @@ namespace View
         /// <summary>
         /// Метод изменения статуса колебательного движения.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ChangeOscillatoryMotionStatus(
             object sender, EventArgs e)
         {
@@ -73,8 +73,8 @@ namespace View
         /// <summary>
         /// Метод нажатия на кнопку "Добавить".
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickAddButton(object sender, EventArgs e)
         {
             try
@@ -149,8 +149,8 @@ namespace View
         /// <summary>
         /// Метод нажатия на кнопку "Закрыть".
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickCancelButton(object sender, EventArgs e)
         {
             Close();

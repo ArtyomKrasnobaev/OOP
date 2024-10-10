@@ -16,8 +16,8 @@ namespace View
         /// <summary>
         /// Конструктор класса MotionFilteredEvent.
         /// </summary>
-        /// <param name="filteredMotionList"></param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <param name="filteredMotionList">Отфильтрованный список.</param>
+        /// <exception cref="ArgumentNullException">Исключение.</exception>
         public MotionFilteredEvent(BindingList<MotionBase>
             filteredMotionList)
         {
