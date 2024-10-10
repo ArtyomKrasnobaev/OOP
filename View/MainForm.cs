@@ -26,6 +26,16 @@ namespace View
             typeof(BindingList<MotionBase>));
 
         /// <summary>
+        /// Состояние формы добавления.
+        /// </summary>
+        private bool _isAddFormOpened = false;
+
+        /// <summary>
+        /// Состояние формы фильтра.
+        /// </summary>
+        private bool _isFilterFormOpened = false;
+
+        /// <summary>
         /// Метод загрузки формы.
         /// </summary>
         /// <param name="sender">Источник события.</param>
@@ -94,9 +104,15 @@ namespace View
         /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickAddButton(object sender, EventArgs e)
         {
-            AddForm addForm = new AddForm();
-            addForm.MotionAdded += AddedMotion;
-            addForm.Show();
+            if (!_isAddFormOpened)
+            {
+                _isAddFormOpened = true;
+                AddForm addForm = new AddForm();
+                addForm.FormClosed += (s, args) =>
+                    { _isAddFormOpened = false; };
+                addForm.MotionAdded += AddedMotion;
+                addForm.Show();
+            }
         }
 
         /// <summary>
@@ -220,9 +236,15 @@ namespace View
         /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickFilterButton(object sender, EventArgs e)
         {
-            FilterForm filterForm = new FilterForm(_motionList);
-            filterForm.MotionsFiltered += FilterMotion;
-            filterForm.Show();
+            if (!_isFilterFormOpened)
+            {
+                _isFilterFormOpened = true;
+                FilterForm filterForm = new FilterForm(_motionList);
+                filterForm.FormClosed += (s, args) =>
+                    { _isFilterFormOpened = false; };
+                filterForm.MotionsFiltered += FilterMotion;
+                filterForm.Show();
+            }
         }
 
         /// <summary>
