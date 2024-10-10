@@ -35,6 +35,8 @@ namespace View
         /// </summary>
         private bool _isFilterFormOpened = false;
 
+        private bool _isFiltered = false;
+
         /// <summary>
         /// Метод загрузки формы.
         /// </summary>
@@ -79,21 +81,15 @@ namespace View
         public MainForm()
         {
             InitializeComponent();
-
             _addButton.Click += ClickAddButton;
 #if DEBUG
             _randomButton.Click += ClickRandomButton;
 #endif
             _deleteButton.Click += ClickDeleteButton;
-
             _clearButton.Click += ClickClearButton;
-
             _saveButton.Click += ClickSaveButton;
-
             _loadButton.Click += ClickLoadButton;
-
             _filterButton.Click += ClickFilterButton;
-
             _resetButton.Click += ClickResetButton;
         }
 
@@ -104,7 +100,7 @@ namespace View
         /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickAddButton(object sender, EventArgs e)
         {
-            if (!_isAddFormOpened)
+            if (_isAddFormOpened == false && _isFiltered == false)
             {
                 _isAddFormOpened = true;
                 AddForm addForm = new AddForm();
@@ -256,8 +252,8 @@ namespace View
         {
             MotionFilteredEvent filterEventArgs =
                 motionList as MotionFilteredEvent;
-
             _filteredMotionList = filterEventArgs?.FilteredMotionList;
+            _isFiltered = true;
             CreateTable(_filteredMotionList, calculationDataGridView);
         }
 
@@ -269,6 +265,7 @@ namespace View
         private void ClickResetButton(object sender, EventArgs e)
         {
             CreateTable(_motionList, calculationDataGridView);
+            _isFiltered = false;
         }
     }
 }
