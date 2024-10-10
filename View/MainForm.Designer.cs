@@ -33,9 +33,7 @@
             _deleteButton = new Button();
             _clearButton = new Button();
             _addButton = new Button();
-#if DEBUG
             _randomButton = new Button();
-#endif
             _editingGroupBox = new GroupBox();
             _resetButton = new Button();
             _filterButton = new Button();
@@ -92,7 +90,6 @@
             _addButton.TabIndex = 4;
             _addButton.Text = "Добавить";
             _addButton.UseVisualStyleBackColor = true;
-#if DEBUG
             // 
             // _randomButton
             // 
@@ -102,7 +99,6 @@
             _randomButton.TabIndex = 5;
             _randomButton.Text = "Random";
             _randomButton.UseVisualStyleBackColor = true;
-#endif
             // 
             // _editingGroupBox
             // 
@@ -164,10 +160,9 @@
             Controls.Add(_loadButton);
             Controls.Add(_saveButton);
             Controls.Add(_editingGroupBox);
-#if DEBUG
             Controls.Add(_randomButton);
-#endif
             Controls.Add(_calculationGroupBox);
+            MaximizeBox = false;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Расчет координаты";
@@ -178,7 +173,7 @@
             ResumeLayout(false);
         }
 
-#endregion
+        #endregion
 
         private GroupBox _calculationGroupBox;
         private DataGridView calculationDataGridView;

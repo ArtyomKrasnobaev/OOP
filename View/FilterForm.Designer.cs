@@ -151,6 +151,7 @@
             Controls.Add(_parametersGroupBox);
             Controls.Add(_okButton);
             Controls.Add(_motionTypeGroupBox);
+            MaximizeBox = false;
             Name = "FilterForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Настройки фильтрации";

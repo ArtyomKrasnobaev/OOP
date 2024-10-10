@@ -157,6 +157,7 @@
             Controls.Add(_addButton);
             Controls.Add(_parametersGroupBox);
             Controls.Add(_motionTypeGroupBox);
+            MaximizeBox = false;
             Name = "AddForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Добавить";
