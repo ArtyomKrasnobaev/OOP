@@ -105,7 +105,6 @@
             _initialValueLabel.Size = new Size(171, 20);
             _initialValueLabel.TabIndex = 14;
             _initialValueLabel.Text = "Начальная координата";
-            _initialValueLabel.Click += _initialValueLabel_Click;
             // 
             // OscillatoryMotionUserControl
             // 
