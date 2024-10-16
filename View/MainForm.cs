@@ -59,7 +59,6 @@ namespace View
             dataGridView.RowHeadersVisible = false;
             var source = new BindingSource(motionList, null);
             dataGridView.DataSource = source;
-
             dataGridView.DefaultCellStyle.Alignment =
                 DataGridViewContentAlignment.MiddleCenter;
             dataGridView.AllowUserToResizeColumns = false;

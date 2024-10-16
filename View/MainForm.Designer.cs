@@ -59,6 +59,7 @@
             calculationDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             calculationDataGridView.Location = new Point(6, 27);
             calculationDataGridView.Name = "calculationDataGridView";
+            calculationDataGridView.ReadOnly = true;
             calculationDataGridView.RowHeadersWidth = 51;
             calculationDataGridView.RowTemplate.Height = 29;
             calculationDataGridView.Size = new Size(675, 273);
