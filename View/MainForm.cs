@@ -223,7 +223,7 @@ namespace View
             {
                 MessageBox.Show("Не удалось загрузить файл!",
                     "Предупреждение", MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                    MessageBoxIcon.Error);
             }
         }
 

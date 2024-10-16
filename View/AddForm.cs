@@ -140,7 +140,7 @@ namespace View
             }
             catch
             {
-                MessageBox.Show("Введите корректные данные.",
+                MessageBox.Show("Введите данные.",
                     "Предупреждение", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
