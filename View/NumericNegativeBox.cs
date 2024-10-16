@@ -11,8 +11,21 @@ namespace View
         public override void ValidateInput(object sender, KeyPressEventArgs e)
         {
             char symbol = e.KeyChar;
+            if (symbol == '-' && Text.Length > 0)
+            {
+                e.Handled = true;
+                return;
+            }
+
             if ((symbol == '.' || symbol == ',')
                 && Text.IndexOf(',') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if ((symbol == '-')
+                && Text.IndexOf('-') != -1)
             {
                 e.Handled = true;
                 return;
