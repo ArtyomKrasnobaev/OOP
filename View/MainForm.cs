@@ -254,6 +254,8 @@ namespace View
                 motionList as MotionFilteredEvent;
             _filteredMotionList = filterEventArgs?.FilteredMotionList;
             _isFiltered = true;
+            _addButton.Enabled = false;
+            //_clearButton.Enabled = false;
             CreateTable(_filteredMotionList, calculationDataGridView);
         }
 
@@ -266,6 +268,8 @@ namespace View
         {
             CreateTable(_motionList, calculationDataGridView);
             _isFiltered = false;
+            _addButton.Enabled = true;
+            //_clearButton.Enabled = true;
         }
     }
 }

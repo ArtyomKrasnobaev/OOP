@@ -34,7 +34,7 @@
             _amplitudeLabel = new Label();
             _timeTextBox = new NumericBox();
             _timeLabel = new Label();
-            _initialValueTextBox = new NumericBox();
+            _initialValueTextBox = new NumericNegativeBox();
             _initialValueLabel = new Label();
             SuspendLayout();
             // 
@@ -133,7 +133,7 @@
         internal Label _amplitudeLabel;
         internal NumericBox _timeTextBox;
         internal Label _timeLabel;
-        internal NumericBox _initialValueTextBox;
+        internal NumericNegativeBox _initialValueTextBox;
         internal Label _initialValueLabel;
     }
 }

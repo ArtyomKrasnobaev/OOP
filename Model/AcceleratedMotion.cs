@@ -12,14 +12,50 @@ namespace Model
     public class AcceleratedMotion : MotionBase
     {
         /// <summary>
+        /// Поле скорости.
+        /// </summary>
+        private double _velocity;
+
+        /// <summary>
+        /// Поле ускорения.
+        /// </summary>
+        private double _acceleration;
+
+        /// <summary>
         /// Скорость.
         /// </summary>
-        public double Velocity { get; set; }
+        public double Velocity
+        {
+            get { return _velocity; }
+            set
+            {
+                if (double.IsNaN(value))
+                {
+                    throw new ArgumentException
+                        ("Введите корректное значение скорости");
+                }
+
+                _velocity = value;
+            }
+        }
 
         /// <summary>
         /// Ускорение.
         /// </summary>
-        public double Acceleration { get; set; }
+        public double Acceleration
+        {
+            get { return _acceleration; }
+            set
+            {
+                if (double.IsNaN(value))
+                {
+                    throw new ArgumentException
+                        ("Введите корректное значение ускорения");
+                }
+
+                _acceleration = value;
+            }
+        }
 
         /// <summary>
         /// <inheritdoc/>

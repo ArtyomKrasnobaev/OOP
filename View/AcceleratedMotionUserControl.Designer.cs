@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            _velocityTextBox = new NumericBox();
+            _velocityTextBox = new NumericNegativeBox();
             _velocityLabel = new Label();
             _timeTextBox = new NumericBox();
             _timeLabel = new Label();
-            _initialValueTextBox = new NumericBox();
+            _initialValueTextBox = new NumericNegativeBox();
             _initialValueLabel = new Label();
-            _accelerationTextBox = new NumericBox();
+            _accelerationTextBox = new NumericNegativeBox();
             _accelerationLabel = new Label();
             SuspendLayout();
             // 
@@ -126,13 +126,13 @@
         }
 
         #endregion
-        internal NumericBox _velocityTextBox;
+        internal NumericNegativeBox _velocityTextBox;
         internal Label _velocityLabel;
         internal NumericBox _timeTextBox;
         internal Label _timeLabel;
-        internal NumericBox _initialValueTextBox;
+        internal NumericNegativeBox _initialValueTextBox;
         internal Label _initialValueLabel;
-        internal NumericBox _accelerationTextBox;
+        internal NumericNegativeBox _accelerationTextBox;
         internal Label _accelerationLabel;
     }
 }

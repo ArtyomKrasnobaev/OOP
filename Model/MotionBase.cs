@@ -22,6 +22,11 @@ namespace Model
         private double _time;
 
         /// <summary>
+        /// Поле начальной координаты.
+        /// </summary>
+        private double _initialValue;
+
+        /// <summary>
         /// Столбец типа движения.
         /// </summary>
         [DisplayName("Тип движения")]
@@ -31,7 +36,20 @@ namespace Model
         /// Начальная координата.
         /// </summary>
         [DisplayName("Начальная координата")]
-        public double InitialValue { get; set; }
+        public double InitialValue
+        {
+            get { return _initialValue; }
+            set
+            {
+                if (double.IsNaN(value))
+                {
+                    throw new ArgumentException
+                        ("Введите корректное значение начальной координаты");
+                }
+
+                _initialValue = value;
+            }
+        }
 
         /// <summary>
         /// Время.
@@ -42,11 +60,12 @@ namespace Model
             get { return _time; }
             set
             {
-                if (value < 0)
+                if (value < 0 || double.IsNaN(value))
                 {
                     throw new ArgumentException
                         ("Введите положительное значение времени");
                 }
+
                 _time = value;
             }
         }

@@ -13,9 +13,27 @@ namespace Model
     public class ConstantMotion : MotionBase
     {
         /// <summary>
+        /// Поле скорости.
+        /// </summary>
+        private double _velocity;
+
+        /// <summary>
         /// Скорость.
         /// </summary>
-        public double Velocity { get; set; }
+        public double Velocity
+        { 
+            get { return _velocity; } 
+            set
+            {
+                if (double.IsNaN(value))
+                {
+                    throw new ArgumentException
+                        ("Введите корректное значение скорости");
+                }
+
+                _velocity = value;
+            }
+        }
 
         /// <summary>
         /// <inheritdoc/>

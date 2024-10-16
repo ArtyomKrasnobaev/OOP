@@ -18,7 +18,7 @@
         /// </summary>
         /// <param name="sender">Источник события.</param>
         /// <param name="e">Объект, содержащий данные о событии.</param>
-        private void ValidateInput(object sender, KeyPressEventArgs e)
+        public virtual void ValidateInput(object sender, KeyPressEventArgs e)
         {
             char symbol = e.KeyChar;
             if ((symbol == '.' || symbol == ',')

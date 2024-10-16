@@ -29,7 +29,7 @@ namespace Model
             get { return _amplitude; }
             set
             {
-                if (value < 0)
+                if (value < 0 || double.IsNaN(value))
                 {
                     throw new ArgumentOutOfRangeException
                         ("Введите положительное значение амплитуды");
@@ -46,7 +46,7 @@ namespace Model
             get { return _frequency; }
             set
             {
-                if (value < 0)
+                if (value < 0 || double.IsNaN(value))
                 {
                     throw new ArgumentOutOfRangeException
                         ("Введите положительное значение частоты в Гц");

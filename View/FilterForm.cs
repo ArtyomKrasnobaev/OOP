@@ -88,6 +88,7 @@ namespace View
         private void Filter(object sender, EventArgs e)
         {
             _filteredMotionList = new BindingList<MotionBase>();
+            BindingList<MotionBase> test = new();
 
             bool check = _constantMotionCheckBox.Checked
                 || _acceleratedMotionCheckBox.Checked
@@ -95,20 +96,28 @@ namespace View
 
             if (_constantMotionCheckBox.Checked) 
             {
-                FilterByType(_motionList, _filteredMotionList,
+                FilterByType(_motionList, test,
                     typeof(ConstantMotion));
             }
 
             if (_acceleratedMotionCheckBox.Checked)
             {
-                FilterByType(_motionList, _filteredMotionList,
+                FilterByType(_motionList, test,
                     typeof(AcceleratedMotion));
             }
 
             if (_oscillatoryMotionCheckBox.Checked)
             {
-                FilterByType(_motionList, _filteredMotionList,
+                FilterByType(_motionList, test,
                     typeof(OscillatoryMotion));
+            }
+
+            foreach (var motion in _motionList)
+            {
+                if (test.Contains(motion))
+                {
+                    _filteredMotionList.Add(motion);
+                }
             }
 
             if (check)
