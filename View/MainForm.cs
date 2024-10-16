@@ -35,6 +35,9 @@ namespace View
         /// </summary>
         private bool _isFilterFormOpened = false;
 
+        /// <summary>
+        /// Состояние фильтра.
+        /// </summary>
         private bool _isFiltered = false;
 
         /// <summary>
