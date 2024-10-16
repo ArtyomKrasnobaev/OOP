@@ -42,6 +42,7 @@
             // 
             _velocityTextBox.Location = new Point(208, 81);
             _velocityTextBox.Margin = new Padding(3, 4, 3, 4);
+            _velocityTextBox.MaxLength = 10;
             _velocityTextBox.Name = "_velocityTextBox";
             _velocityTextBox.Size = new Size(114, 27);
             _velocityTextBox.TabIndex = 11;
@@ -59,6 +60,7 @@
             // 
             _timeTextBox.Location = new Point(208, 43);
             _timeTextBox.Margin = new Padding(3, 4, 3, 4);
+            _timeTextBox.MaxLength = 10;
             _timeTextBox.Name = "_timeTextBox";
             _timeTextBox.Size = new Size(114, 27);
             _timeTextBox.TabIndex = 9;
@@ -76,6 +78,7 @@
             // 
             _initialValueTextBox.Location = new Point(208, 4);
             _initialValueTextBox.Margin = new Padding(3, 4, 3, 4);
+            _initialValueTextBox.MaxLength = 10;
             _initialValueTextBox.Name = "_initialValueTextBox";
             _initialValueTextBox.Size = new Size(114, 27);
             _initialValueTextBox.TabIndex = 7;
@@ -93,6 +96,7 @@
             // 
             _accelerationTextBox.Location = new Point(208, 120);
             _accelerationTextBox.Margin = new Padding(3, 4, 3, 4);
+            _accelerationTextBox.MaxLength = 10;
             _accelerationTextBox.Name = "_accelerationTextBox";
             _accelerationTextBox.Size = new Size(114, 27);
             _accelerationTextBox.TabIndex = 13;

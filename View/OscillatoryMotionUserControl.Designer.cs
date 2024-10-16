@@ -42,6 +42,7 @@
             // 
             _frequencyTextBox.Location = new Point(208, 120);
             _frequencyTextBox.Margin = new Padding(3, 4, 3, 4);
+            _frequencyTextBox.MaxLength = 10;
             _frequencyTextBox.Name = "_frequencyTextBox";
             _frequencyTextBox.Size = new Size(114, 27);
             _frequencyTextBox.TabIndex = 21;
@@ -59,6 +60,7 @@
             // 
             _amplitudeTextBox.Location = new Point(208, 81);
             _amplitudeTextBox.Margin = new Padding(3, 4, 3, 4);
+            _amplitudeTextBox.MaxLength = 10;
             _amplitudeTextBox.Name = "_amplitudeTextBox";
             _amplitudeTextBox.Size = new Size(114, 27);
             _amplitudeTextBox.TabIndex = 19;
@@ -76,6 +78,7 @@
             // 
             _timeTextBox.Location = new Point(208, 43);
             _timeTextBox.Margin = new Padding(3, 4, 3, 4);
+            _timeTextBox.MaxLength = 10;
             _timeTextBox.Name = "_timeTextBox";
             _timeTextBox.Size = new Size(114, 27);
             _timeTextBox.TabIndex = 17;
@@ -93,6 +96,7 @@
             // 
             _initialValueTextBox.Location = new Point(208, 4);
             _initialValueTextBox.Margin = new Padding(3, 4, 3, 4);
+            _initialValueTextBox.MaxLength = 10;
             _initialValueTextBox.Name = "_initialValueTextBox";
             _initialValueTextBox.Size = new Size(114, 27);
             _initialValueTextBox.TabIndex = 15;

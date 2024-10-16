@@ -35,7 +35,7 @@
             _okButton = new Button();
             _parametersGroupBox = new GroupBox();
             _timeTextBox = new NumericBox();
-            _initialValueTextBox = new NumericBox();
+            _initialValueTextBox = new NumericNegativeBox();
             _timeCheckBox = new CheckBox();
             _initialValueCheckBox = new CheckBox();
             _motionTypeGroupBox.SuspendLayout();
@@ -112,6 +112,7 @@
             // _timeTextBox
             // 
             _timeTextBox.Location = new Point(230, 63);
+            _timeTextBox.MaxLength = 10;
             _timeTextBox.Name = "_timeTextBox";
             _timeTextBox.Size = new Size(114, 27);
             _timeTextBox.TabIndex = 3;
@@ -119,6 +120,7 @@
             // _initialValueTextBox
             // 
             _initialValueTextBox.Location = new Point(230, 24);
+            _initialValueTextBox.MaxLength = 10;
             _initialValueTextBox.Name = "_initialValueTextBox";
             _initialValueTextBox.Size = new Size(114, 27);
             _initialValueTextBox.TabIndex = 2;
@@ -173,7 +175,7 @@
         private GroupBox _parametersGroupBox;
         private CheckBox _initialValueCheckBox;
         private CheckBox _timeCheckBox;
-        private NumericBox _initialValueTextBox;
+        private NumericNegativeBox _initialValueTextBox;
         private NumericBox _timeTextBox;
     }
 }
