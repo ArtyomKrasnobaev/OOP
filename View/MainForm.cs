@@ -227,7 +227,7 @@ namespace View
             }
             catch (Exception)
             {
-                MessageBox.Show("Не удалось загрузить файл!",
+                MessageBox.Show("Файл поврежден!",
                     "Предупреждение", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
