@@ -108,8 +108,14 @@ namespace View
                 AddForm addForm = new AddForm();
                 addForm.FormClosed += (s, args) =>
                     { _isAddFormOpened = false; };
+                addForm.FormClosed += (s, args) =>
+                    { _filterButton.Enabled = true; };
                 addForm.MotionAdded += AddedMotion;
                 addForm.Show();
+            }
+            if (_isAddFormOpened)
+            {
+                _filterButton.Enabled = false;
             }
         }
 
@@ -240,8 +246,14 @@ namespace View
                 FilterForm filterForm = new FilterForm(_motionList);
                 filterForm.FormClosed += (s, args) =>
                     { _isFilterFormOpened = false; };
+                filterForm.FormClosed += (s, args) =>
+                    { _addButton.Enabled = true; };
                 filterForm.MotionsFiltered += FilterMotion;
                 filterForm.Show();
+            }
+            if (_isFilterFormOpened)
+            {
+                _addButton.Enabled = false;
             }
         }
 
@@ -270,7 +282,7 @@ namespace View
         {
             CreateTable(_motionList, calculationDataGridView);
             _isFiltered = false;
-            _addButton.Enabled = true;
+            //_addButton.Enabled = true;
             //_clearButton.Enabled = true;
         }
     }
