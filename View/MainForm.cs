@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using Model;
@@ -12,7 +13,7 @@ namespace View
         /// <summary>
         /// Список на форме.
         /// </summary>
-        private BindingList<MotionBase> _motionList = new();
+        private BindingList<MotionBase> _motionList;
 
         /// <summary>
         /// Отфильтрованный список.
@@ -93,6 +94,8 @@ namespace View
             _loadButton.Click += ClickLoadButton;
             _filterButton.Click += ClickFilterButton;
             _resetButton.Click += ClickResetButton;
+
+            UpdateButtonsStates();
         }
 
         /// <summary>
@@ -102,21 +105,17 @@ namespace View
         /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickAddButton(object sender, EventArgs e)
         {
-            if (_isAddFormOpened == false && _isFiltered == false)
+            AddForm addForm = new AddForm();
+            addForm.MotionAdded += AddedMotion;
+            _isAddFormOpened = true;
+            UpdateButtonsStates();
+            addForm.FormClosed += (s, args) =>
             {
-                _isAddFormOpened = true;
-                AddForm addForm = new AddForm();
-                addForm.FormClosed += (s, args) =>
-                    { _isAddFormOpened = false; };
-                addForm.FormClosed += (s, args) =>
-                    { _filterButton.Enabled = true; };
-                addForm.MotionAdded += AddedMotion;
-                addForm.Show();
-            }
-            if (_isAddFormOpened)
-            {
-                _filterButton.Enabled = false;
-            }
+                _isAddFormOpened = false;
+                UpdateButtonsStates();
+            };
+
+            addForm.Show();
         }
 
         /// <summary>
@@ -136,7 +135,24 @@ namespace View
         /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickClearButton(object sender, EventArgs e)
         {
-            _motionList.Clear();
+            calculationDataGridView.ClearSelection();
+            foreach (DataGridViewRow row in calculationDataGridView.Rows)
+            {
+                row.Selected = true;
+            }
+            foreach (DataGridViewRow row in
+                    calculationDataGridView.SelectedRows)
+            {
+                if (row.DataBoundItem is MotionBase motion)
+                {
+                    _motionList.Remove(motion);
+                    if (_filteredMotionList is not null
+                            && _filteredMotionList.Count > 0)
+                    {
+                        _filteredMotionList.Remove(motion);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -164,7 +180,15 @@ namespace View
                 foreach (DataGridViewRow row in
                     calculationDataGridView.SelectedRows)
                 {
-                    _motionList.Remove(row.DataBoundItem as MotionBase);
+                    if (row.DataBoundItem is MotionBase motion)
+                    {
+                        _motionList.Remove(motion);
+                        if (_filteredMotionList is not null
+                            && _filteredMotionList.Count > 0)
+                        {
+                            _filteredMotionList.Remove(motion);
+                        }
+                    }
                 }
             }
         }
@@ -197,6 +221,20 @@ namespace View
                     _serializer.Serialize(file, _motionList);
                 }
             }
+        }
+
+        /// <summary>
+        /// Метод обновления состояний кнопок.
+        /// </summary>
+        private void UpdateButtonsStates()
+        {
+            _addButton.Enabled = !_isFilterFormOpened &&
+                !_isFiltered && !_isAddFormOpened;
+            _filterButton.Enabled = !_isAddFormOpened &&
+                !_isFilterFormOpened;
+            _saveButton.Enabled = !_isFiltered;
+            _loadButton.Enabled = !_isFiltered;
+            _randomButton.Enabled = _saveButton.Enabled;
         }
 
         /// <summary>
@@ -240,21 +278,17 @@ namespace View
         /// <param name="e">Объект, содержащий данные о событии.</param>
         private void ClickFilterButton(object sender, EventArgs e)
         {
-            if (!_isFilterFormOpened)
+            FilterForm filterForm = new FilterForm(_motionList);
+            filterForm.MotionsFiltered += FilterMotion;
+            _isFilterFormOpened = true;
+            UpdateButtonsStates();
+            filterForm.FormClosed += (s, args) =>
             {
-                _isFilterFormOpened = true;
-                FilterForm filterForm = new FilterForm(_motionList);
-                filterForm.FormClosed += (s, args) =>
-                    { _isFilterFormOpened = false; };
-                filterForm.FormClosed += (s, args) =>
-                    { _addButton.Enabled = true; };
-                filterForm.MotionsFiltered += FilterMotion;
-                filterForm.Show();
-            }
-            if (_isFilterFormOpened)
-            {
-                _addButton.Enabled = false;
-            }
+                _isFilterFormOpened = false;
+                UpdateButtonsStates();
+            };
+
+            filterForm.Show();
         }
 
         /// <summary>
@@ -268,8 +302,7 @@ namespace View
                 motionList as MotionFilteredEvent;
             _filteredMotionList = filterEventArgs?.FilteredMotionList;
             _isFiltered = true;
-            _addButton.Enabled = false;
-            //_clearButton.Enabled = false;
+            UpdateButtonsStates();
             CreateTable(_filteredMotionList, calculationDataGridView);
         }
 
@@ -282,8 +315,7 @@ namespace View
         {
             CreateTable(_motionList, calculationDataGridView);
             _isFiltered = false;
-            //_addButton.Enabled = true;
-            //_clearButton.Enabled = true;
+            UpdateButtonsStates();
         }
     }
 }
