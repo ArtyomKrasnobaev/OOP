@@ -172,7 +172,7 @@ namespace View
         }
 
         /// <summary>
-        /// Метод нажатия на кнопку "Удалить"
+        /// Метод нажатия на кнопку "Удалить".
         /// </summary>
         /// <param name="sender">Источник события.</param>
         /// <param name="e">Объект, содержащий данные о событии.</param>
@@ -282,8 +282,9 @@ namespace View
         private void ClickFilterButton(object sender, EventArgs e)
         {
             FilterForm filterForm = new FilterForm(_motionList);
+
             filterForm.MotionsFiltered += (sender, motionList)
-                    => FilterMotion(sender, motionList, filterForm.Visible);
+                    => FilterMotion(sender, motionList, filterForm);
             
             _isFilterFormClosed = true;
 
@@ -304,18 +305,19 @@ namespace View
         /// </summary>
         /// <param name="sender">Источник события.</param>
         /// <param name="motionList">Список движений.</param>
-        private void FilterMotion(object sender, EventArgs motionList, bool formVisible)
+        private void FilterMotion(object sender, EventArgs motionList, FilterForm form)
         {
             MotionFilteredEvent filterEventArgs =
                 motionList as MotionFilteredEvent;
             _filteredMotionList = filterEventArgs?.FilteredMotionList;
+            
+            bool filterCondition = _filteredMotionList != null && _filteredMotionList.Count > 0;
+            bool visible = form?.Visible ?? false;
 
-
-            if (_isFilterFormClosed || formVisible)
+            if ((_isFilterFormClosed || visible) && filterCondition) 
             {
                 CreateTable(_filteredMotionList, calculationDataGridView);
             }
-
 
             _isFiltered = true;
             //UpdateButtonsStates();
