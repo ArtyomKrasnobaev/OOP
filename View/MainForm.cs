@@ -234,7 +234,9 @@ namespace View
                 !_isFilterFormOpened;
             _saveButton.Enabled = !_isFiltered;
             _loadButton.Enabled = !_isFiltered;
+#if DEBUG
             _randomButton.Enabled = _saveButton.Enabled;
+#endif
         }
 
         /// <summary>
