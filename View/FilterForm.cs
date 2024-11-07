@@ -30,6 +30,8 @@ namespace View
         public FilterForm(BindingList<MotionBase> motionList)
         {
             _motionList = motionList;
+            // TODO: Добавил
+            _motionList.ListChanged += Filter;
             InitializeComponent();
             _initialValueTextBox.Enabled = false;
             _timeTextBox.Enabled = false;

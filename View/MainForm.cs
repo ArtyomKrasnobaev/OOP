@@ -41,6 +41,8 @@ namespace View
         /// </summary>
         private bool _isFiltered = false;
 
+        private bool _isFilterFormClosed = false;
+
         /// <summary>
         /// Метод загрузки формы.
         /// </summary>
@@ -61,8 +63,9 @@ namespace View
             DataGridView dataGridView)
         {
             dataGridView.RowHeadersVisible = false;
-            var source = new BindingSource(motionList, null);
-            dataGridView.DataSource = source;
+            // TODO: мешает
+            //var source = new BindingSource(motionList, null);
+            dataGridView.DataSource = motionList;
             dataGridView.DefaultCellStyle.Alignment =
                 DataGridViewContentAlignment.MiddleCenter;
             dataGridView.AllowUserToResizeColumns = false;
@@ -95,7 +98,7 @@ namespace View
             _filterButton.Click += ClickFilterButton;
             _resetButton.Click += ClickResetButton;
 
-            UpdateButtonsStates();
+            //UpdateButtonsStates();
         }
 
         /// <summary>
@@ -108,11 +111,11 @@ namespace View
             AddForm addForm = new AddForm();
             addForm.MotionAdded += AddedMotion;
             _isAddFormOpened = true;
-            UpdateButtonsStates();
+            //UpdateButtonsStates();
             addForm.FormClosed += (s, args) =>
             {
                 _isAddFormOpened = false;
-                UpdateButtonsStates();
+                //UpdateButtonsStates();
             };
 
             addForm.Show();
@@ -226,16 +229,16 @@ namespace View
         /// <summary>
         /// Метод обновления состояний кнопок.
         /// </summary>
-        private void UpdateButtonsStates()
-        {
-            _addButton.Enabled = !_isFilterFormOpened &&
-                !_isFiltered && !_isAddFormOpened;
-            _filterButton.Enabled = !_isAddFormOpened &&
-                !_isFilterFormOpened;
-            _saveButton.Enabled = !_isFiltered;
-            _loadButton.Enabled = !_isFiltered;
-            _randomButton.Enabled = _saveButton.Enabled;
-        }
+        //private void UpdateButtonsStates()
+        //{
+        //    _addButton.Enabled = !_isFilterFormOpened &&
+        //        !_isFiltered && !_isAddFormOpened;
+        //    _filterButton.Enabled = !_isAddFormOpened &&
+        //        !_isFilterFormOpened;
+        //    _saveButton.Enabled = !_isFiltered;
+        //    _loadButton.Enabled = !_isFiltered;
+        //    _randomButton.Enabled = _saveButton.Enabled;
+        //}
 
         /// <summary>
         /// Метод загрузки списка из файла.
@@ -279,13 +282,18 @@ namespace View
         private void ClickFilterButton(object sender, EventArgs e)
         {
             FilterForm filterForm = new FilterForm(_motionList);
-            filterForm.MotionsFiltered += FilterMotion;
+            filterForm.MotionsFiltered += (sender, motionList)
+                    => FilterMotion(sender, motionList, filterForm.Visible);
+            
+            _isFilterFormClosed = true;
+
             _isFilterFormOpened = true;
-            UpdateButtonsStates();
+            //UpdateButtonsStates();
             filterForm.FormClosed += (s, args) =>
             {
                 _isFilterFormOpened = false;
-                UpdateButtonsStates();
+                filterForm = null;
+                //UpdateButtonsStates();
             };
 
             filterForm.Show();
@@ -296,14 +304,21 @@ namespace View
         /// </summary>
         /// <param name="sender">Источник события.</param>
         /// <param name="motionList">Список движений.</param>
-        private void FilterMotion(object sender, EventArgs motionList)
+        private void FilterMotion(object sender, EventArgs motionList, bool formVisible)
         {
             MotionFilteredEvent filterEventArgs =
                 motionList as MotionFilteredEvent;
             _filteredMotionList = filterEventArgs?.FilteredMotionList;
+
+
+            if (_isFilterFormClosed || formVisible)
+            {
+                CreateTable(_filteredMotionList, calculationDataGridView);
+            }
+
+
             _isFiltered = true;
-            UpdateButtonsStates();
-            CreateTable(_filteredMotionList, calculationDataGridView);
+            //UpdateButtonsStates();
         }
 
         /// <summary>
@@ -314,8 +329,9 @@ namespace View
         private void ClickResetButton(object sender, EventArgs e)
         {
             CreateTable(_motionList, calculationDataGridView);
+            _isFilterFormClosed = false;
             _isFiltered = false;
-            UpdateButtonsStates();
+            //UpdateButtonsStates();
         }
     }
 }
